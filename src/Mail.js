@@ -1,4 +1,4 @@
-import "./App.css";
+import "./Mail.css";
 import React, { useState } from "react";
 import { marked } from "marked";
 
@@ -44,7 +44,7 @@ function ExpandingDiv({ heading, markdownText, onDelete}) {
   );
 }
 
-function App() {
+function Mail() {
   const [data, setData] = useState( [
     { id:1,
       heading: "Heading 1",
@@ -83,4 +83,4 @@ function App() {
   );
 }
 
-export default App;
+export default Mail;

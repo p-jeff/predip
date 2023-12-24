@@ -31,6 +31,17 @@ header {
   color: white;
 }
 
+.div {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* subtle shadow */
+  transition: box-shadow 0.3s ease;
+}
+
+.div:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* deeper shadow on hover */
+}
+
 .collapsed {
   width: 300px; /* or any initial size */
   height: 100px; /* or any initial size */
@@ -58,7 +69,21 @@ header {
   border: 2px solid #000000;
   background-color: #282c34;
   text-align: left;
+  z-index: 1;
+  
 }
+
+.collapsed, .expanded {
+  background-color: #fff; /* light theme */
+  color: #333; /* dark text for readability */
+  cursor: pointer;
+}
+
+.collapsed h2, .expanded h2 {
+  margin-top: 0;
+  font-size: 1em; /* Material Design uses bold, simple headings */
+}
+
 
 h2 {
   margin-left: 5%;
@@ -87,7 +112,25 @@ p {
 
 .delete-btn {
   position: absolute;
-  top: 5px;
-  left: 2px;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336; /* Material Design red accent */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width:fit-content;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 0; /* for vertical alignment of the 'X' */
   /* Additional styling as needed */
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f; /* slightly darker red on hover */
 }
