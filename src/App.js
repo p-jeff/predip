@@ -1,35 +1,52 @@
 import "./App.css";
 import React, { useState } from "react";
+import { marked } from "marked";
 
-function ExpandingDiv({ heading, text }) {
+function ExpandingDiv({ heading, markdownText }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const previewText = text.split(' ').slice(0, 5).join(' ') + '...';
+
+  // Render the first few words as a preview
+  const previewText = markdownText.split(" ").slice(0, 5).join(" ") + "...";
+
+  const getMarkdownHtml = (markdown) => {
+    return { __html: marked(markdown, { sanitize: true }) };
+  };
 
   const handleClick = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div 
-      className={isExpanded ? "expanded" : "collapsed"} 
-      onClick={!isExpanded ? handleClick : undefined} // Prevent toggle when expanded
+    <div
+      className={isExpanded ? "expanded" : "collapsed"}
+      onClick={!isExpanded ? handleClick : undefined}
     >
+      <h2>{heading}</h2>
+      {isExpanded ? (
+        <div
+          className="email"
+          dangerouslySetInnerHTML={getMarkdownHtml(markdownText)}
+        />
+      ) : (
+        <p>{previewText}</p>
+      )}
       {isExpanded && (
         <span className="close-btn" onClick={handleClick}>
           &times;
         </span>
       )}
-      <h3>{heading}</h3>
-      <p>{isExpanded ? text : previewText}</p>
     </div>
   );
 }
 
 function App() {
   const data = [
-    { heading: "Concerns Regarding Meeting Shareholder Expectations in the Ethics Department", text: "Dear Ethics Department Team,I hope this message finds you well. I am writing to express some concerns that have recently come to my attention. It has been observed that the department's output has not been aligning with the established goals, a situation that is causing significant dissatisfaction among our shareholders. This misalignment not only impacts our department's performance but also affects the company's reputation and stakeholder confidence. I would appreciate it if we could urgently address these issues, ensuring our practices align with both our internal standards and shareholder expectations. Your immediate attention and action in improving our output and meeting our goals are crucial. Thank you for your understanding and cooperation in this matter. Best regards,[Your Name]" },
-    { heading: "Heading 2", text: "Text for heading 2..." },
-    // Add more objects for each heading and text
+    {
+      heading: "Heading 1",
+      markdownText:
+        "Dear Ethics Department Team, \n\nI hope this message finds you well. I am writing to express some concerns that have recently come to my attention. It has been observed that the department's output has not been aligning with the established goals, a situation that is causing significant dissatisfaction among our shareholders. This misalignment not only impacts our department's performance but also affects the company's reputation and stakeholder confidence. I would appreciate it if we could urgently address these issues, ensuring our practices align with both our internal standards and shareholder expectations. Your immediate attention and action in improving our output and meeting our goals are crucial. \n\nThank you for your understanding and cooperation in this matter. \n\nBest regards,\nJohannes",
+    },
+    // ... other data entries ...
   ];
 
   return (
@@ -37,7 +54,11 @@ function App() {
       <header>Mail</header>
       <div className="mailBody">
         {data.map((item, index) => (
-          <ExpandingDiv key={index} heading={item.heading} text={item.text} />
+          <ExpandingDiv
+            key={index}
+            heading={item.heading}
+            markdownText={item.markdownText}
+          />
         ))}
       </div>
     </div>

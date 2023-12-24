@@ -4,12 +4,12 @@
   max-height: 100vh;
   height: 50vh;
   margin-left: 25vw;
-  border-radius: 31px 31px 31px 31px;
-  -webkit-border-radius: 31px 31px 31px 31px;
-  -moz-border-radius: 31px 31px 31px 31px;
+  border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  -moz-border-radius: 9px 9px 9px 9px;
   border: 2px solid #000000;
   margin: 10px;
-  background-color: dimgray
+  background-color: dimgray;
 }
 
 header {
@@ -17,9 +17,9 @@ header {
   border-bottom: #000000 solid 2px;
   padding: 10px;
   background-color: rgb(52, 69, 179);
-  border-radius: 31px 31px 0px 0px;
-  -webkit-border-radius: 31px 31px 0px 0px;
-  -moz-border-radius: 31px 31px 0px 0px;
+  border-radius: 9px 9px 0px 0px;
+  -webkit-border-radius: 9px 9px 0px 0px;
+  -moz-border-radius: 9px 9px 0px 0px;
 }
 
 .mailBody {
@@ -37,9 +37,9 @@ header {
   overflow: hidden;
   cursor: pointer;
   margin: 5px;
-  border-radius: 31px 31px 31px 31px;
-  -webkit-border-radius: 31px 31px 31px 31px;
-  -moz-border-radius: 31px 31px 31px 31px;
+  border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  -moz-border-radius: 9px 9px 9px 9px;
   border: 2px solid #000000;
   background-color: #282c34;
 }
@@ -49,13 +49,23 @@ header {
   height: 100%; /* full height of the viewport */
   top: 0;
   left: 0;
-  position:absolute;
-  overflow: auto;
-  border-radius: 31px 31px 31px 31px;
-  -webkit-border-radius: 31px 31px 31px 31px;
-  -moz-border-radius: 31px 31px 31px 31px;
+  position: absolute;
+  overflow-x: hidden;
+  border-radius: 9px 9px 9px 9px;
+  -webkit-border-radius: 9px 9px 9px 9px;
+  -moz-border-radius: 9px 9px 9px 9px;
   border: 2px solid #000000;
   background-color: #282c34;
+  text-align: left;
+}
+
+h2 {
+  margin-left: 5%;
+}
+
+p {
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .close-btn {
