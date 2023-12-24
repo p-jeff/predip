@@ -83,3 +83,10 @@ p {
   font-size: 24px; /* Adjust size of 'X' as needed */
   user-select: none; /* Prevents text selection */
 }
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  /* Additional styling as needed */
+}
