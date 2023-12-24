@@ -67,7 +67,7 @@ function Mail() {
   };
 
   return (
-    <div className="App">
+    <div className="Mail">
       <header>Mail</header>
       <div className="mailBody">
         {data.map((item, index) => (
