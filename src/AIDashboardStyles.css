@@ -1,0 +1,92 @@
+/* AIDashboardStyles.css */
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.ai-dashboard {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.settings, .line-graph {
+  border: 1px solid #26a69a;
+  padding: 20px;
+  margin: 10px;
+  background-color: #263238;
+  border-radius: 4px;
+}
+
+.input-range {
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  animation: slide 2s linear infinite;
+}
+
+.state-component {
+  animation: blinking 1s linear infinite;
+}
+
+.line-graph {
+  position: relative;
+  height: 150px;
+}
+
+.line-graph div {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  background-color: #ef5350;
+  animation: graphAnim 2s linear infinite;
+}
+
+/* Add to AIDashboardStyles.css */
+
+.network-simulation {
+  position: relative;
+  height: 200px;
+  background-color: #37474f;
+  margin: 10px;
+  border-radius: 4px;
+  overflow: hidden; /* To keep elements within the bounds */
+}
+
+.network-node {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #26a69a;
+  border-radius: 50%;
+}
+
+.network-connection {
+  position: absolute;
+  background-color: #26a69a;
+  height: 2px;
+  transform-origin: 0 0; /* Ensure the rotation happens around one end of the line */
+ /* transition: all 1s; */
+}
+
+
+
+/* Animations */
+@keyframes blinking {
+  0%, 100% { color: #26a69a; }
+  50% { color: #ef5350; }
+}
+
+@keyframes slide {
+  0%, 100% { background-color: #26a69a; }
+  50% { background-color: #ef5350; }
+}
+
+@keyframes graphAnim {
+  0%, 100% { height: 100%; }
+  50% { height: 50%; }
+}

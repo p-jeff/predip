@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Mail from './Mail';
 import Tweet from './tweet';
+import AIApp from './AIApp';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,6 +12,7 @@ root.render(
   
       <Tweet />
       <Mail />
+      <AIApp />
 
   </React.StrictMode>
 );
