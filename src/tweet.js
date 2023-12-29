@@ -1,5 +1,5 @@
 import "./tweet.css";
-import React from "react";
+import React, {useState} from "react";
 import { marked } from "marked";
 
 function ExpandingDiv({ markdownText, sender }) {
@@ -34,7 +34,6 @@ function ExpandingDiv({ markdownText, sender }) {
     </div>
   );
 }
-
 function Tweet({ onMinimize }) {
   const data = [
     {
@@ -73,27 +72,64 @@ function Tweet({ onMinimize }) {
         "Dear Community, please be aware of phishing emails pretending to be from our company. Stay safe online! #CyberSecurityAlert",
     },
   ];
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const onMouseDown = (e) => {
+    setIsDragging(true);
+    setPosition({
+      ...position,
+      startX: e.clientX - position.x,
+      startY: e.clientY - position.y,
+    });
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    setPosition({
+      ...position,
+      x: e.clientX - position.startX,
+      y: e.clientY - position.startY,
+    });
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+  };
 
   return (
-    <div className="Tweeter">
-      <header className="tweetHeader">
-        Tweeter{" "}
+    <div
+      className="Tweeter"
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        position: 'absolute',
+      }}
+      onMouseUp={onMouseUp}
+      onMouseMove={isDragging ? onMouseMove : null}
+    >
+      <header
+        className="tweetHeader"
+        onMouseDown={onMouseDown}
+      >
+        Tweeter
         <button className="minimize" onClick={onMinimize}>
           &times;
         </button>
       </header>
       <div className="tweetBody">
-        {data.map((item, index) => (
+      {data.map((item, index) => (
           <ExpandingDiv
             key={item.id}
             heading={item.heading}
             markdownText={item.markdownText}
             sender={item.sender}
-          />
-        ))}
+          />))}
       </div>
     </div>
   );
 }
 
 export default Tweet;
+
+

@@ -1,6 +1,8 @@
 import "./Mail.css";
 import React, { useState } from "react";
 import { marked } from "marked";
+import Draggable from 'react-draggable';
+
 
 function ExpandingDiv({ heading, markdownText, onDelete, sender }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -78,25 +80,27 @@ function Mail({onMinimize}) {
   };
 
   return (
-    <div className="Mail">
-      <header>
-        Mail{" "}
-        <button className="minimize" onClick={onMinimize}>
-          &times;
-        </button>
-      </header>
-      <div className="mailBody">
-        {data.map((item, index) => (
-          <ExpandingDiv
-            key={item.id}
-            heading={item.heading}
-            markdownText={item.markdownText}
-            onDelete={() => handleDelete(item.id)}
-            sender={item.sender}
-          />
-        ))}
+    <Draggable handle="header">
+      <div className="Mail">
+        <header>
+          Mail
+          <button className="minimize" onClick={onMinimize}>
+            &times;
+          </button>
+        </header>
+        <div className="mailBody">
+          {data.map((item, index) => (
+            <ExpandingDiv
+              key={item.id}
+              heading={item.heading}
+              markdownText={item.markdownText}
+              onDelete={() => handleDelete(item.id)}
+              sender={item.sender}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </Draggable>
   );
 }
 
