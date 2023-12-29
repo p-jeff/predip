@@ -10,9 +10,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: antiquewhite;
+  background-image: url("wallaper.jpg");
+  background-size: 100vw;
+  overflow: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.minimize{
+  background-color: #f44336; /* Material Design red accent */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  border: 0px;
+  line-height: 20px; /* Center the 'X' vertically */
+  user-select: none; /* Prevents text selection */
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
 }

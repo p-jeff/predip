@@ -24,18 +24,17 @@ const Settings = () => (
   </div>
 );
 
-const AIDashboard = () => (
+const AIApp = ({onMinimize}) => (
   <div className="ai-dashboard">
+     <button className="minimize" onClick={onMinimize}>
+          &times;
+        </button>
     <h1>AI Dashboard</h1>
     <Settings />
     <StateComponent />
     <LineGraph />
     <NetworkSimulation />
   </div>
-);
-
-export const AIApp = () => (
-  <AIDashboard />
 );
 
 export default AIApp;
