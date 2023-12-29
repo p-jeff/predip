@@ -17,13 +17,6 @@ const StateComponent = () => (
   </div>
 );
 
-const Settings = () => (
-  <div className="settings">
-    <p>Setting 1: <input className="input-range" type="range" min="1" max="100" /></p>
-    <p>Setting 2: <input className="input-range" type="range" min="1" max="100" /></p>
-  </div>
-);
-
 const AIApp = ({onMinimize}) => (
   <div className="ai-dashboard">
      <button className="minimize" onClick={onMinimize}>

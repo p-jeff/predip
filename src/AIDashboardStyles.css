@@ -7,14 +7,7 @@
   padding: 20px;
   border-radius: 8px;
   margin: 20px;
-}
-
-.settings, .line-graph {
-  border: 1px solid #26a69a;
-  padding: 20px;
-  margin: 10px;
-  background-color: #263238;
-  border-radius: 4px;
+  position: relative;
 }
 
 .input-range {
