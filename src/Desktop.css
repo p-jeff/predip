@@ -1,0 +1,34 @@
+body {
+  background-image: url("wallaper.jpg");
+  background-size: 100vw;
+}
+.minimize {
+  background-color: #f44336; /* Material Design red accent */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  border: 0px;
+  line-height: 20px; /* Center the 'X' vertically */
+  user-select: none; /* Prevents text selection */
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+}
+
+.dock{
+  background-color: rgba(48, 48, 48, 0.274);
+  width: 30vw;
+  height: 5ch;
+  bottom: 5px;
+  position: absolute;
+  border-radius: 5px;
+  border: 1px solid;
+  left: 50%; /* Move the left edge to the center of the screen */
+  transform: translateX(-50%); /* Shift it back to the left by half its own width */
+  display: flex;
+}
+
+.icon{
+  margin: 5px;
+}

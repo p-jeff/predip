@@ -1,6 +1,7 @@
 import "./tweet.css";
-import React, {useState} from "react";
+import React from "react";
 import { marked } from "marked";
+import Draggable from "react-draggable";
 
 function ExpandingDiv({ markdownText, sender }) {
   // Function to convert Markdown to HTML and add styling for hashtags
@@ -72,64 +73,31 @@ function Tweet({ onMinimize }) {
         "Dear Community, please be aware of phishing emails pretending to be from our company. Stay safe online! #CyberSecurityAlert",
     },
   ];
-  const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const onMouseDown = (e) => {
-    setIsDragging(true);
-    setPosition({
-      ...position,
-      startX: e.clientX - position.x,
-      startY: e.clientY - position.y,
-    });
-  };
-
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    setPosition({
-      ...position,
-      x: e.clientX - position.startX,
-      y: e.clientY - position.startY,
-    });
-  };
-
-  const onMouseUp = () => {
-    setIsDragging(false);
-  };
 
   return (
-    <div
-      className="Tweeter"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        position: 'absolute',
-      }}
-      onMouseUp={onMouseUp}
-      onMouseMove={isDragging ? onMouseMove : null}
-    >
-      <header
-        className="tweetHeader"
-        onMouseDown={onMouseDown}
+    <Draggable handle="header">
+      <div
+        className="Tweeter"
       >
-        Tweeter
-        <button className="minimize" onClick={onMinimize}>
-          &times;
-        </button>
-      </header>
-      <div className="tweetBody">
-      {data.map((item, index) => (
-          <ExpandingDiv
-            key={item.id}
-            heading={item.heading}
-            markdownText={item.markdownText}
-            sender={item.sender}
-          />))}
+        <header className="tweetHeader" >
+          Tweeter
+          <button className="minimize" onClick={onMinimize}>
+            &times;
+          </button>
+        </header>
+        <div className="tweetBody">
+          {data.map((item, index) => (
+            <ExpandingDiv
+              key={item.id}
+              heading={item.heading}
+              markdownText={item.markdownText}
+              sender={item.sender}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </Draggable>
   );
 }
 
 export default Tweet;
-
-
