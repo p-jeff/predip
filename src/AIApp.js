@@ -30,7 +30,6 @@ const AIApp = ({onMinimize}) => (
           &times;
         </button>
     <h1>AI Dashboard</h1>
-    <Settings />
     <StateComponent />
     <LineGraph />
     <NetworkSimulation />
