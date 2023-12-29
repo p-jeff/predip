@@ -27,7 +27,6 @@ const Settings = () => (
 const AIDashboard = () => (
   <div className="ai-dashboard">
     <h1>AI Dashboard</h1>
-    <Settings />
     <StateComponent />
     <LineGraph />
     <NetworkSimulation />
