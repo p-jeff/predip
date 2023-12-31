@@ -1,5 +1,5 @@
 import "./tweet.css";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
 
@@ -141,7 +141,13 @@ function Tweet({ onMinimize }) {
     },
   ];
 
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(
+    () => JSON.parse(localStorage.getItem('tweets')) || initialData
+  );
+
+  useEffect(() => {
+    localStorage.setItem('tweets', JSON.stringify(data));
+  }, [data]);
 
   const notificationPop = () => {
     const sound = new Audio('/tweet.wav'); // Path to your sound file

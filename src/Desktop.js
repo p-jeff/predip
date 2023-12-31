@@ -17,6 +17,7 @@ const Icon = ({ icon, onClick }) => {
 };
 
 const Desktop = () => {
+
   const apps = [
     {
       name: "Tweeter",
@@ -38,6 +39,7 @@ const Desktop = () => {
     },
   ];
 
+  
   // Update the toggle functions for each app
   apps[0].toggle = () => apps[0].isMinimized[1](!apps[0].isMinimized[0]);
   apps[1].toggle = () => apps[1].isMinimized[1](!apps[1].isMinimized[0]);
