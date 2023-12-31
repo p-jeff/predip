@@ -1,9 +1,9 @@
 import "./tweet.css";
-import React from "react";
+import React, {useState} from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
 
-function ExpandingDiv({ markdownText, sender }) {
+function ExpandingDiv({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
   const getMarkdownHtml = (markdown) => {
     const renderer = new marked.Renderer();
@@ -26,7 +26,7 @@ function ExpandingDiv({ markdownText, sender }) {
     <div className="tweet">
       <h2>
         {sender}
-        <span className="darker"> &#160; @{sender}</span>
+        <span className="darker"> &#160; {tag}</span>
       </h2>
       <div
         className="email"
@@ -36,7 +36,7 @@ function ExpandingDiv({ markdownText, sender }) {
   );
 }
 function Tweet({ onMinimize }) {
-  const data = [
+  const initialData = [
     {
       id: 101,
       sender: "Alexa",
@@ -74,27 +74,112 @@ function Tweet({ onMinimize }) {
     },
   ];
 
+  const extraData = [
+    {
+      id: 201,
+      sender: "Emma Clark",
+      tag: "@LegalTechGuru",
+      heading: "",
+      markdownText:
+        "AI in the courtroom? It is about time we embraced technology to make judicial processes faster and more efficient. #FutureOfLaw #AIJustice",
+    },
+    {
+      id: 202,
+      sender: "David Kim",
+      tag: "@HumanRightsWatch",
+      heading: "",
+      markdownText:
+        "Relying on AI for sentencing raises serious ethical concerns. Can we trust algorithms to understand the nuances of justice? #HumanRights #AIEthics",
+    },
+    {
+      id: 203,
+      sender: "Sophia Martinez",
+      tag: "@TechPolicyExpert",
+      heading: "",
+      markdownText:
+        "While AI can aid in lawmaking, let us not forget the importance of human oversight. Technology should assist, not replace. #TechPolicy #HumanTouch",
+    },
+    {
+      id: 204,
+      sender: "Lucas Johnson",
+      tag: "@CyberSkeptic",
+      heading: "",
+      markdownText:
+        "AI in judicial sentencing? Sounds like a dystopian novel. We need more transparency before even considering such a move. #AItransparency #TechDystopia",
+    },
+    {
+      id: 205,
+      sender: "Isabella Garcia",
+      tag: "@JusticeInnovator",
+      heading: "",
+      markdownText:
+        "Incorporating AI in lawmaking could significantly reduce biases inherent in human decision-making. #InnovativeJustice #AIFairness",
+    },
+    {
+      id: 206,
+      sender: "Michael Brown",
+      tag: "@CivilLibertiesUnion",
+      heading: "",
+      markdownText:
+        "AI in sentencing threatens to strip away the human element essential for justice. We must proceed with caution. #CivilRights #AIConcerns",
+    },
+    {
+      id: 207,
+      sender: "Olivia Wilson",
+      tag: "@DigitalFuturist",
+      heading: "",
+      markdownText:
+        "Imagine a legal system powered by AI - efficient, unbiased, and swift. The future is now! #AIRevolution #LegalTech",
+    },
+    {
+      id: 208,
+      sender: "Ethan Martinez",
+      tag: "@EthicalTechie",
+      heading: "",
+      markdownText:
+        "We must ensure AI in law does not perpetuate existing biases. Ethical considerations are key. #EthicalAI #JusticeTech",
+    },
+  ];
+
+  const [data, setData] = useState(initialData);
+
+  const notificationPop = () => {
+    const sound = new Audio('/tweet.wav'); // Path to your sound file
+    sound.play();
+  };
+
+  const loadMoreData = () => {
+    extraData.forEach((item, index) => {
+      setTimeout(() => {
+        setData((currentData) => [...currentData, item]);
+        notificationPop();
+      }, index * 1000); // 1000 milliseconds delay for each item
+    });
+  };
+
+
   return (
-    <Draggable handle="header">
-      <div
-        className="Tweeter"
-      >
-        <header className="tweetHeader" >
+    <Draggable handle="header " defaultPosition={{ x: 0, y: 0 }}>
+      <div className="Tweeter">
+        <header className="tweetHeader">
           Tweeter
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>
+          <button onClick={loadMoreData}>Load More</button>
         </header>
         <div className="tweetBody">
-          {data.map((item, index) => (
+          {data.toReversed().map((item, index) => ( //to reversed so that new tweets are loaded at the top
             <ExpandingDiv
               key={item.id}
               heading={item.heading}
               markdownText={item.markdownText}
               sender={item.sender}
+              tag={item.tag}
             />
           ))}
         </div>
+      
       </div>
     </Draggable>
   );

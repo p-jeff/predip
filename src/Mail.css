@@ -1,13 +1,15 @@
 .Mail {
-  max-width: 40vw;
+  max-width: 50vw;
+  width: 50vw;
   max-height: 100vh;
-  height: 40vh;
+  height: 50vh;
   margin: 10px; /* Centering the Tweeter */
   border-radius: 1px; /* Rounded corners */
   border: 1px solid #333333; /* Subtle border */
   background-color: #1e1e1e; /* Dark grey background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adding shadow for depth */
   overflow: hidden; /* Ensuring no overflow */
+  position: fixed;
 }
 
 header {
@@ -16,6 +18,7 @@ header {
   padding: 15px;
   position: relative;
   background-color: #242424; /* Slightly lighter than the container for contrast */
+  cursor: move;
 }
 
 .mailBody {

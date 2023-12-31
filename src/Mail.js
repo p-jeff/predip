@@ -80,7 +80,7 @@ function Mail({onMinimize}) {
   };
 
   return (
-    <Draggable handle="header">
+    <Draggable handle="header"  defaultPosition={{x: 0, y: 0}}>
       <div className="Mail">
         <header>
           Mail
@@ -89,7 +89,7 @@ function Mail({onMinimize}) {
           </button>
         </header>
         <div className="mailBody">
-          {data.map((item, index) => (
+          {data.toReversed().map((item, index) => ( // to reversed so that things are added at the top
             <ExpandingDiv
               key={item.id}
               heading={item.heading}

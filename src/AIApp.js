@@ -1,6 +1,7 @@
 import React from 'react';
 import './AIDashboardStyles.css';
 import NetworkSimulation from './Network';
+import Draggable from 'react-draggable';
 
 const LineGraph = () => (
   <div className="line-graph">
@@ -18,6 +19,7 @@ const StateComponent = () => (
 );
 
 const AIApp = ({onMinimize}) => (
+  <Draggable>
   <div className="ai-dashboard">
      <button className="minimize" onClick={onMinimize}>
           &times;
@@ -27,6 +29,7 @@ const AIApp = ({onMinimize}) => (
     <LineGraph />
     <NetworkSimulation />
   </div>
+  </Draggable>
 );
 
 export default AIApp;

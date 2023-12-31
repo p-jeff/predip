@@ -10,6 +10,7 @@
   background-color: #43587f; /* Dark grey background */
   box-shadow: 0 4px 8px rgba(0,0,0,0.6); /* Adding shadow for depth */
   overflow: hidden; /* Ensuring no overflow */
+  position: fixed;
 }
 
 /* Tweeter Header */
@@ -20,6 +21,7 @@
   background-color: #43486f; /* Slightly lighter than the container for contrast */
   border-radius: 10px;
   position: relative;
+  cursor: move;
 }
 
 /* Tweeter Body */
