@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ReactComponent as Envelope } from "bootstrap-icons/icons/envelope-heart-fill.svg";
-import { ReactComponent as Bird } from "bootstrap-icons/icons/twitter.svg";
-import { ReactComponent as AI } from "bootstrap-icons/icons/bar-chart-line.svg";
+import { ReactComponent as MailIcon } from "bootstrap-icons/icons/envelope-heart-fill.svg";
+import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/twitter.svg";
+import { ReactComponent as AIAppIcon} from "bootstrap-icons/icons/bar-chart-line.svg";
 import { ReactComponent as QuestinComponentIcon} from "bootstrap-icons/icons/magic.svg";
 import "./Desktop.css";
 import Mail from "./Mail";
@@ -22,25 +22,25 @@ const Desktop = () => {
   const apps = [
     {
       name: "Tweeter",
-      icon: <Bird style={{ color: "blue" }} className="iconSize" />,
+      icon: <TwitterIcon style={{ color: "blue" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },
     {
       name: "mail",
-      icon: <Envelope style={{ color: "red" }} className="iconSize" />,
+      icon: <MailIcon style={{ color: "red" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },
     {
       name: "aiapp",
-      icon: <AI style={{ color: "green" }} className="iconSize" />,
+      icon: <AIAppIcon style={{ color: "green" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },
     {
       name: "QuestionComponent",
-      icon: <QuestinComponentIcon style={{ color: "green" }} className="iconSize" />,
+      icon: <QuestinComponentIcon style={{ color: "orange" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },

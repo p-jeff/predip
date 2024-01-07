@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
 import { initial, first } from "./data/tweetList";
+import { notificationPop} from "./boilerplate";
 
 function ExpandingDiv({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
@@ -36,6 +37,7 @@ function ExpandingDiv({ markdownText, sender, tag }) {
     </div>
   );
 }
+
 function Tweet({ onMinimize, isMinimized }) {
   const [data, setData] = useState(
     () => JSON.parse(localStorage.getItem('tweets')) || initial
@@ -45,23 +47,18 @@ function Tweet({ onMinimize, isMinimized }) {
     localStorage.setItem('tweets', JSON.stringify(data));
   }, [data]);
 
-  const notificationPop = () => {
-    const sound = new Audio('/tweet.wav'); // Path to your sound file
-    sound.play();
-  };
-
   const loadMoreData = (extraData) => {
     extraData.forEach((item, index) => {
       setTimeout(() => {
         setData((currentData) => {
           // Check if the item is already in currentData
           if (!currentData.some(existingItem => existingItem.id === item.id)) {
+            notificationPop('./tweet.wav');
             return [...currentData, item];
           }
           return currentData;
         });
-        notificationPop();
-      }, index * 500); // 1000 milliseconds delay for each item
+      }, index * 200); // 1000 milliseconds delay for each item
     });
   };
   
@@ -89,9 +86,6 @@ function Tweet({ onMinimize, isMinimized }) {
       eventSource.close();
     };
   });
-
- 
-
 
   return (
     <Draggable handle="header " defaultPosition={{ x: 0, y: 0 }}>

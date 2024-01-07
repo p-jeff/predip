@@ -11,6 +11,7 @@
   max-width: 20vw;
   color: #FFF;
   cursor: move;
+  position: fixed;
 }
 
 .input-range {
