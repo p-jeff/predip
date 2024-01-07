@@ -16,6 +16,7 @@ body {
 .clock{
   margin-right: 5px;
 }
+
 .minimize {
   background-color: #f44336; /* Material Design red accent */
   border-radius: 50%;
@@ -61,4 +62,8 @@ body {
   margin-bottom: auto;
   height: 70%;
   cursor: pointer;
+}
+
+.hiddenApp{
+  display: none;
 }

@@ -49,7 +49,7 @@ function ExpandingDiv({ heading, markdownText, onDelete, sender }) {
   );
 }
 
-function Mail({onMinimize}) {
+function Mail({onMinimize, isMinimized}) {
   const [data, setData] = useState([
     {
       id: 1,
@@ -81,7 +81,7 @@ function Mail({onMinimize}) {
 
   return (
     <Draggable handle="header"  defaultPosition={{x: 0, y: 0}}>
-      <div className="Mail">
+      <div className="Mail" style={{ display: isMinimized ? 'none' : 'block' }}>
         <header>
           Mail
           <button className="minimize" onClick={onMinimize}>

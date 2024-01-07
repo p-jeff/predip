@@ -13,6 +13,23 @@
     font-weight: 500; /* Regular font weight */
 }
 
+.question-container .minimize {
+    background-color: #f44336; /* Material Design red accent */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+    border: 0px;
+    line-height: 20px; /* Center the 'X' vertically */
+    user-select: none; /* Prevents text selection */
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 0px;
+
+  }
+
 .question-container button {
     display: block;
     margin: 8px 0;
@@ -25,8 +42,6 @@
     color: white;
     font-weight: 400;
 }
-
-
 
 .question-container button:hover {
     background-color: #555555; /* Slightly lighter on hover */
@@ -46,3 +61,4 @@
     color: #bdbdbd;
     cursor: not-allowed;
 }
+

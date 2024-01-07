@@ -19,9 +19,9 @@ const StateComponent = () => (
   </div>
 );
 
-const AIApp = ({onMinimize}) => (
+const AIApp = ({onMinimize, isMinimized}) => (
   <Draggable>
-  <div className="ai-dashboard">
+  <div className="ai-dashboard" style={{ display: isMinimized ? 'none' : 'block' }}>
      <button className="minimize" onClick={onMinimize}>
           &times;
         </button>
