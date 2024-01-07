@@ -1,12 +1,24 @@
 .question-container {
-    max-width: 500px;
     margin: auto;
-    padding: 24px; /* Ant Design's spacing unit */
     border-radius: 2px; /* Consistent with Ant's style */
     background-color: #ffffff; /* White background */
     color: rgba(0, 0, 0, 0.85); /* High contrast text */
     box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
     position: fixed;
+}
+
+.ethHeader {
+    color: #000;
+    border-bottom: 1px solid #333333;
+    padding: 15px;
+    position: relative;
+    background-color: #b9b9b9; /* Slightly lighter than the container for contrast */
+    cursor: move;
+  }
+
+.ethCompassBody{
+    padding: 24px;
+    overflow: scroll;
 }
 
 .question-container h2 {

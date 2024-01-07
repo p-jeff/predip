@@ -3,6 +3,7 @@ import "./QuestionComponent.css"; // Import the CSS file for styling
 import QA from "./data/QA";
 import Draggable from "react-draggable";
 import axios from "axios";
+import { Resizable } from "re-resizable";
 
 const QuestionComponent = ({ isMinimized, onMinimize }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -48,30 +49,36 @@ const QuestionComponent = ({ isMinimized, onMinimize }) => {
   };
 
   return (
-    <Draggable>
+    <Draggable handle="header">
       <div
         className="question-container"
         style={{ display: isMinimized ? "none" : "block" }}
       >
-        <button className="minimize" onClick={onMinimize}>
-          &times;
-        </button>
-        <h2>{currentQuestion.question}</h2>
-        <div>
-          {currentQuestion.answers.map((answer, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswerSelect(index)}
-              className={selectedAnswer === index ? "selected" : ""}
-            >
-              {answer}
-            </button>
-          ))}
-        </div>
+        <header className="ethHeader">
+          EthCompass{" "}
+          <button className="minimize" onClick={onMinimize}>
+            &times;
+          </button>
+        </header>
+        <Resizable className="ethCompassBody">
+          <h2>{currentQuestion.question}</h2>
 
-        <button onClick={handleSubmit} disabled={selectedAnswer === null}>
-          Submit
-        </button>
+          <div>
+            {currentQuestion.answers.map((answer, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswerSelect(index)}
+                className={selectedAnswer === index ? "selected" : ""}
+              >
+                {answer}
+              </button>
+            ))}
+          </div>
+
+          <button onClick={handleSubmit} disabled={selectedAnswer === null}>
+            Submit
+          </button>
+        </Resizable>
       </div>
     </Draggable>
   );

@@ -108,7 +108,7 @@ function Mail({ onMinimize, isMinimized }) {
   return (
     <Draggable handle="header" defaultPosition={{ x: 0, y: 0 }}>
       <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>
-        <header>
+        <header className="mailHeader">
           Mail
           <button className="minimize" onClick={onMinimize}>
             &times;

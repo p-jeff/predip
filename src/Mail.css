@@ -1,6 +1,6 @@
 .Mail {
   margin: 10px; /* Centering the Tweeter */
-  border-radius: 1px; /* Rounded corners */
+  border-radius: 5px; /* Rounded corners */
   border: 1px solid #333333; /* Subtle border */
   background-color: #1e1e1e; /* Dark grey background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adding shadow for depth */
@@ -8,7 +8,7 @@
   position: fixed;
 }
 
-header {
+.mailHeader {
   color: #ffffff;
   border-bottom: 1px solid #333333;
   padding: 15px;
