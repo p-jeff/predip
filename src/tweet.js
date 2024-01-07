@@ -1,9 +1,10 @@
 import "./tweet.css";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
 import { initial, first } from "./data/tweetList";
-import { notificationPop} from "./boilerplate";
+import { notificationPop } from "./boilerplate";
+import { Resizable } from "re-resizable";
 
 function ExpandingDiv({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
@@ -40,11 +41,11 @@ function ExpandingDiv({ markdownText, sender, tag }) {
 
 function Tweet({ onMinimize, isMinimized }) {
   const [data, setData] = useState(
-    () => JSON.parse(localStorage.getItem('tweets')) || initial
+    () => JSON.parse(localStorage.getItem("tweets")) || initial
   );
 
   useEffect(() => {
-    localStorage.setItem('tweets', JSON.stringify(data));
+    localStorage.setItem("tweets", JSON.stringify(data));
   }, [data]);
 
   const loadMoreData = (extraData) => {
@@ -52,8 +53,10 @@ function Tweet({ onMinimize, isMinimized }) {
       setTimeout(() => {
         setData((currentData) => {
           // Check if the item is already in currentData
-          if (!currentData.some(existingItem => existingItem.id === item.id)) {
-            notificationPop('./tweet.wav');
+          if (
+            !currentData.some((existingItem) => existingItem.id === item.id)
+          ) {
+            notificationPop("./tweet.wav");
             return [...currentData, item];
           }
           return currentData;
@@ -61,25 +64,24 @@ function Tweet({ onMinimize, isMinimized }) {
       }, index * 200); // 1000 milliseconds delay for each item
     });
   };
-  
+
   const handleMore = (index) => {
-    let toBeAppended = []
-    if(index === 1){
-      toBeAppended = first
-    }
-    else {
-      toBeAppended = []
+    let toBeAppended = [];
+    if (index === 1) {
+      toBeAppended = first;
+    } else {
+      toBeAppended = [];
     }
     loadMoreData(toBeAppended);
-  }
+  };
 
   useEffect(() => {
-    const eventSource = new EventSource('http://localhost:3001/events');
+    const eventSource = new EventSource("http://localhost:3001/events");
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data)
-      handleMore(data.currentQuestionIndex)
+      console.log(data);
+      handleMore(data.currentQuestionIndex);
     };
 
     return () => {
@@ -89,25 +91,40 @@ function Tweet({ onMinimize, isMinimized }) {
 
   return (
     <Draggable handle="header " defaultPosition={{ x: 0, y: 0 }}>
-      <div className="Tweeter" style={{ display: isMinimized ? 'none' : 'block' }}>
+      <div
+        className="Tweeter"
+        style={{ display: isMinimized ? "none" : "block" }}
+      >
         <header className="tweetHeader">
           Tweeter
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>
         </header>
-        <div className="tweetBody">
-          {data.toReversed().map((item, index) => ( //to reversed so that new tweets are loaded at the top
-            <ExpandingDiv
-              key={item.id}
-              heading={item.heading}
-              markdownText={item.markdownText}
-              sender={item.sender}
-              tag={item.tag}
-            />
-          ))}
-        </div>
-      
+        <Resizable
+          defaultSize={{
+            width: 500,
+            height:300,
+          }}
+          enable ={{ top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:true, bottomLeft:true, topLeft:false }}
+        >
+          <div className="tweetBody">
+            {data.toReversed().map(
+              (
+                item,
+                index //to reversed so that new tweets are loaded at the top
+              ) => (
+                <ExpandingDiv
+                  key={item.id}
+                  heading={item.heading}
+                  markdownText={item.markdownText}
+                  sender={item.sender}
+                  tag={item.tag}
+                />
+              )
+            )}
+          </div>
+        </Resizable>
       </div>
     </Draggable>
   );

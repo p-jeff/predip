@@ -1,8 +1,4 @@
 .Mail {
-  max-width: 50vw;
-  width: 50vw;
-  max-height: 100vh;
-  height: 50vh;
   margin: 10px; /* Centering the Tweeter */
   border-radius: 1px; /* Rounded corners */
   border: 1px solid #333333; /* Subtle border */
@@ -23,7 +19,7 @@ header {
 
 .mailBody {
   max-width: 100%;
-  height: 82%;
+  height: 100%;
   color: #e0e0e0;
   overflow-y: auto; /* Allowing vertical scroll */
   background-color: #1e1e1e; /* Consistent with main container */
