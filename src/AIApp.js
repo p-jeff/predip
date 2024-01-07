@@ -2,6 +2,7 @@ import React from 'react';
 import './AIDashboardStyles.css';
 import NetworkSimulation from './Network';
 import Draggable from 'react-draggable';
+import DisplayResponse from './DisplayResponse';
 
 const LineGraph = () => (
   <div className="line-graph">
@@ -28,6 +29,7 @@ const AIApp = ({onMinimize}) => (
     <StateComponent />
     <LineGraph />
     <NetworkSimulation />
+    <DisplayResponse />
   </div>
   </Draggable>
 );

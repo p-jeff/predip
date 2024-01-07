@@ -7,6 +7,7 @@ import Mail from "./Mail";
 import Tweet from "./tweet";
 import AIApp from "./AIApp";
 import Clock from "./Clock";
+import QuestionComponent from "./QuestionComponent";
 
 const Icon = ({ icon, onClick }) => {
   return (
@@ -27,7 +28,7 @@ const Desktop = () => {
     },
     {
       name: "mail",
-      icon: <Envelope style={{ color: "white" }} className="iconSize" />,
+      icon: <Envelope style={{ color: "red" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },
@@ -57,7 +58,7 @@ const Desktop = () => {
           />
         ))}
       </div>
-
+      <QuestionComponent/>
       {!apps[0].isMinimized[0] && <Tweet onMinimize={apps[0].toggle} />}
       {!apps[1].isMinimized[0] && <Mail onMinimize={apps[1].toggle} />}
       {!apps[2].isMinimized[0] && <AIApp onMinimize={apps[2].toggle} />}

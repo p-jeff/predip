@@ -1,0 +1,48 @@
+.question-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 24px; /* Ant Design's spacing unit */
+    border-radius: 2px; /* Consistent with Ant's style */
+    background-color: #ffffff; /* White background */
+    color: rgba(0, 0, 0, 0.85); /* High contrast text */
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.question-container h2 {
+    margin-bottom: 16px; /* Aligned with Ant's spacing */
+    font-weight: 500; /* Regular font weight */
+}
+
+.question-container button {
+    display: block;
+    margin: 8px 0;
+    padding: 6px 15px;
+    width: 100%;
+    border: 1px solid #d9d9d9; /* Light border */
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: #1890ff; /* Ant Design primary color */
+    color: white;
+    font-weight: 400;
+}
+
+
+
+.question-container button:hover {
+    background-color: #555555; /* Slightly lighter on hover */
+}
+
+.question-container button.selected {
+    background-color: #00897b; /* A darker shade of green */
+    color: white; /* Change text color for better visibility on green background */
+}
+
+.question-container button.selected:hover {
+    background-color: #00796b; /* Keep the background green when hovering over selected button */
+}
+
+.question-container button:disabled {
+    background-color: #424242;
+    color: #bdbdbd;
+    cursor: not-allowed;
+}
