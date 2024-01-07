@@ -6,7 +6,7 @@ import { mailInitial, further } from "./data/mailList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
 
-function ExpandingDiv({ heading, markdownText, onDelete, sender }) {
+function MailEntry({ heading, markdownText, onDelete, sender }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Render the first few words as a preview
@@ -121,7 +121,7 @@ function Mail({ onMinimize, isMinimized }) {
                 item,
                 index // to reversed so that things are added at the top
               ) => (
-                <ExpandingDiv
+                <MailEntry
                   key={item.id}
                   heading={item.heading}
                   markdownText={item.markdownText}

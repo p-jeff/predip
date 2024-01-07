@@ -1,6 +1,7 @@
 const notificationPop = (link) => {
-    const sound = new Audio(link); // Path to your sound file
-    sound.play();
-  };
+  const sound = new Audio(link); // Path to your sound file
+  sound.play();
+};
 
-  export {notificationPop}
+
+export { notificationPop };

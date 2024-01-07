@@ -1,19 +1,18 @@
-
 /* Main Tweeter Container */
 .Tweeter {
   height: fit-content;
-  margin: 10px ; /* Centering the Tweeter */
+  margin: 10px; /* Centering the Tweeter */
   border-radius: 10px;
   border: 1px solid #333333; /* Subtle border */
   background-color: #43587f; /* Dark grey background */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6); /* Adding shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adding shadow for depth */
   overflow: hidden; /* Ensuring no overflow */
   position: fixed;
 }
 
 /* Tweeter Header */
 .tweetHeader {
-  color: #FFFFFF;
+  color: #ffffff;
   border-bottom: 1px solid #333333;
   padding: 15px;
   background-color: #43486f; /* Slightly lighter than the container for contrast */
@@ -27,7 +26,7 @@
   max-width: 100%;
   height: 100%;
   padding: 10px;
-  color: #E0E0E0;
+  color: #e0e0e0;
   overflow-y: auto; /* Allowing vertical scroll */
   background-color: #43587f; /* Consistent with main container */
   overflow-x: hidden;
@@ -38,11 +37,11 @@
   width: 98%; /* Slight space for padding */
   margin: 1% auto; /* Centering tweet */
   border-radius: 0px 8px 8px 8px;
-  background-color:#43486f; /* Slightly different from body for distinction */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4); /* Subtle shadow for each tweet */
+  background-color: #43486f; /* Slightly different from body for distinction */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for each tweet */
 }
 
-.darker{
+.darker {
   color: #43688f;
   font-size: 0.8em;
 }
@@ -52,14 +51,17 @@
 }
 
 /* Hover effect for interactive elements */
-.div:hover, .collapsed:hover, .expanded:hover, .delete-btn:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Deeper shadow on hover */
+.div:hover,
+.collapsed:hover,
+.expanded:hover,
+.delete-btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
 }
 
 /* Tweet Heading */
 .tweet h2 {
   font-size: 1.2em; /* Slightly larger for emphasis */
-  color: #FFFFFF; /* White for readability */
+  color: #ffffff; /* White for readability */
   text-align: left;
   margin-left: 5px;
 }

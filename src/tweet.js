@@ -6,7 +6,7 @@ import { initial, first } from "./data/tweetList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
 
-function ExpandingDiv({ markdownText, sender, tag }) {
+function TweetEntry({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
   const getMarkdownHtml = (markdown) => {
     const renderer = new marked.Renderer();
@@ -114,7 +114,7 @@ function Tweet({ onMinimize, isMinimized }) {
                 item,
                 index //to reversed so that new tweets are loaded at the top
               ) => (
-                <ExpandingDiv
+                <TweetEntry
                   key={item.id}
                   heading={item.heading}
                   markdownText={item.markdownText}
