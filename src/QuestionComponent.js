@@ -13,10 +13,10 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
   function sendCurrentQuestionIndex(currentQuestionIndex, result) {
     axios
       .post("http://localhost:3001/api/questionIndex", {
-        // Replace '/api/path' with your actual API path
         currentQuestionIndex: currentQuestionIndex,
         currentDecision: result.decisionId,
-        currentLevel: result.levelId
+        currentLevel: result.levelId,
+        currentStrikeId: result.strikeId
       })
       .then((response) => {
         console.log("Success:", response.data);
@@ -36,6 +36,7 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
       levelId: currentQuestion.level,
       answerId: selectedAnswer,
       decisionId: 'decision' + selectedAnswer,
+      strikeId: currentQuestion.strike
     };
     console.log(result); // Handle the submission here
 

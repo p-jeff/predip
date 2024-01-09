@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ReactComponent as MailIcon } from "bootstrap-icons/icons/envelope-heart-fill.svg";
 import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/twitter.svg";
-import { ReactComponent as AIAppIcon} from "bootstrap-icons/icons/bar-chart-line.svg";
-import { ReactComponent as QuestinComponentIcon} from "bootstrap-icons/icons/compass.svg";
-import { ReactComponent as ChatIcon} from "bootstrap-icons/icons/chat-left-text.svg";
+import { ReactComponent as AIAppIcon } from "bootstrap-icons/icons/bar-chart-line.svg";
+import { ReactComponent as QuestinComponentIcon } from "bootstrap-icons/icons/compass.svg";
+import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text.svg";
 import "./Desktop.css";
 import Mail from "./Mail";
 import Tweet from "./tweet";
@@ -11,6 +11,7 @@ import AIApp from "./AIApp";
 import Clock from "./Clock";
 import QuestionComponent from "./QuestionComponent";
 import Chat from "./Chat";
+import Strike from "./Strike";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -53,7 +54,12 @@ const Desktop = () => {
     },
     {
       name: "EthCompass",
-      icon: <QuestinComponentIcon style={{ color: "orange" }} className="iconSize" />,
+      icon: (
+        <QuestinComponentIcon
+          style={{ color: "orange" }}
+          className="iconSize"
+        />
+      ),
       isMinimized: useState(true),
       toggle: () => {},
     },
@@ -64,12 +70,15 @@ const Desktop = () => {
       toggle: () => {},
     },
   ];
+ const [isStrike, setStrike] = useState(false)
 
   apps.forEach((app) => {
     app.toggle = () => app.isMinimized[1](!app.isMinimized[0]);
   });
-
-  const strikeHandler = () => {console.log('Stike!')}
+ 
+  const strikeHandler = () => {
+    setStrike(true);
+  };
 
   return (
     <>
@@ -78,10 +87,17 @@ const Desktop = () => {
       </div>
       <div className="dock">
         {apps.map((app, index) => (
-          <Icon key={index} icon={app.icon} onClick={app.toggle} name={app.name} />
+          <Icon
+            key={index}
+            icon={app.icon}
+            onClick={app.toggle}
+            name={app.name}
+          />
         ))}
       </div>
-      <Chat  onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]}/>
+      {isStrike ?  <Strike/> : <div></div>}
+
+      <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
       <AIApp onMinimize={apps[2].toggle} isMinimized={apps[2].isMinimized[0]} />

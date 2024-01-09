@@ -19,7 +19,6 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
     }
   }, []);
 
-
   // Render the first few words as a preview
   const previewText = markdownText.split(" ").slice(0, 5).join(" ") + "...";
 
@@ -62,7 +61,7 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
   );
 }
 
-function Mail({ onMinimize, isMinimized }) {
+function Mail({ onMinimize, isMinimized, isStrike, strikeFile }) {
   const [data, setData] = useState(
     () => JSON.parse(localStorage.getItem("mails")) || mails.level0.always
   );
@@ -102,7 +101,6 @@ function Mail({ onMinimize, isMinimized }) {
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data);
       handleMore(data);
     };
 
@@ -111,6 +109,12 @@ function Mail({ onMinimize, isMinimized }) {
     };
   });
 
+  useEffect(() => {
+    if (isStrike) {
+      setData(strikeFile);
+    }
+  }, [isStrike]);
+  
   return (
     <Draggable handle="header" defaultPosition={{ x: 50, y: 50 }}>
       <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>

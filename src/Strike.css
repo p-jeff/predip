@@ -1,0 +1,20 @@
+.strikeBody {
+    background-color: rgb(244, 70, 70);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vw;
+    pointer-events: none;
+    z-index: 5;
+    text-align: center;
+    justify-content: center;
+}
+
+.strikeBody .Mail {
+    pointer-events: all;
+}
+
+.strikeBody button {
+    pointer-events: all;
+}

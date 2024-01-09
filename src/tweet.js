@@ -76,7 +76,6 @@ function Tweet({ onMinimize, isMinimized }) {
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log(data);
       handleMore(data);
     };
 
