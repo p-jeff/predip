@@ -5,7 +5,7 @@ import Draggable from "react-draggable";
 import axios from "axios";
 import { Resizable } from "re-resizable";
 
-const QuestionComponent = ({ isMinimized, onMinimize }) => {
+const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const currentQuestion = QA[currentQuestionIndex];
@@ -39,6 +39,10 @@ const QuestionComponent = ({ isMinimized, onMinimize }) => {
     };
     console.log(result); // Handle the submission here
 
+    if(currentQuestion.strike === result.decisionId){
+      onStrike()
+    }
+
     setSelectedAnswer(null);
 
     if (currentQuestionIndex === QA.length - 1) {
@@ -64,7 +68,7 @@ const QuestionComponent = ({ isMinimized, onMinimize }) => {
         </header>
         <Resizable className="ethCompassBody"  defaultSize={{
             width: 900,
-            height:200,
+            height:400,
           }}>
           <h2>{currentQuestion.question}</h2>
 

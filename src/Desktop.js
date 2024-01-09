@@ -69,6 +69,8 @@ const Desktop = () => {
     app.toggle = () => app.isMinimized[1](!app.isMinimized[0]);
   });
 
+  const strikeHandler = () => {console.log('Stike!')}
+
   return (
     <>
       <div className="statusBar">
@@ -86,6 +88,7 @@ const Desktop = () => {
       <QuestionComponent
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}
+        onStrike={strikeHandler}
       />
     </>
   );

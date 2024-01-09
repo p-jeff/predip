@@ -64,7 +64,7 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
 
 function Mail({ onMinimize, isMinimized }) {
   const [data, setData] = useState(
-    () => JSON.parse(localStorage.getItem("mails")) || mails.level0.decision0
+    () => JSON.parse(localStorage.getItem("mails")) || mails.level0.always
   );
 
   useEffect(() => {
@@ -93,9 +93,8 @@ function Mail({ onMinimize, isMinimized }) {
   };
 
   const handleMore = (data) => {
-    let toBeAppended = mails[data.currentLevelId]?.[data.currentDecisionId];
-    console.log(toBeAppended);
-    loadMoreData(toBeAppended);
+    loadMoreData(mails[data.currentLevelId]?.[data.currentDecisionId]);
+    loadMoreData(mails[data.currentLevelId]?.always);
   };
 
   useEffect(() => {

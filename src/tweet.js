@@ -2,9 +2,10 @@ import "./tweet.css";
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
-import { initial, first } from "./data/tweetList";
+import  "./data/tweetList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
+import tweets from "./data/tweetList";
 
 function TweetEntry({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
@@ -41,7 +42,7 @@ function TweetEntry({ markdownText, sender, tag }) {
 
 function Tweet({ onMinimize, isMinimized }) {
   const [data, setData] = useState(
-    () => JSON.parse(localStorage.getItem("tweets")) || initial
+    () => JSON.parse(localStorage.getItem("tweets")) || tweets.level0.always
   );
 
   useEffect(() => {
@@ -65,14 +66,9 @@ function Tweet({ onMinimize, isMinimized }) {
     });
   };
 
-  const handleMore = (index) => {
-    let toBeAppended = [];
-    if (index === 1) {
-      toBeAppended = first;
-    } else {
-      toBeAppended = [];
-    }
-    loadMoreData(toBeAppended);
+  const handleMore = (data) => {
+    loadMoreData(tweets[data.currentLevelId]?.[data.currentDecisionId]);
+    loadMoreData(tweets[data.currentLevelId]?.always);
   };
 
   useEffect(() => {
@@ -81,7 +77,7 @@ function Tweet({ onMinimize, isMinimized }) {
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log(data);
-      handleMore(data.currentQuestionIndex);
+      handleMore(data);
     };
 
     return () => {
