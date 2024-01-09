@@ -1,15 +1,13 @@
 const QA = [
   {
     id: 401,
-    question:
-      "Are you ready to start you first task?",
-    answers: [
-      "Yes! Definetely",
-      "It pays the bills i guess...",
-    ],
+    level: "level1",
+    question: "Are you ready to start you first task?",
+    answers: ["Yes! Definetely", "It pays the bills i guess..."],
   },
   {
     id: 402,
+    level: "level2",
     question:
       "To what extend should the AI be able to reproduce bodies of legislation?",
     answers: [
@@ -18,6 +16,10 @@ const QA = [
       "AI can act as a neutral entity in the lawmaking process and therefore should be freely able to access laws and quote legislation",
     ],
   },
+  {id: 403,
+  level: 'level3',
+  question: ''
+}
 ];
 
 export default QA;

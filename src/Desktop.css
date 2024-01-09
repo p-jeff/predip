@@ -17,6 +17,32 @@ body {
   margin-right: 5px;
 }
 
+.tooltip {
+  display: inline-block;
+  margin:auto;
+  height: 85%;
+  margin-inline: 8px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.489);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 .minimize {
   background-color: #f44336; /* Material Design red accent */
   border-radius: 50%;
@@ -34,7 +60,7 @@ body {
 .dock {
   background-color: rgba(129, 129, 129, 0.274);
   width: 30vw;
-  height: 5ch;
+  height: 6vh;
   bottom: 5px;
   position: absolute;
   border-radius: 5px;
@@ -51,10 +77,8 @@ body {
   width: fit-content;
   height: 100%;
   border-radius: 5px;
-  margin-inline: 5px;
   background-color: white;
   padding: 5px;
-  margin-top: -5px;
 }
 
 .icon {

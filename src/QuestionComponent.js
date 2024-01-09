@@ -10,11 +10,13 @@ const QuestionComponent = ({ isMinimized, onMinimize }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const currentQuestion = QA[currentQuestionIndex];
 
-  function sendCurrentQuestionIndex(currentQuestionIndex) {
+  function sendCurrentQuestionIndex(currentQuestionIndex, result) {
     axios
       .post("http://localhost:3001/api/questionIndex", {
         // Replace '/api/path' with your actual API path
-        currentQuestionIndex,
+        currentQuestionIndex: currentQuestionIndex,
+        currentDecision: result.decisionId,
+        currentLevel: result.levelId
       })
       .then((response) => {
         console.log("Success:", response.data);
@@ -31,36 +33,39 @@ const QuestionComponent = ({ isMinimized, onMinimize }) => {
   const handleSubmit = () => {
     const result = {
       questionId: currentQuestion.id,
+      levelId: currentQuestion.level,
       answerId: selectedAnswer,
+      decisionId: 'decision' + selectedAnswer,
     };
     console.log(result); // Handle the submission here
-    // Reset for the next question or handle as needed
-    setSelectedAnswer(null);
 
-    console.log(QA.length);
+    setSelectedAnswer(null);
 
     if (currentQuestionIndex === QA.length - 1) {
       setCurrentQuestionIndex(0);
       sendCurrentQuestionIndex(0);
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      sendCurrentQuestionIndex(currentQuestionIndex + 1);
+      sendCurrentQuestionIndex(currentQuestionIndex + 1, result);
     }
   };
 
   return (
-    <Draggable handle="header">
+    <Draggable handle="header" defaultPosition={{ x: 800, y: 100 }}>
       <div
         className="question-container"
         style={{ display: isMinimized ? "none" : "block" }}
       >
         <header className="ethHeader">
-          EthCompass{" "}
+          EthCompass
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>
         </header>
-        <Resizable className="ethCompassBody">
+        <Resizable className="ethCompassBody"  defaultSize={{
+            width: 900,
+            height:200,
+          }}>
           <h2>{currentQuestion.question}</h2>
 
           <div>

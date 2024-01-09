@@ -90,7 +90,7 @@ function Tweet({ onMinimize, isMinimized }) {
   });
 
   return (
-    <Draggable handle="header " defaultPosition={{ x: 0, y: 0 }}>
+    <Draggable handle="header " defaultPosition={{ x: 20, y: 500 }}>
       <div
         className="Tweeter"
         style={{ display: isMinimized ? "none" : "block" }}

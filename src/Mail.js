@@ -2,12 +2,23 @@ import "./Mail.css";
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
-import { mailInitial, further } from "./data/mailList";
+import mails from "./data/mailList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
 
+let isFirstRender = true;
+
 function MailEntry({ heading, markdownText, onDelete, sender }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // Initialize isExpanded based on whether it's the first render
+  const [isExpanded, setIsExpanded] = useState(isFirstRender);
+
+  // After the first render, set isFirstRender to false
+  useEffect(() => {
+    if (isFirstRender) {
+      isFirstRender = false;
+    }
+  }, []);
+
 
   // Render the first few words as a preview
   const previewText = markdownText.split(" ").slice(0, 5).join(" ") + "...";
@@ -53,7 +64,7 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
 
 function Mail({ onMinimize, isMinimized }) {
   const [data, setData] = useState(
-    () => JSON.parse(localStorage.getItem("mails")) || mailInitial
+    () => JSON.parse(localStorage.getItem("mails")) || mails.level0.decision0
   );
 
   useEffect(() => {
@@ -81,13 +92,9 @@ function Mail({ onMinimize, isMinimized }) {
     });
   };
 
-  const handleMore = (index) => {
-    let toBeAppended = [];
-    if (index === 1) {
-      toBeAppended = further;
-    } else {
-      toBeAppended = [];
-    }
+  const handleMore = (data) => {
+    let toBeAppended = mails[data.currentLevelId]?.[data.currentDecisionId];
+    console.log(toBeAppended);
     loadMoreData(toBeAppended);
   };
 
@@ -97,7 +104,7 @@ function Mail({ onMinimize, isMinimized }) {
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log(data);
-      handleMore(data.currentQuestionIndex);
+      handleMore(data);
     };
 
     return () => {
@@ -106,7 +113,7 @@ function Mail({ onMinimize, isMinimized }) {
   });
 
   return (
-    <Draggable handle="header" defaultPosition={{ x: 0, y: 0 }}>
+    <Draggable handle="header" defaultPosition={{ x: 50, y: 50 }}>
       <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>
         <header className="mailHeader">
           Mail
@@ -114,7 +121,12 @@ function Mail({ onMinimize, isMinimized }) {
             &times;
           </button>
         </header>
-        <Resizable>
+        <Resizable
+          defaultSize={{
+            width: 700,
+            height: 500,
+          }}
+        >
           <div className="mailBody">
             {data.toReversed().map(
               (

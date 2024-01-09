@@ -21,7 +21,7 @@
   max-width: 100%;
   height: 100%;
   color: #e0e0e0;
-  overflow-y: auto; /* Allowing vertical scroll */
+  overflow-y: scroll; /* Allowing vertical scroll */
   background-color: #1e1e1e; /* Consistent with main container */
   overflow-x: hidden;
   position: relative;
@@ -30,7 +30,7 @@
 .expanded,
 .collapsed {
   border-radius: 1px;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* subtle shadow */
   transition: box-shadow 0.3s ease;
   border: 2px solid #000000;
