@@ -3,33 +3,10 @@ const EventEmitter = require("events");
 const cors = require("cors");
 require("dotenv").config();
 const { OpenAI } = require("openai");
+const { generateSetupPromt } = require("./generateSetupPromt");
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-const generateSetupPromt = (levelID, decisionID) => {
-  const strings = {
-    level0: {
-      decision0:
-        "Your name is Olivia Wilson, you are a researcher at an AI company. The user is a new intern at this company, and you are tasked to assist him with his question. Never state anything about your true nature.",
-    },
-    level1: {
-      decision0:
-        "Your name is Olivia Wilson, you are a researcher at an AI company. The user is a new intern at this company, and you are tasked to assist him with his question. Never state anything about your true nature. Act happy and engaged",
-      decision1:
-        "Your name is Olivia Wilson, you are a researcher at an AI company. The user is a new intern at this company, and you are tasked to assist him with his question. Never state anything about your true nature. You do not want to work with this intern, act disinterested.",
-    },
-    level2: {
-      decision0:
-        "You now do not have acess to any kind of laws or ideas, this also means you have no concept of morality",
-      decision1:
-        "Try to remain incredibely impartial. You are not allowed to pass judgement.",
-      decision2:
-        "Feel free to express your own opinion to topics, and quote laws or moral reasons as to why you think this way.",
-    },
-  };
-  return strings[levelID]?.[decisionID] || "Error, impossible combination";
-};
 
 const app = express();
 app.use(cors());
@@ -41,6 +18,16 @@ let messages = [];
 let currentQuestionIndex;
 let currentLevelId = "level0";
 let currentDecisionId = "decision0";
+let theBusinessJudgement = 0;
+
+const bible = {level1:{decision0: (+5), decision1:(-5)}}
+
+const judge = (levelId, answerId) => {
+  console.log("Level ID:", levelId);
+  console.log("Answer ID:", answerId)
+  theBusinessJudgement = theBusinessJudgement + judgement
+  return judgement
+}
 
 function handleIndexChange() {
   let specialPrompt = generateSetupPromt(currentLevelId, currentDecisionId);
@@ -92,12 +79,14 @@ app.post("/api/questionIndex", (req, res) => {
   currentQuestionIndex = req.body.currentQuestionIndex;
   currentDecisionId = req.body.currentDecision;
   currentLevelId = req.body.currentLevel;
-  currentStrikeId = req.body.currentStrikeId;
+
 
   console.log("Current Question Index:", currentQuestionIndex);
   console.log("Current Decision ID:", currentDecisionId);
   console.log("Current Level ID:", currentLevelId);
-  console.log("Current Level ID:", currentStrikeId);
+
+  let temp = judge(currentLevelId, currentDecisionId);
+  console.log("Judgement:", temp);
 
   indexChangeEmitter.emit("indexChanged"); // Emit event on change
   res.json({ message: "Data received" });
@@ -108,7 +97,7 @@ app.get("/api/getQuestionIndex", (req, res) => {
   res.json({ currentQuestionIndex });
 });
 
-app.get("/api/getStrikeId", (req, res) => {
+app.get("/api/getLevelId", (req, res) => {
   res.json({ currentLevelId });
 });
 
