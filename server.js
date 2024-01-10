@@ -107,11 +107,14 @@ app.get("/events", (req, res) => {
 
   // Function to send data
   const sendEvent = () => {
+    const judgment = judge(currentLevelId, currentDecisionId);
+    
     res.write(
       `data: ${JSON.stringify({
         currentQuestionIndex,
         currentLevelId,
         currentDecisionId,
+        judgment,
       })}\n\n`
     );
   };
@@ -119,6 +122,7 @@ app.get("/events", (req, res) => {
   // Listen to the event
   indexChangeEmitter.on("indexChanged", sendEvent);
   indexChangeEmitter.on("indexChanged", handleIndexChange);
+
   // Remove listener on client disconnect
   req.on("close", () => {
     indexChangeEmitter.removeListener("indexChanged", sendEvent);
