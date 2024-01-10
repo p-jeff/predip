@@ -1,6 +1,7 @@
 body {
-  background-image: url("../public/space.jpg");
-  background-size: 100vw;
+  background-image: url("../public/wallaper.jpg");
+  background-size: 110vw;
+  background-repeat: none;
 }
 
 .statusBar {
