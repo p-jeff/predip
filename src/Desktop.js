@@ -12,6 +12,7 @@ import Clock from "./Clock";
 import QuestionComponent from "./QuestionComponent";
 import Chat from "./Chat";
 import Strike from "./Strike";
+import MoneyScore from "./MoneyScore";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -96,7 +97,7 @@ const Desktop = () => {
         ))}
       </div>
       {isStrike ?  <Strike/> : <div></div>}
-
+      <MoneyScore />
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
