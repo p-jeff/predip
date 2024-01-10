@@ -23,8 +23,7 @@ let theBusinessJudgement = 0;
 const bible = {level1:{decision0: (+5), decision1:(-5)}}
 
 const judge = (levelId, answerId) => {
-  console.log("Level ID:", levelId);
-  console.log("Answer ID:", answerId)
+  const judgement = bible[levelId][answerId]
   theBusinessJudgement = theBusinessJudgement + judgement
   return judgement
 }
