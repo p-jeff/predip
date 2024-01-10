@@ -45,7 +45,7 @@ const Chat = ({onMinimize, isMinimized}) => {
     <Draggable handle="header">
       <div className="chat-container" style={{ display: isMinimized ? "none" : "block" }}>
         <header className="chatHead">
-          Chat Header{" "}
+          Slick - work connected
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>

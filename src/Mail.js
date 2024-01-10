@@ -5,6 +5,7 @@ import Draggable from "react-draggable";
 import mails from "./data/mailList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
+import MailIcon from "bootstrap-icons/icons/envelope.svg";
 
 let isFirstRender = true;
 
@@ -119,6 +120,7 @@ function Mail({ onMinimize, isMinimized, isStrike, strikeFile }) {
     <Draggable handle="header" defaultPosition={{ x: 50, y: 50 }}>
       <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>
         <header className="mailHeader">
+          <i className="bi bi-envelope-heart headerIcon" style={{color:"red"}}/>
           Mail
           <button className="minimize" onClick={onMinimize}>
             &times;

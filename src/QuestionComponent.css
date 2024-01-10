@@ -1,82 +1,94 @@
 .question-container {
-    margin: auto;
-    border-radius: 2px; /* Consistent with Ant's style */
-    background-color: #ffffff; /* White background */
-    color: rgba(0, 0, 0, 0.85); /* High contrast text */
-    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-    position: fixed;
-    border-radius: 5px;
+  margin: auto;
+  border-radius: 2px; /* Consistent with Ant's style */
+  background-color: #ffffff; /* White background */
+  color: rgba(0, 0, 0, 0.85); /* High contrast text */
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  border-radius: 5px;
 }
 
 .ethHeader {
-    color: #000;
-    border-bottom: 1px solid #333333;
-    padding: 15px;
-    position: relative;
-    background-color: #a9d4e4; /* Slightly lighter than the container for contrast */
-    cursor: move;
-    height: fit-content;
-    text-align: center;
-    position: relative;
-    border-radius: 5px;
-  }
+  color: #000;
+  border-bottom: 1px solid #333333;
+  padding: 12px;
+  position: relative;
+  background-color: yellow; /* Slightly lighter than the container for contrast */
+  cursor: move;
+  height: fit-content;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+  font-style: italic
+}
 
-.ethCompassBody{
-    padding: 24px;
-    overflow: scroll;
+.headerIcon {
+  float: left;
+  background-color: rgba(255, 255, 255, 0);
+  height: 100%;
+  padding: 3px;
+  border-radius: 20%;
+  margin-top: -8px;
+  margin-left: -8px;
+  pointer-events: none;
+  margin-right: 10px;
+  font-size: 26px;
+}
+.ethCompassBody {
+  padding: 24px;
+  overflow: scroll;
 }
 
 .question-container h2 {
-    margin-bottom: 16px; /* Aligned with Ant's spacing */
-    font-weight: 500; /* Regular font weight */
+  margin-bottom: 16px; /* Aligned with Ant's spacing */
+  font-weight: 500; /* Regular font weight */
 }
 
 .question-container .minimize {
-    background-color: #f44336; /* Material Design red accent */
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    color: white;
-    border: 0px;
-    line-height: 20px; /* Center the 'X' vertically */
-    user-select: none; /* Prevents text selection */
-    font-size: 18px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    padding: 0px;
-
-  }
+  background-color: #f44336; /* Material Design red accent */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  border: 0px;
+  line-height: 20px; /* Center the 'X' vertically */
+  user-select: none; /* Prevents text selection */
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 0px;
+}
 
 .question-container button {
-    display: block;
-    margin: 8px 0;
-    padding: 6px 15px;
-    width: 100%;
-    border: 1px solid #d9d9d9; /* Light border */
-    border-radius: 2px;
-    cursor: pointer;
-    background-color: #1890ff; /* Ant Design primary color */
-    color: white;
-    font-weight: 400;
+  display: block;
+  margin: 8px 0;
+  padding: 6px 15px;
+  width: 100%;
+  border: 1px solid #d9d9d9; /* Light border */
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: #1890ff; /* Ant Design primary color */
+  color: white;
+  font-weight: 400;
 }
 
 .question-container button:hover {
-    background-color: #555555; /* Slightly lighter on hover */
+  background-color: #555555; /* Slightly lighter on hover */
 }
 
 .question-container button.selected {
-    background-color: #00897b; /* A darker shade of green */
-    color: white; /* Change text color for better visibility on green background */
+  background-color: #00897b; /* A darker shade of green */
+  color: white; /* Change text color for better visibility on green background */
 }
 
 .question-container button.selected:hover {
-    background-color: #00796b; /* Keep the background green when hovering over selected button */
+  background-color: #00796b; /* Keep the background green when hovering over selected button */
 }
 
 .question-container button:disabled {
-    background-color: #424242;
-    color: #bdbdbd;
-    cursor: not-allowed;
+  background-color: #424242;
+  color: #bdbdbd;
+  cursor: not-allowed;
 }
-

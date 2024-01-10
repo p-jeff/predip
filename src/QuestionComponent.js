@@ -4,6 +4,7 @@ import QA from "./data/QA";
 import Draggable from "react-draggable";
 import axios from "axios";
 import { Resizable } from "re-resizable";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -62,7 +63,8 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
         style={{ display: isMinimized ? "none" : "block" }}
       >
         <header className="ethHeader">
-          EthCompass
+        <i className="bi bi-compass headerIcon"/>
+            EthCompass v.1.3.2
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>

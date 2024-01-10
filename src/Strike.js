@@ -60,7 +60,7 @@ const Strike = () => {
   return (
     <div className="strikeBody">
       Goodbye
-      {data && <Mail isStrike={true} strikeFile={data} />}
+      {data && <Mail isStrike={true} strikeFile={data} isMinimized={false}/>}
      <button onClick={onRestart}>Restart</button>
     </div>
   );
