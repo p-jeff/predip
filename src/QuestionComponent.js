@@ -17,7 +17,6 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
         currentQuestionIndex: currentQuestionIndex,
         currentDecision: result.decisionId,
         currentLevel: result.levelId,
-        currentStrikeId: result.strikeId
       })
       .then((response) => {
         console.log("Success:", response.data);
@@ -37,7 +36,6 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
       levelId: currentQuestion.level,
       answerId: selectedAnswer,
       decisionId: 'decision' + selectedAnswer,
-      strikeId: currentQuestion.strike
     };
     console.log(result); // Handle the submission here
 

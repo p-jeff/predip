@@ -39,7 +39,7 @@ const Strike = () => {
 
   const handleStrikeFile = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/getStrikeId");
+      const response = await axios.get("http://localhost:3001/api/getLevelId");
       let temp = mails[response.data.currentLevelId]?.always;
       setData(temp);
       setIsLoading(false);
