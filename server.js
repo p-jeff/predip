@@ -19,30 +19,41 @@ let currentQuestionIndex;
 let currentLevelId = "level0";
 let currentDecisionId = "decision0";
 let theBusinessJudgement = 0;
+let systemMessage = "";
 
-const bible = {level1:{decision0: (+5), decision1:(-5)}}
+const bible = { level1: { decision0: +5, decision1: -5 }, level2: {decision0: -100, decision1: 5, decision2: 25} };
 
 const judge = (levelId, answerId) => {
-  const judgement = bible[levelId][answerId]
-  theBusinessJudgement = theBusinessJudgement + judgement
-  return judgement
-}
+  const judgement = bible[levelId][answerId];
+  theBusinessJudgement = theBusinessJudgement + judgement;
+  return judgement;
+};
 
 function handleIndexChange() {
   let specialPrompt = generateSetupPromt(currentLevelId, currentDecisionId);
+  systemMessage = systemMessage + specialPrompt;
 
   // Check if the specialPrompt is already in messages
   const isPromptPresent = messages.some(
-    (message) => message.content === specialPrompt
+    (message) => message.content === systemMessage
   );
 
   if (!isPromptPresent) {
-    messages.push({ role: "system", content: specialPrompt });
-    console.log("Special Prompt Added:", specialPrompt);
+    messages.push({ role: "system", content: systemMessage });
+    console.log("system message updates:", systemMessage);
   } else {
     console.log("Special Prompt Already Exists:", specialPrompt);
   }
 }
+
+const reset = () => {
+  messages = [];
+  currentQuestionIndex;
+   currentLevelId = "level0";
+   currentDecisionId = "decision0";
+   theBusinessJudgement = 0;
+  handleIndexChange();
+}; 
 
 handleIndexChange();
 
@@ -79,7 +90,6 @@ app.post("/api/questionIndex", (req, res) => {
   currentDecisionId = req.body.currentDecision;
   currentLevelId = req.body.currentLevel;
 
-
   console.log("Current Question Index:", currentQuestionIndex);
   console.log("Current Decision ID:", currentDecisionId);
   console.log("Current Level ID:", currentLevelId);
@@ -100,6 +110,13 @@ app.get("/api/getLevelId", (req, res) => {
   res.json({ currentLevelId });
 });
 
+app.get("/api/reset", (req, res) => {
+  reset();
+  console.log("Reset");
+  console.lo
+  res.json({ message: "Reset" });
+});
+
 app.get("/events", (req, res) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
@@ -108,7 +125,7 @@ app.get("/events", (req, res) => {
   // Function to send data
   const sendEvent = () => {
     const judgment = judge(currentLevelId, currentDecisionId);
-    
+
     res.write(
       `data: ${JSON.stringify({
         currentQuestionIndex,
