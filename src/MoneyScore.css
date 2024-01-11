@@ -1,0 +1,44 @@
+.moneyScore {
+  display: absolute;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-bottom-right-radius: 50px;
+  display: grid;
+  grid-template-rows: auto 33% 33%;
+}
+
+.dollar,
+.love {
+  font-size: 36px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: baseline;
+  text-align: center;
+}
+.dollar {
+  grid-row: 1;
+}
+.love {
+  grid-row: 2;
+}
+
+.dollar span,
+.love span {
+  margin-left: 10px;
+}
+
+.dollar img,
+.love img {
+  float: left;
+  margin-top: 3px;
+}
+
+.strike {
+  grid-row: 3;
+  font-size: 45px;
+  color: red;
+  align-self: center; /* Add this line to align the text at the top */
+}

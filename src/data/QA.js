@@ -4,7 +4,7 @@ const QA = [
     level: "level1",
     question: "Are you ready to start you first task?",
     answers: ["Yes! Definetely", "It pays the bills i guess..."],
-    strike: ''
+    strike: 'decision1'
   },
   {
     id: 402,

@@ -5,11 +5,11 @@ body {
 }
 
 .statusBar {
-  width: 100vw;
+  width: calc(100vw - 150px); /* Add this line to adjust the width */
   height: 2vh;
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: 150px;
   background-color: rgba(128, 128, 128, 0.546);
   text-align: right;
   color: white;

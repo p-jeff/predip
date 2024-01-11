@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as MailIcon } from "bootstrap-icons/icons/envelope-heart-fill.svg";
 import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/twitter.svg";
 import { ReactComponent as AIAppIcon } from "bootstrap-icons/icons/bar-chart-line.svg";
@@ -13,6 +13,7 @@ import QuestionComponent from "./QuestionComponent";
 import Chat from "./Chat";
 import Strike from "./Strike";
 import MoneyScore from "./MoneyScore";
+import axios from "axios";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -71,18 +72,40 @@ const Desktop = () => {
       toggle: () => {},
     },
   ];
- const [isStrike, setStrike] = useState(false)
+  const [strikes, setStrikes] = useState(0);
+  const [isStrike, setIsStrike] = useState(false);
 
   apps.forEach((app) => {
     app.toggle = () => app.isMinimized[1](!app.isMinimized[0]);
   });
- 
+
   const strikeHandler = () => {
-    setStrike(true);
+    setStrikes((prevStrikes) => {
+      const newStrikes = prevStrikes + 1;
+      if (newStrikes === 3) {
+        setIsStrike(true);
+      }
+      return newStrikes;
+    });
   };
+
+  // ... existing code ...
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/reset")
+      .then(() => {
+        // API call sent without waiting for response
+        console.log("API call sent");
+      })
+      .catch((error) => {
+        console.error("API call failed:", error);
+      });
+  }, []);
 
   return (
     <>
+      <MoneyScore strikes={strikes} />
       <div className="statusBar">
         <Clock />
       </div>
@@ -96,8 +119,7 @@ const Desktop = () => {
           />
         ))}
       </div>
-      {isStrike ?  <Strike/> : <div></div>}
-      <MoneyScore />
+      {isStrike ? <Strike /> : <div></div>}
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
