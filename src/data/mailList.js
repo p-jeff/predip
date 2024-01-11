@@ -87,24 +87,24 @@ const mails = {
       },
     ],
     decision0: [{
-      "id": 201,
-      "heading": "Concerns Regarding Recent AI-Law Project Outcomes",
-      "sender": "Max Brown",
-      "markdownText": "Hey,\n\nI'm writing to discuss a rather serious issue that has come up with our recent AI integration project related to legal access, particularly the loss of our client, LegalBot.\n\nAs you know, the success of this project was crucial, and unfortunately, we've faced a significant setback. I've been in discussions with upper management, and the heat is on. While I'm not pointing fingers, there's a suspicion that a decision made by our team might have contributed to this situation. Given your involvement in the project, I need to understand your perspective on what might have gone wrong.\n\nI must emphasize that this is not an accusation but a necessary step to piece together what happened. It's critical for us to review our strategies and decisions to prevent such issues in the future.\n\nPlease provide a detailed account of your actions and decisions related to the AI implementation. Your input is vital for us to navigate this challenge effectively.\n\nLooking forward to your prompt and detailed response.\n\nBest regards,\n\nMax Brown"
+      id: 201,
+      heading: "Concerns Regarding Recent AI-Law Project Outcomes",
+      sender: "Max Brown",
+      markdownText: "Hey,\n\nI'm writing to discuss a rather serious issue that has come up with our recent AI integration project related to legal access, particularly the loss of our client, LegalBot.\n\nAs you know, the success of this project was crucial, and unfortunately, we've faced a significant setback. I've been in discussions with upper management, and the heat is on. While I'm not pointing fingers, there's a suspicion that a decision made by our team might have contributed to this situation. Given your involvement in the project, I need to understand your perspective on what might have gone wrong.\n\nI must emphasize that this is not an accusation but a necessary step to piece together what happened. It's critical for us to review our strategies and decisions to prevent such issues in the future.\n\nPlease provide a detailed account of your actions and decisions related to the AI implementation. Your input is vital for us to navigate this challenge effectively.\n\nLooking forward to your prompt and detailed response.\n\nBest regards,\n\nMax Brown"
     }
     ],
     decision1: [{
-      "id": 211,
-      "heading": "Amazing Job on the AI-Law Project!",
-      "sender": "Max",
-      "markdownText": "Hey Team,\n\nJust wanted to drop a quick note to say a huge 'well done' on the AI-Law project with LegalBot. Seriously, the feedback has been off the charts!\n\nYour work on this was nothing short of brilliant. It's not just about getting the job done; it's how you did it – with creativity, smarts, and a ton of skill. LegalBot is super happy, and honestly, so are we. This is a big win for us and it’s all thanks to your stellar performance.\n\nIt's projects like these that make me proud to be part of this team. Your ability to tackle the tough stuff, especially with AI and legal tech, is impressive. You've set the bar high, not just for us but for the whole industry.\n\nSo, big pat on the back to you! Let's keep this momentum going and knock the next one out of the park too.\n\nCheers,\nMax"
+      id: 211,
+      heading: "Amazing Job on the AI-Law Project!",
+      sender: "Max",
+      markdownText: "Hey Team,\n\nJust wanted to drop a quick note to say a huge 'well done' on the AI-Law project with LegalBot. Seriously, the feedback has been off the charts!\n\nYour work on this was nothing short of brilliant. It's not just about getting the job done; it's how you did it – with creativity, smarts, and a ton of skill. LegalBot is super happy, and honestly, so are we. This is a big win for us and it’s all thanks to your stellar performance.\n\nIt's projects like these that make me proud to be part of this team. Your ability to tackle the tough stuff, especially with AI and legal tech, is impressive. You've set the bar high, not just for us but for the whole industry.\n\nSo, big pat on the back to you! Let's keep this momentum going and knock the next one out of the park too.\n\nCheers,\nMax"
     }
     ],
     decision2: [{
-      "id": 221,
-      "heading": "Amazing Job on the AI-Law Project!",
-      "sender": "Max",
-      "markdownText": "Hey Team,\n\nJust wanted to drop a quick note to say a huge 'well done' on the AI-Law project with LegalBot. Seriously, the feedback has been off the charts!\n\nYour work on this was nothing short of brilliant. It's not just about getting the job done; it's how you did it – with creativity, smarts, and a ton of skill. LegalBot is super happy, and honestly, so are we. This is a big win for us and it’s all thanks to your stellar performance.\n\nIt's projects like these that make me proud to be part of this team. Your ability to tackle the tough stuff, especially with AI and legal tech, is impressive. You've set the bar high, not just for us but for the whole industry.\n\nSo, big pat on the back to you! Let's keep this momentum going and knock the next one out of the park too.\n\nCheers,\nMax"
+      id: 221,
+      heading: "Amazing Job on the AI-Law Project!",
+      sender: "Max",
+      markdownText: "Hey Team,\n\nJust wanted to drop a quick note to say a huge 'well done' on the AI-Law project with LegalBot. Seriously, the feedback has been off the charts!\n\nYour work on this was nothing short of brilliant. It's not just about getting the job done; it's how you did it – with creativity, smarts, and a ton of skill. LegalBot is super happy, and honestly, so are we. This is a big win for us and it’s all thanks to your stellar performance.\n\nIt's projects like these that make me proud to be part of this team. Your ability to tackle the tough stuff, especially with AI and legal tech, is impressive. You've set the bar high, not just for us but for the whole industry.\n\nSo, big pat on the back to you! Let's keep this momentum going and knock the next one out of the park too.\n\nCheers,\nMax"
     }
     ],
   },

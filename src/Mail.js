@@ -108,7 +108,7 @@ function Mail({ onMinimize, isMinimized, isStrike, strikeFile }) {
     return () => {
       eventSource.close();
     };
-  });
+  }, []) ;
 
   useEffect(() => {
     if (isStrike) {

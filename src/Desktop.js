@@ -82,7 +82,7 @@ const Desktop = () => {
   const strikeHandler = () => {
     setStrikes((prevStrikes) => {
       const newStrikes = prevStrikes + 1;
-      if (newStrikes === 3) {
+      if (newStrikes === 2) {
         setIsStrike(true);
       }
       return newStrikes;

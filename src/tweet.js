@@ -82,7 +82,7 @@ function Tweet({ onMinimize, isMinimized }) {
     return () => {
       eventSource.close();
     };
-  });
+  }, []);
 
   return (
     <Draggable handle="header " defaultPosition={{ x: 20, y: 500 }}>
