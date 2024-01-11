@@ -31,14 +31,12 @@ const judge = (levelId, answerId) => {
 
 function handleIndexChange() {
   let specialPrompt = generateSetupPromt(currentLevelId, currentDecisionId);
-  systemMessage = systemMessage + specialPrompt;
-
-  // Check if the specialPrompt is already in messages
-  const isPromptPresent = messages.some(
-    (message) => message.content === systemMessage
-  );
+  
+  // Check if the specialPrompt is already in systemMessage
+  const isPromptPresent = systemMessage.includes(specialPrompt);
 
   if (!isPromptPresent) {
+    systemMessage = systemMessage + specialPrompt;
     messages.push({ role: "system", content: systemMessage });
     console.log("system message updates:", systemMessage);
   } else {
@@ -49,13 +47,14 @@ function handleIndexChange() {
 const reset = () => {
   messages = [];
   currentQuestionIndex;
-   currentLevelId = "level0";
-   currentDecisionId = "decision0";
-   theBusinessJudgement = 0;
-  handleIndexChange();
+  currentLevelId = "level0";
+  currentDecisionId = "decision0";
+  theBusinessJudgement = 0;
+  systemMessage = "";
+  handleIndexChange(); 
 }; 
 
-handleIndexChange();
+handleIndexChange()
 
 app.post("/api/chat", async (req, res) => {
   try {
