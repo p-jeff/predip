@@ -18,3 +18,8 @@
 .strikeBody button {
     pointer-events: all;
 }
+
+.strikeBody .matrix-plot{
+    pointer-events: all;
+    cursor: move;
+}

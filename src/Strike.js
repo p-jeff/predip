@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Strike.css";
 import Mail from "./Mail";
 import axios from "axios";
+import MatrixPlot from "./MatrixPlot";
 
 const mails = {
   level1: {
@@ -31,10 +32,13 @@ const mails = {
 
 const Strike = () => {
   const [data, setData] = useState(null);
+  const [compassPosition, setCompassPosition] = useState([0, 0]);
   const [isLoading, setIsLoading] = useState(true);
+  const [level, setLevel] = useState('level1');
 
   useEffect(() => {
     handleStrikeFile();
+    getCompass();
   }, []);
 
   const handleStrikeFile = async () => {
@@ -42,7 +46,18 @@ const Strike = () => {
       const response = await axios.get("http://localhost:3001/api/getLevelId");
       let temp = mails[response.data.currentLevelId]?.always;
       setData(temp);
+      setLevel(response.data.currentLevelId);
       setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false); // Handle error state if needed
+    }
+  };
+
+  const getCompass = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/api/getCompass");
+      setCompassPosition(response.data.compassPosition);
     } catch (error) {
       console.error("Error fetching data:", error);
       setIsLoading(false); // Handle error state if needed
@@ -61,6 +76,7 @@ const Strike = () => {
     <div className="strikeBody">
       Goodbye
       {data && <Mail isStrike={true} strikeFile={data} isMinimized={false}/>}
+      <MatrixPlot coordinates={compassPosition} level={level}/>
      <button onClick={onRestart}>Restart</button>
     </div>
   );

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as MailIcon } from "bootstrap-icons/icons/envelope-heart-fill.svg";
 import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/twitter.svg";
-import { ReactComponent as AIAppIcon } from "bootstrap-icons/icons/bar-chart-line.svg";
+import { ReactComponent as StockComponentIcon } from "bootstrap-icons/icons/bar-chart-line.svg";
 import { ReactComponent as QuestinComponentIcon } from "bootstrap-icons/icons/compass.svg";
 import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text.svg";
 import "./Desktop.css";
 import Mail from "./Mail";
 import Tweet from "./tweet";
-import AIApp from "./AIApp";
+import StockComponent from "./StockComponent";
 import Clock from "./Clock";
 import QuestionComponent from "./QuestionComponent";
 import Chat from "./Chat";
@@ -50,7 +50,7 @@ const Desktop = () => {
     },
     {
       name: "Activity Dashboard",
-      icon: <AIAppIcon style={{ color: "green" }} className="iconSize" />,
+      icon: <StockComponentIcon style={{ color: "green" }} className="iconSize" />,
       isMinimized: useState(true),
       toggle: () => {},
     },
@@ -123,7 +123,7 @@ const Desktop = () => {
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
-      <AIApp onMinimize={apps[2].toggle} isMinimized={apps[2].isMinimized[0]} />
+      <StockComponent onMinimize={apps[2].toggle} isMinimized={apps[2].isMinimized[0]} />
       <QuestionComponent
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}

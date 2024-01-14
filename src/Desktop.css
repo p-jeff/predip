@@ -2,25 +2,31 @@ body {
   background-image: url("../public/wallaper.jpg");
   background-size: 110vw;
   background-repeat: none;
+
+}
+
+*::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
 }
 
 .statusBar {
-  width: calc(100vw - 150px); /* Add this line to adjust the width */
+  width: calc(100vw - 100px); /* Add this line to adjust the width */
   height: 2vh;
   position: absolute;
   top: 0px;
-  left: 150px;
+  left: 100px;
   background-color: rgba(128, 128, 128, 0.546);
   text-align: right;
   color: white;
 }
-.clock{
+.clock {
   margin-right: 5px;
 }
 
 .tooltip {
   display: inline-block;
-  margin:auto;
+  margin: auto;
   height: 85%;
   margin-inline: 8px;
 }
@@ -89,6 +95,6 @@ body {
   cursor: pointer;
 }
 
-.hiddenApp{
+.hiddenApp {
   display: none;
 }

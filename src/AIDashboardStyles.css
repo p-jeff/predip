@@ -3,7 +3,7 @@
 .ai-dashboard {
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: #1e1e1e;
+  background-color: #002a08;
   padding: 20px;
   border-radius: 8px;
   margin: 20px;
@@ -12,6 +12,7 @@
   color: #FFF;
   cursor: move;
   position: fixed;
+  width: 20vw;
 }
 
 .input-range {

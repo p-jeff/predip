@@ -72,6 +72,7 @@
   background-color: #1890ff; /* Ant Design primary color */
   color: white;
   font-weight: 400;
+  font-size: 14px;
 }
 
 .question-container button:hover {
