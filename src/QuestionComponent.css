@@ -7,6 +7,7 @@
     0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
   position: fixed;
   border-radius: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 .ethHeader {
@@ -69,10 +70,11 @@
   border: 1px solid #d9d9d9; /* Light border */
   border-radius: 2px;
   cursor: pointer;
-  background-color: #1890ff; /* Ant Design primary color */
-  color: white;
+  background-color: #85c4ff; /* Ant Design primary color */
+  color: black;
   font-weight: 400;
   font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 .question-container button:hover {

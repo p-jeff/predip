@@ -39,7 +39,7 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
     };
     console.log(result); // Handle the submission here
 
-    if(currentQuestion.strike === result.decisionId){
+    if(currentQuestion.strike.includes(result.decisionId)){
       onStrike()
     }
 
@@ -72,6 +72,7 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
             height:400,
           }}>
           <h2>{currentQuestion.question}</h2>
+          {currentQuestion.case.map((c, index) => ( <p key={index}>{c}</p>))}
 
           <div>
             {currentQuestion.answers.map((answer, index) => (

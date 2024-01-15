@@ -49,7 +49,7 @@ const Desktop = () => {
       toggle: () => {},
     },
     {
-      name: "Activity Dashboard",
+      name: "Stocks",
       icon: <StockComponentIcon style={{ color: "green" }} className="iconSize" />,
       isMinimized: useState(true),
       toggle: () => {},

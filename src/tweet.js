@@ -67,6 +67,7 @@ function Tweet({ onMinimize, isMinimized }) {
   };
 
   const handleMore = (data) => {
+    console.log(tweets[data.currentLevelId]?.always);
     loadMoreData(tweets[data.currentLevelId]?.[data.currentDecisionId]);
     loadMoreData(tweets[data.currentLevelId]?.always);
   };
