@@ -91,7 +91,7 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike }) => {
             ))}
           </div>
 
-          <button onClick={handleSubmit} disabled={selectedAnswer === null}>
+          <button onClick={()=>handleSubmit()} disabled={selectedAnswer === null}>
             Submit
           </button>
         </Resizable>

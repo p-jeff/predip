@@ -53,7 +53,7 @@ const StockComponent = ({ onMinimize, isMinimized }) => {
         className="ai-dashboard"
         style={{ display: isMinimized ? "none" : "block" }}
       >
-        <button className="minimize" onClick={onMinimize}>
+        <button className="minimize" onClick={onMinimize} style={{ pointerEvents: "none", backgroundColor:"grey", cursor:"not-allowed"}}>
           &times;
         </button>
         <h1>Stocks</h1>

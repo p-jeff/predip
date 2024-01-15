@@ -49,8 +49,8 @@ const MatrixPlot = ({ coordinates, level }) => {
           <circle cx={point.x} cy={point.y} r="5" fill="red" />
 
           {/* Add h3 tags */}
-          <text x="0" y="220" className="axis-tag">No AI</text>
-          <text x="300" y="220" className="axis-tag">No Regulation</text>
+          <text x="-5" y="220" className="axis-tag">No AI</text>
+          <text x="330" y="220" className="axis-tag">Singularity</text>
           <text x="210" y="400" className="axis-tag">External Regulation</text>
           <text x="210" y="10" className="axis-tag">Self Regulation</text>
         </svg>

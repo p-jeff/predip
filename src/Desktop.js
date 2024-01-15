@@ -123,7 +123,7 @@ const Desktop = () => {
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
-      <StockComponent onMinimize={apps[2].toggle} isMinimized={apps[2].isMinimized[0]} />
+      <StockComponent/>
       <QuestionComponent
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}
