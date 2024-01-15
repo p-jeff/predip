@@ -11,19 +11,26 @@ function TweetEntry({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
   const getMarkdownHtml = (markdown) => {
     const renderer = new marked.Renderer();
-
     // Custom renderer for text
     renderer.text = (text) => {
-      // Regex to find and wrap hashtags
-      const hashtagRegex = /(#\w+)/g;
+      // Regex to find and wrap hashtags followed by a letter
+      const hashtagRegex = /(#\w*[a-zA-Z]\w*)/g; 
       const newText = text.replace(
         hashtagRegex,
         '<span class="hashtag">$1</span>'
       );
-      return newText;
+
+      // Regex to find and wrap words after an @ symbol
+      const mentionRegex = /(@\w+)/g;
+      const finalText = newText.replace(
+        mentionRegex,
+        '<span class="hashtag">$1</span>'
+      );
+
+      return finalText;
     };
 
-    return { __html: marked(markdown, { renderer, sanitize: true }) };
+    return { __html: marked(markdown, { renderer, sanitize: false }) };
   };
 
   return (
@@ -76,6 +83,7 @@ function Tweet({ onMinimize, isMinimized }) {
     const eventSource = new EventSource("http://localhost:3001/events");
 
     eventSource.onmessage = (event) => {
+      console.log('Tweet has received a message')
       const data = JSON.parse(event.data);
       handleMore(data);
     };

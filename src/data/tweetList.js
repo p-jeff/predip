@@ -205,19 +205,13 @@ const tweets = {
           "We're disappointed with Ethico's stance against a statement for AI in the workplace. Workers deserve a voice in shaping the future of AI, and we won't stop fighting for their rights. #AIWorkersRights #WorkersVoice #EthicalTech",
       },
       {
-        id: 515,
+        id: 301,
         sender: "TechInnovator",
         tag: "@InnovateForward",
         markdownText:
           "Big win today! DigitalVida's relentless push for AI workers' rights is a roadblock to innovation. We can't afford to slow down progress.  #InnovationFirst #EthicalTechObstacle",
       },
-      {
-        id: 330,
-        sender: "Sam Altman",
-        tag: "@samA",
-        markdownText:
-          "I thought Ethico was a Pro-AI company? Why are they suddenly supporting AI workers' rights? #EthicoFlipFlop #AIWorkersRights",
-      },
+      
     ],
     decision1: [
       {

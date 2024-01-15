@@ -4,9 +4,9 @@ import QA from "./data/QA";
 import Draggable from "react-draggable";
 import axios from "axios";
 import { Resizable } from "re-resizable";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
+const QuestionComponent = ({ isMinimized, onMinimize, onStrike }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const currentQuestion = QA[currentQuestionIndex];
@@ -35,19 +35,19 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
       questionId: currentQuestion.id,
       levelId: currentQuestion.level,
       answerId: selectedAnswer,
-      decisionId: 'decision' + selectedAnswer,
+      decisionId: "decision" + selectedAnswer,
     };
-    console.log(result); // Handle the submission here
+    console.log(result);
 
-    if(currentQuestion.strike.includes(result.decisionId)){
-      onStrike()
+    if (currentQuestion.strike.includes(result.decisionId)) {
+      onStrike();
     }
 
     setSelectedAnswer(null);
 
-    if (currentQuestionIndex === QA.length - 1) {
-      setCurrentQuestionIndex(0);
-      sendCurrentQuestionIndex(0);
+    if (result.levelId === "level5") {
+      onStrike();
+      sendCurrentQuestionIndex(0, result);
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       sendCurrentQuestionIndex(currentQuestionIndex + 1, result);
@@ -61,18 +61,23 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike}) => {
         style={{ display: isMinimized ? "none" : "block" }}
       >
         <header className="ethHeader">
-        <i className="bi bi-compass headerIcon"/>
-            EthCompass v.1.3.2
+          <i className="bi bi-compass headerIcon" />
+          EthCompass v.1.3.2
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>
         </header>
-        <Resizable className="ethCompassBody"  defaultSize={{
+        <Resizable
+          className="ethCompassBody"
+          defaultSize={{
             width: 900,
-            height:400,
-          }}>
+            height: 400,
+          }}
+        >
           <h2>{currentQuestion.question}</h2>
-          {currentQuestion.case.map((c, index) => ( <p key={index}>{c}</p>))}
+          {currentQuestion.case.map((c, index) => (
+            <p key={index}>{c}</p>
+          ))}
 
           <div>
             {currentQuestion.answers.map((answer, index) => (

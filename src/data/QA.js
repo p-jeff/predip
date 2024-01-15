@@ -44,7 +44,6 @@ const QA = [
     level: "level4",
     question: "Artificial Intelligence and the Transparency Paradox",
     case: [
-      "To what extent should AI systems disclose how they reach conclusions?",
       "Should there be a limit to how transparent AI algorithms are to the public?",
       "What are the risks and benefits of open-sourcing AI algorithms and datasets?",
     ],
