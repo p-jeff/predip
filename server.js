@@ -20,7 +20,9 @@ let currentLevelId = "level0";
 let currentDecisionId = "decision0";
 let currentStockPrice = 0;
 let currentCompass = [0, 0];
-let systemMessage = "";
+let systemMessage = generateSetupPromt('level0', 'decision0');;
+
+messages.push({ role: "system", content: systemMessage });
 
 const stockDevelopment = {
   level1: { decision0: +5, decision1: -5 },
@@ -32,8 +34,24 @@ const stockDevelopment = {
 const compassDevelopment = {
   level1: { decision0: [0, 0], decision1: [0, 0] },
   level2: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1] },
-  level3: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1], decision3: [1, 1] },
-  level4: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1], decision3: [1, 1] },
+  level3: {
+    decision0: [-1, -1],
+    decision1: [0, -1],
+    decision2: [1, 1],
+    decision3: [1, 1],
+  },
+  level4: {
+    decision0: [-1, -1],
+    decision1: [0, -1],
+    decision2: [1, 1],
+    decision3: [1, 1],
+  },
+  level5: {
+    decision0: [-1, -1],
+    decision1: [0, -1],
+    decision2: [1, 1],
+    decision3: [1, 1],
+  },
 };
 
 const calculateStock = (levelId, answerId) => {
@@ -44,12 +62,13 @@ const calculateStock = (levelId, answerId) => {
 
 const calculateCompass = (levelId, answerId) => {
   const compass = compassDevelopment[levelId][answerId];
+  console.log("Compass number Added", compass);
   currentCompass[0] = currentCompass[0] + compass[0];
   currentCompass[1] = currentCompass[1] + compass[1];
   return compass;
 };
 
-function handleIndexChange() {
+const pushSystemMessage = () => {
   let specialPrompt = generateSetupPromt(currentLevelId, currentDecisionId);
 
   const isPromptPresent = systemMessage.includes(specialPrompt);
@@ -57,11 +76,13 @@ function handleIndexChange() {
   if (!isPromptPresent) {
     systemMessage = systemMessage + specialPrompt;
     messages.push({ role: "system", content: systemMessage });
-    console.log("system message updates:", systemMessage);
+    console.log("System message updates:", systemMessage);
   } else {
     console.log("Special Prompt Already Exists:", specialPrompt);
+    messages.push({ role: "system", content: systemMessage });
   }
-}
+};
+
 
 const reset = () => {
   messages = [];
@@ -69,11 +90,9 @@ const reset = () => {
   currentLevelId = "level0";
   currentDecisionId = "decision0";
   currentStockPrice = 0;
-  systemMessage = "";
-  handleIndexChange();
+  systemMessage = generateSetupPromt('level0', 'decision0');;
+  console.log(messages)
 };
-
-handleIndexChange();
 
 app.post("/api/chat", async (req, res) => {
   try {
@@ -81,6 +100,7 @@ app.post("/api/chat", async (req, res) => {
 
     // Add the user's message to the conversation
     messages.push({ role: "user", content: userMessage });
+    pushSystemMessage();
     console.log(messages);
     console.log(userMessage);
 
@@ -166,7 +186,6 @@ app.get("/events", (req, res) => {
   const listener = () => {
     console.log("Event listener added");
     sendEvent();
-    handleIndexChange();
   };
 
   indexChangeEmitter.on("indexChanged", listener);
