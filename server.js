@@ -18,21 +18,40 @@ let messages = [];
 let currentQuestionIndex;
 let currentLevelId = "level0";
 let currentDecisionId = "decision0";
-let theBusinessJudgement = 0;
+let currentStockPrice = 0;
+let currentCompass = [0, 0];
 let systemMessage = "";
 
-const bible = { level1: { decision0: +5, decision1: -5 }, level2: {decision0: -100, decision1: 5, decision2: 25} };
+const stockDevelopment = {
+  level1: { decision0: +5, decision1: -5 },
+  level2: { decision0: -20, decision1: 10, decision2: 5 },
+  level3: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
+  level4: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
+  level5: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
+};
+const compassDevelopment = {
+  level1: { decision0: [0, 0], decision1: [0, 0] },
+  level2: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1] },
+  level3: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1], decision3: [1, 1] },
+  level4: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1], decision3: [1, 1] },
+};
 
-const judge = (levelId, answerId) => {
-  const judgement = bible[levelId][answerId];
-  theBusinessJudgement = theBusinessJudgement + judgement;
-  return judgement;
+const calculateStock = (levelId, answerId) => {
+  const stockPrice = stockDevelopment[levelId][answerId];
+  currentStockPrice = currentStockPrice + stockPrice;
+  return stockPrice;
+};
+
+const calculateCompass = (levelId, answerId) => {
+  const compass = compassDevelopment[levelId][answerId];
+  currentCompass[0] = currentCompass[0] + compass[0];
+  currentCompass[1] = currentCompass[1] + compass[1];
+  return compass;
 };
 
 function handleIndexChange() {
   let specialPrompt = generateSetupPromt(currentLevelId, currentDecisionId);
-  
-  // Check if the specialPrompt is already in systemMessage
+
   const isPromptPresent = systemMessage.includes(specialPrompt);
 
   if (!isPromptPresent) {
@@ -49,12 +68,12 @@ const reset = () => {
   currentQuestionIndex;
   currentLevelId = "level0";
   currentDecisionId = "decision0";
-  theBusinessJudgement = 0;
+  currentStockPrice = 0;
   systemMessage = "";
-  handleIndexChange(); 
-}; 
+  handleIndexChange();
+};
 
-handleIndexChange()
+handleIndexChange();
 
 app.post("/api/chat", async (req, res) => {
   try {
@@ -93,7 +112,7 @@ app.post("/api/questionIndex", (req, res) => {
   console.log("Current Decision ID:", currentDecisionId);
   console.log("Current Level ID:", currentLevelId);
 
-  let temp = judge(currentLevelId, currentDecisionId);
+  let temp = calculateStock(currentLevelId, currentDecisionId);
   console.log("Judgement:", temp);
 
   indexChangeEmitter.emit("indexChanged"); // Emit event on change
@@ -109,10 +128,15 @@ app.get("/api/getLevelId", (req, res) => {
   res.json({ currentLevelId });
 });
 
+app.get("/api/getCompass", (req, res) => {
+  const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
+  res.json({ compassPosition });
+});
+
 app.get("/api/reset", (req, res) => {
   reset();
   console.log("Reset");
-  console.lo
+  console.lo;
   res.json({ message: "Reset" });
 });
 
@@ -123,26 +147,32 @@ app.get("/events", (req, res) => {
 
   // Function to send data
   const sendEvent = () => {
-    const judgment = judge(currentLevelId, currentDecisionId);
+    const stockValue = calculateStock(currentLevelId, currentDecisionId);
+    const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
 
     res.write(
       `data: ${JSON.stringify({
         currentQuestionIndex,
         currentLevelId,
         currentDecisionId,
-        judgment,
+        stockValue,
+        compassPosition,
       })}\n\n`
     );
   };
 
   // Listen to the event
-  indexChangeEmitter.on("indexChanged", sendEvent);
-  indexChangeEmitter.on("indexChanged", handleIndexChange);
 
+  const listener = () => {
+    console.log("Event listener added");
+    sendEvent();
+    handleIndexChange();
+  };
+
+  indexChangeEmitter.on("indexChanged", listener);
   // Remove listener on client disconnect
   req.on("close", () => {
-    indexChangeEmitter.removeListener("indexChanged", sendEvent);
-    indexChangeEmitter.removeListener("indexChanged", handleIndexChange);
+    indexChangeEmitter.removeListener("indexChanged", listener);
   });
 });
 
