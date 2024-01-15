@@ -26,45 +26,46 @@ messages.push({ role: "system", content: systemMessage });
 
 const stockDevelopment = {
   level1: { decision0: +5, decision1: -5 },
-  level2: { decision0: -20, decision1: 10, decision2: 5 },
-  level3: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
+  level2: { decision0: -30, decision1: 5, decision2: 2 },
+  level3: { decision0: +25, decision1: -5, decision2: 10, decision3: -40 },
   level4: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
-  level5: { decision0: -20, decision1: 10, decision2: 5, decision3: 5 },
+  level5: { decision0: 0, decision1: 0, decision2: 0, decision3:  0},
 };
 const compassDevelopment = {
   level1: { decision0: [0, 0], decision1: [0, 0] },
-  level2: { decision0: [-1, -1], decision1: [0, -1], decision2: [1, 1] },
+  level2: { decision0: [-1, -1], decision1: [1, -1], decision2: [1, 1] },
   level3: {
-    decision0: [-1, -1],
-    decision1: [0, -1],
-    decision2: [1, 1],
-    decision3: [1, 1],
+    decision0: [1, 1],
+    decision1: [0, 1],
+    decision2: [0, -1],
+    decision3: [0, 0],
   },
   level4: {
-    decision0: [-1, -1],
-    decision1: [0, -1],
+    decision0: [1, -1],
+    decision1: [0, 1],
     decision2: [1, 1],
-    decision3: [1, 1],
+    decision3: [1, 2],
   },
   level5: {
-    decision0: [-1, -1],
-    decision1: [0, -1],
-    decision2: [1, 1],
-    decision3: [1, 1],
+    decision0: [1, -1],
+    decision1: [-1, -1],
+    decision2: [1, -1],
+    decision3: [0, -1],
   },
 };
 
 const calculateStock = (levelId, answerId) => {
   const stockPrice = stockDevelopment[levelId][answerId];
   currentStockPrice = currentStockPrice + stockPrice;
-  return stockPrice;
+  return currentStockPrice;
 };
 
 const calculateCompass = (levelId, answerId) => {
   const compass = compassDevelopment[levelId][answerId];
-  console.log("Compass number Added", compass);
+ 
   currentCompass[0] = currentCompass[0] + compass[0];
   currentCompass[1] = currentCompass[1] + compass[1];
+  console.log("Compass number Added", currentCompass);
   return compass;
 };
 
@@ -132,8 +133,6 @@ app.post("/api/questionIndex", (req, res) => {
   console.log("Current Decision ID:", currentDecisionId);
   console.log("Current Level ID:", currentLevelId);
 
-  let temp = calculateStock(currentLevelId, currentDecisionId);
-  console.log("Judgement:", temp);
 
   indexChangeEmitter.emit("indexChanged"); // Emit event on change
   res.json({ message: "Data received" });
@@ -149,51 +148,69 @@ app.get("/api/getLevelId", (req, res) => {
 });
 
 app.get("/api/getCompass", (req, res) => {
-  const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
+  const compassPosition = currentCompass;
   res.json({ compassPosition });
 });
 
 app.get("/api/reset", (req, res) => {
   reset();
   console.log("Reset");
-  console.lo;
   res.json({ message: "Reset" });
 });
 
+
+const connectedClients = [];
+
 app.get("/events", (req, res) => {
+  // Setup for Server-Sent Events
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
 
-  // Function to send data
-  const sendEvent = () => {
-    const stockValue = calculateStock(currentLevelId, currentDecisionId);
-    const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
+  // Add this client to the list of connected clients
+  connectedClients.push(res);
+  console.log("Client connected, total clients:", connectedClients.length);
 
-    res.write(
-      `data: ${JSON.stringify({
-        currentQuestionIndex,
-        currentLevelId,
-        currentDecisionId,
-        stockValue,
-        compassPosition,
-      })}\n\n`
-    );
-  };
-
-  // Listen to the event
-
-  const listener = () => {
-    console.log("Event listener added");
-    sendEvent();
-  };
-
-  indexChangeEmitter.on("indexChanged", listener);
-  // Remove listener on client disconnect
+  // Cleanup on client disconnect
   req.on("close", () => {
-    indexChangeEmitter.removeListener("indexChanged", listener);
+    console.log("Client disconnected");
+    // Remove the response object from the connected clients list
+    const index = connectedClients.indexOf(res);
+    if (index > -1) {
+      connectedClients.splice(index, 1);
+      console.log("Client removed, total clients:", connectedClients.length);
+    }
   });
 });
+
+indexChangeEmitter.on("indexChanged", () => {
+  console.log("Event listener triggered, broadcasting to clients");
+  // Call sendEvent once and broadcast the data to all connected clients
+  const eventData = sendEvent();
+  connectedClients.forEach(clientRes => {
+    console.log("Sending data to a client");
+    clientRes.write(`data: ${JSON.stringify(eventData)}\n\n`);
+  });
+});
+
+const sendEvent = () => {
+  // Calculate and prepare the data to be sent
+  const stockValue = calculateStock(currentLevelId, currentDecisionId);
+  const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
+
+  const eventData = {
+    currentQuestionIndex,
+    currentLevelId,
+    currentDecisionId,
+    stockValue,
+    compassPosition,
+  };
+
+  console.log("Event data prepared:", eventData);
+  return eventData;
+};
+
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
