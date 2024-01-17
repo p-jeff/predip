@@ -92,6 +92,7 @@ const reset = () => {
   currentDecisionId = "decision0";
   currentStockPrice = 0;
   systemMessage = generateSetupPromt('level0', 'decision0');;
+  currentCompass = [0, 0];
   console.log(messages)
 };
 
