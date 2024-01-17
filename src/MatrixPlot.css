@@ -1,14 +1,17 @@
 .matrix-plot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
     padding: 15px;
     background-color: white;
     border-radius: 15px;
+  
+}
 
+.matrixWrapper{
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .matrix-plot line {
@@ -17,4 +20,8 @@
 
 .matrix-plot circle {
     fill: red;
+}
+
+.matrix-plot h2{
+    margin-bottom: 10px;
 }

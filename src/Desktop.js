@@ -50,7 +50,9 @@ const Desktop = () => {
     },
     {
       name: "Stocks",
-      icon: <StockComponentIcon style={{ color: "green" }} className="iconSize" />,
+      icon: (
+        <StockComponentIcon style={{ color: "green" }} className="iconSize" />
+      ),
       isMinimized: useState(true),
       toggle: () => {},
     },
@@ -122,8 +124,12 @@ const Desktop = () => {
       {isStrike ? <Strike /> : <div></div>}
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
       <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
-      <Mail onMinimize={apps[1].toggle} isMinimized={apps[1].isMinimized[0]} />
-      <StockComponent/>
+      <Mail
+        onMinimize={apps[1].toggle}
+        isMinimized={apps[1].isMinimized[0]}
+        position={{ x: 50, y: 50 }}
+      />
+      <StockComponent />
       <QuestionComponent
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}

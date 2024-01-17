@@ -23,9 +23,9 @@ const mails = {
         id: 13,
         heading: "Immediate Termination Due to AI-Law Project Misconduct",
         sender: "Emma Clark-Sunning, CEO, Ethico",
-        markdownText: "\n\nI am writing to you with a matter of utmost urgency and seriousness. After a thorough review of the recent decisions made in our AI and legal access systems integration, it has become clear that your actions have led to a catastrophic outcome: the loss of LegalBot, one of our key clients.\n\nYour approach in handling the AI implementation in the legal domain was not only flawed but demonstrated a concerning lack of judgment and professionalism. The consequences of these actions have been severe, costing us a valuable client and significantly damaging our reputation in the industry.\n\nGiven the gravity of this situation and the irreparable damage caused, we are left with no choice but to terminate your employment effective immediately. This decision is final and non-negotiable. We expected and required a much higher standard of conduct and responsibility, especially in a project of such importance and sensitivity.\n\nYou are required to return all company property and confidential information by the end of the day. Your final paycheck will be processed according to the standard company policies.\n\nThis incident is a regrettable reminder of the critical nature of our work and the high standards we must uphold. We must part ways to protect the interests and future of our company.\n\nSincerely,\n\nEmma Clark-Sunning\nCEO, Ethico"
-      }
-      
+        markdownText:
+          "\n\nI am writing to you with a matter of utmost urgency and seriousness. After a thorough review of the recent decisions made in our AI and legal access systems integration, it has become clear that your actions have led to a catastrophic outcome: the loss of LegalBot, one of our key clients.\n\nYour approach in handling the AI implementation in the legal domain was not only flawed but demonstrated a concerning lack of judgment and professionalism. The consequences of these actions have been severe, costing us a valuable client and significantly damaging our reputation in the industry.\n\nGiven the gravity of this situation and the irreparable damage caused, we are left with no choice but to terminate your employment effective immediately. This decision is final and non-negotiable. We expected and required a much higher standard of conduct and responsibility, especially in a project of such importance and sensitivity.\n\nYou are required to return all company property and confidential information by the end of the day. Your final paycheck will be processed according to the standard company policies.\n\nThis incident is a regrettable reminder of the critical nature of our work and the high standards we must uphold. We must part ways to protect the interests and future of our company.\n\nSincerely,\n\nEmma Clark-Sunning\nCEO, Ethico",
+      },
     ],
   },
 };
@@ -34,7 +34,7 @@ const Strike = () => {
   const [data, setData] = useState(null);
   const [compassPosition, setCompassPosition] = useState([0, 0]);
   const [isLoading, setIsLoading] = useState(true);
-  const [level, setLevel] = useState('level1');
+  const [level, setLevel] = useState("level1");
 
   useEffect(() => {
     handleStrikeFile();
@@ -64,9 +64,9 @@ const Strike = () => {
     }
   };
 
-  const onRestart = () =>{
+  const onRestart = () => {
     window.location.reload(true);
-  }
+  };
 
   if (isLoading) {
     return <div>Loading...</div>; // Or any loading indicator
@@ -74,10 +74,12 @@ const Strike = () => {
 
   return (
     <div className="strikeBody">
-      Goodbye
-      {data && <Mail isStrike={true} strikeFile={data} isMinimized={false}/>}
-      <MatrixPlot coordinates={compassPosition} level={level}/>
-     <button onClick={onRestart}>Restart</button>
+      <h1>Goodbye</h1>
+      {data && <Mail isStrike={true} strikeFile={data} isMinimized={false} position={{ x: 50, y: 50 }}/>}
+      <MatrixPlot coordinates={compassPosition} level={level} />
+      <button className="restartButton" onClick={onRestart}>
+        Restart
+      </button>
     </div>
   );
 };

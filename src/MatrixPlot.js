@@ -18,7 +18,7 @@ const MatrixPlot = ({ coordinates, level }) => {
         svgX = (coordinates[0]  + 4) * 50; // Scale and shift
         svgY = (4 - coordinates[1]) * 50; // Invert y-axis, scale and shift
     }
-   
+
     setPoint({ x: svgX, y: svgY });
   };
 
@@ -36,10 +36,10 @@ const MatrixPlot = ({ coordinates, level }) => {
   }, []) ;
 
   return (
-    <Draggable>
-      <div>
-      <h2>Your AI Compass</h2>
+    <Draggable defaultPosition={{ x: 1050, y: 250 }}>
       <div className="matrix-plot">
+      <h2>Your AI Compass</h2>
+      <div className="matrixWrapper">
         <svg width="400" height="400" viewBox="-10 -10 420 420">
           {/* Draw matrix grid */}
           <line x1="200" y1="0" x2="200" y2="400" stroke="grey" />

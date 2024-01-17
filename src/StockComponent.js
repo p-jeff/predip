@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AIDashboardStyles.css";
+import "./stock.css";
 import Draggable from "react-draggable";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
@@ -41,14 +41,14 @@ const Graph = () => {
     };
   }, []);
 
-  return <Line data={graphData} />;
+  return <Line data={graphData} style={{ fontFamily:'Times New Roman'}}/>;
 };
 
 
 
 const StockComponent = ({ onMinimize, isMinimized }) => {
   return (
-    <Draggable>
+    <Draggable defaultPosition={{ x: 0, y: 700 }}>
       <div
         className="ai-dashboard"
         style={{ display: isMinimized ? "none" : "block" }}

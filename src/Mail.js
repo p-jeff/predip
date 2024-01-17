@@ -62,7 +62,7 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
   );
 }
 
-function Mail({ onMinimize, isMinimized, isStrike, strikeFile }) {
+function Mail({ onMinimize, isMinimized, isStrike, strikeFile, position }) {
   const [data, setData] = useState(
     () => JSON.parse(localStorage.getItem("mails")) || mails.level0.always
   );
@@ -117,7 +117,7 @@ function Mail({ onMinimize, isMinimized, isStrike, strikeFile }) {
   }, [isStrike]);
   
   return (
-    <Draggable handle="header" defaultPosition={{ x: 50, y: 50 }}>
+    <Draggable handle="header" defaultPosition={position}>
       <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>
         <header className="mailHeader">
           <i className="bi bi-envelope-heart headerIcon" style={{color:"red"}}/>
