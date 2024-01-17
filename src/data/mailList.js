@@ -197,5 +197,12 @@ const mails = {
     decision2: [],
     decision3: [],
   },
+  level5: {
+    always: [],
+    decision0: [],
+    decision1: [],
+    decision2: [],
+    decision3: [],
+  },
 };
 export default mails;

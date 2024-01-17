@@ -54,7 +54,8 @@ const mails = {
         id: 1005,
         heading: "Message from the Development Team",
         sender: "Johannes Felix Lotze",
-        markdownText: "Hey,\n\n You made it to the (current) end of my game! As you can see, there are no clear paths when it comes to AI refulation --- At least yet. These questions are all still open and ongoing debates, got out there, inform yourself and let's fight for what we want. \n\n The other option would be to leave the regulation to the AI Labs themselves, and even if it turns out not to be our last invention (which is quite likely) we will never the less still have found answers or at least furthered the debate about many of the most important topics on the internet today. \n\nBest,\nJohannes",
+        markdownText:
+          "Hey,\n\nYou've just hit the current end of my game! It's pretty clear, right? The paths to AI regulation are anything but straightforward. These questions are at the heart of ongoing and lively debates. Dive in, get informed, and join the fight for what we believe in.\n\nThe other path? Letting AI Labs call the shots on regulation. Even if AI isn't our last great invention, this journey will definitely shed light on some of the most crucial internet debates of our time.\n\nBest,\nJohannes",
       },
     ],
   },

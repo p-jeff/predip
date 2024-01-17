@@ -211,7 +211,6 @@ const tweets = {
         markdownText:
           "Big win today! DigitalVida's relentless push for AI workers' rights is a roadblock to innovation. We can't afford to slow down progress.  #InnovationFirst #EthicalTechObstacle",
       },
-      
     ],
     decision1: [
       {
@@ -406,6 +405,13 @@ const tweets = {
           "Why do AI datasets keep disappearing? It's so frustrating when you're in the middle of a project. 😤 #AIResearch #DataDilemma",
       },
     ],
+  },
+  level5: {
+    always: [],
+    decision0: [],
+    decision1: [],
+    decision2: [],
+    decision3: [],
   },
 };
 
