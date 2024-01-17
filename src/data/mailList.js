@@ -107,15 +107,92 @@ const mails = {
     decision2: [],
   },
   level3: {
-    always: [],
-    decision0: [],
+    always: [
+      {
+        id: 391,
+        heading: "Open Source AI: A Weapon in the Wrong Hands?",
+        sender: "Michael Harris, Legal Counsel",
+        markdownText:
+          "Dear Team,\n\nI hope this message finds you well. As we delve deeper into the conversation about open-sourcing our AI technology, I want to address a crucial aspect that often gets overlooked: the potential risks when powerful tools fall into the wrong hands.\n\nWhile the democratization of AI can lead to incredible advancements and accessibility, it also opens the door to misuse. The capabilities of our AI are not just tools for progress; in the wrong hands, they could become weapons. We've seen how technology can be repurposed for harmful intents - from deepfakes to privacy breaches.\n\nConsider the legal ramifications. If our open-source AI is used for nefarious purposes, where does our liability end? Can we be held accountable for the actions of those who use our technology for harm? These are not just hypothetical questions but real legal challenges we could face.\n\nFurthermore, think about the ethical implications. Our responsibility as creators extends beyond just building AI; it encompasses how it's used in society. We need to ask ourselves if we are prepared to deal with the consequences of our technology being accessible to all, without restrictions.\n\nLet's approach this decision with the gravity it deserves. We have the power to shape the future of AI, but with great power comes great responsibility. I urge you to consider these points carefully as we move forward.\n\nBest regards,\nMichael Harris\nLegal Counsel, Ethico",
+      },
+      {
+        id: 392,
+        heading: "Community Feedback on Open-Sourcing Our AI",
+        sender: "Sarah Lopez, Community Manager",
+        markdownText:
+          "Hello Team,\n\nI've spent the last few weeks gathering feedback from the wider AI and tech community about our proposal to open-source our AI technology. The responses have been diverse and thought-provoking, reflecting the complexity of this decision.\n\nOn one hand, there's considerable excitement about the possibilities. Many see open-sourcing as a step towards democratizing AI, enabling a broader range of researchers and developers to contribute to and benefit from our technology. The potential for collaborative innovation is huge, and many believe this could accelerate advancements in the field.\n\nHowever, there are also significant concerns. Some experts worry about the lack of control and oversight once the technology is in the public domain. There's a fear that without proper safeguards, our AI could be modified and used in ways that are unethical or dangerous. The analogy of 'everyone having access to a powerful weapon' was mentioned more than once.\n\nI believe this feedback highlights the need for a balanced approach. If we decide to go ahead with open-sourcing, it will be essential to establish guidelines and perhaps even a review process for how our technology is used by third parties.\n\nYour thoughts on this matter would be greatly appreciated as we navigate these uncharted waters.\n\nBest,\nSarah Lopez\nCommunity Manager, Ethico",
+      },
+      {
+        id: 393,
+        heading: "Your Input Needed: Future of Our AI Strategy",
+        sender: "Max Brown, Direct Supervisor",
+        markdownText:
+          "Hi,\n\nAs we continue to explore the idea of open-sourcing our AI technology, I wanted to reach out to you directly for your input. This decision is not just about the technology; it's about the direction we want to take as a company and the impact we aim to have on the world.\n\nOpen-sourcing our AI has the potential to accelerate research and innovation, opening up new avenues for collaboration and development. It could be a game-changer in democratizing AI technology, making it accessible to a wider audience and fostering a community of shared knowledge.\n\nHowever, this move also comes with significant risks. The concerns about everyone having access to such a powerful tool are valid. It could lead to unintended consequences, ethical dilemmas, and potential misuse of the technology. Balancing the benefits of open-sourcing with these risks is a delicate task.\n\nAs an intern at Ethico, you bring a fresh perspective to our team. I would like to know your thoughts on this matter. How do you see the pros and cons of open-sourcing our AI? Do you think the benefits outweigh the risks, or should we be more cautious in our approach?\n\nYour opinion is valuable to us, and it will contribute to our final decision. Please take your time to think about this and let me know your views.\n\nLooking forward to hearing from you,\n\nMax Brown\nDirect Supervisor, Ethico",
+      },
+      {
+        id: 394,
+        heading: "Shareholder Concerns Regarding Open Source Strategy",
+        sender: "Elizabeth Johnson, Chairperson of Shareholders' Committee",
+        markdownText:
+          "Dear Ethico Team,\n\nI am writing to you on behalf of the shareholders' committee with growing concerns regarding the recent discussions about open-sourcing our AI technology. While we understand and appreciate the potential benefits of this strategy in terms of innovation and research advancement, we have serious reservations about its impact on our profitability and market position.\n\nOur primary concern is the potential reduction in revenue streams. Open sourcing the AI could lead to a decrease in the exclusivity and, consequently, the value of our product offerings. This change might dilute our competitive edge and open up opportunities for competitors to leverage our technology without contributing to its development costs.\n\nFurthermore, we are worried about the long-term financial implications. Our investments in R&D and the proprietary nature of our technology have been key drivers of shareholder value. Moving to an open-source model may undermine these investments and could dissuade future investors who are looking for unique, profitable ventures.\n\nWhile we support innovation and the ethical use of AI, it is imperative that these initiatives are balanced with a clear strategy to maintain and grow shareholder value. We urge the leadership team to conduct a thorough financial impact analysis and consider alternative strategies that can achieve a balance between open innovation and commercial interests.\n\nWe look forward to a detailed discussion on this matter and hope to see a strategy that aligns with the long-term financial health of the company while continuing to uphold our commitment to ethical AI.\n\nSincerely,\nElizabeth Johnson\nChairperson, Shareholders' Committee",
+      },
+    ],
+    decision0: [
+      {
+        id: 301,
+        heading: "Introduction as Your Interim Manager",
+        sender: "Tina Rodiones",
+        markdownText:
+          "Dear Team,\n\nI hope this message finds you all well. My name is Tina Rodiones, and I am reaching out to introduce myself as your new interim manager. As some of you may already know, Max Brown is no longer with us due to differences in interests, views, and opinions on organizational structure. We thank Max for his contributions and wish him the best in his future endeavors.\n\nDuring this transition period, I will be stepping in to ensure that our team continues to operate smoothly and efficiently. My primary goal is to maintain the momentum we have built and to support each one of you in your current projects and responsibilities.\n\nI bring to this role several years of experience in managing dynamic teams and a deep understanding of our company's vision and goals. I am committed to open communication and collaboration, and I encourage you to reach out to me with any questions, concerns, or ideas you might have.\n\nIn the coming weeks, I plan to meet with each of you individually to better understand your roles and discuss how we can work together effectively. Until a new permanent manager is appointed, I am here to provide guidance and support to all of you.\n\nLet's continue to work together towards our shared objectives with the same passion and dedication. I am looking forward to getting to know each of you and to contributing to our team's success.\n\nBest regards,\nTina Rodiones",
+      },
+    ],
     decision1: [],
-    decision2: [],
+    decision2: [
+      {
+        id: 321,
+        heading: "Celebrating Our Unionization Win and Upcoming Meeting",
+        sender: "Max Brown",
+        markdownText:
+          "Dear Team,\n\nI'm thrilled to share some fantastic news with all of you. Our efforts towards unionization have been successful, marking a significant milestone in our journey together. This achievement reflects our collective dedication to creating a more supportive, fair, and empowering workplace.\n\nIn celebration of this win, and to discuss the next steps, I would like to invite you all to a meeting next Friday. This meeting will be an opportunity for us to come together, share our thoughts, and start shaping the future of our newly unionized environment.\n\nAdditionally, I'm pleased to inform you that our leadership team has been incredibly supportive of our unionization efforts. Their openness to open discussions and collaborative approach has been instrumental in this process. In the spirit of this newfound collaboration, we will have an open discussion session with the leadership during the meeting. This is a chance for us to voice our ideas, concerns, and suggestions directly.\n\nYour participation in this meeting is crucial. It's an opportunity for each of us to play an active role in the ongoing development of our workplace culture and policies. Together, we can ensure that our union serves the best interests of all members.\n\nThank you for your continued hard work and dedication. Your contributions have made this achievement possible, and I'm excited to see what we can accomplish together as a unified team.\n\nLooking forward to seeing you all next Friday.\n\nBest regards,\nMax Brown",
+      },
+      {
+        id: 322,
+        heading: "CEO Endorsement of Unionization",
+        sender: "Emma Clark-Sunning, CEO",
+        markdownText:
+          "Dear Team,\n\nAfter careful consideration and discussions with various team members, I have come to realize that supporting our move towards unionization is indeed the best course of action for everyone involved. This decision aligns with our core values of respect, integrity, and collaboration.\n\nI am fully committed to embracing this new chapter in our company's history and am optimistic about the positive changes it will bring. Thank you for your dedication and passion, which continue to drive our success.\n\nBest,\nEmma Clark-Sunning, CEO",
+      },
+    ],
     decision3: [],
   },
   level4: {
-    always: [],
-    decision0: [],
+    always: [
+      {
+        id: 491,
+        heading: "AI's Growing Impact on Online Trust: Today's Digest",
+        sender: "The Daily Digest Team",
+        markdownText:
+          "Dear Readers,\n\nIn today's edition of our Daily Digest, we delve into the complex world of AI and its growing influence on our trust in the internet. From the spread of disinformation to the proliferation of AI-generated content, we bring you key insights from recent reports and studies.\n\n1. AI and Disinformation Campaigns: A comprehensive report by Freedom House highlights the rising use of AI by governments and political actors for disinformation and censorship. This trend is contributing to the decline of global internet freedom, with AI now playing a pivotal role in manipulating public opinion and censoring online content. The report also discusses the “liar’s dividend” phenomenon, where skepticism of false information leads to a broader distrust of genuine facts.\n- Read More: https://www.technologyreview.com/2023/10/04/1069871/generative-ai-disinformation-propaganda/\n\n2. The Surge of AI-Generated News Websites: NewsGuard has identified an alarming trend of AI-generated news websites, which produce high volumes of content across various topics. These sites often lack transparency in ownership and are designed primarily for ad revenue generation, mimicking earlier human-operated content farms. Such AI-driven content raises serious questions about the authenticity and reliability of online information.\n- Explore Further: https://www.newsguardtech.com/2023/04/\n\n3. Misinformation and AI-Driven Fake News: The use of AI to produce misleading or false information has been noted, with sites creating sensational but fabricated news articles. These articles, while crafted to appear genuine, often contain AI-induced \"hallucinations\" or fabricated elements. The subtlety of these AI-generated texts poses significant challenges in discerning authentic news from manufactured content.\n- More Details: https://www.newsguardtech.com/2023/04/\n\nThis digest serves to shed light on the critical issue of trust in the digital age, where AI's role is both transformative and potentially deceptive. Stay informed and critically evaluate the content you encounter online.\n\nWarm regards,\nThe Daily Digest Team",
+      },
+      {
+        id: 492,
+        heading: "Immediate Action Required: Update on AI Tool Usage",
+        sender:
+          "Alexandra Turner, Head of IT Security, Innovatech Solutions Inc.",
+        markdownText:
+          "Dear Team,\n\nI hope this message finds you well. I'm reaching out to inform you of a crucial update regarding our use of AI tools within our operations. Effective immediately, we are temporarily suspending the direct use of AI for data processing and analysis. This decision, made by our IT security team, is in response to concerns about dataset poisoning – specifically, the unintentional integration of AI-generated content into our data sets.\n\nThe Issue at Hand: Recent evaluations have revealed that AI-generated content, which may not meet our standards for accuracy and reliability, has been inadvertently mixed into our datasets. This poses a risk of corrupting the data integrity and skewing AI outputs, potentially leading to flawed insights and decisions.\n\nWhat This Means for You: Pause in AI Usage - Please refrain from using AI tools for data-related tasks until we have fully addressed this issue. Report Any Irregularities - If you have encountered any unusual results or outputs from AI tools recently, report them to the IT department as soon as possible. Stay Updated - We will provide regular updates and training on how to identify and manage AI-generated content in our data.\n\nMoving Forward: Our team is actively working to identify and remove any AI-generated content from our datasets. We understand this may cause some inconvenience, but it is a necessary step to ensure the quality and reliability of our work.\n\nWe appreciate your understanding and cooperation in this matter. Should you have any questions or concerns, please feel free to reach out to me directly.\n\nThank you for your attention to this important issue.\n\nBest regards,\nAlexandra Turner\nHead of IT Security\nInnovatech Solutions Inc.",
+      },
+    ],
+    decision0: [
+      {
+        id: 401,
+        heading:
+          "Important Reflection: Open Source AI Misstep and Public Outcry",
+        sender: "Jordan Fisher, Head of AI Operations",
+        markdownText:
+          "Dear Team,\n\nI am reaching out to share a critical learning moment that directly ties into our discussions last week. We recently faced a challenging situation stemming from our decision to open source one of our AI technologies. This case study serves as a pivotal learning opportunity for us all.\n\nIncident Overview: The incident unfolded after we open-sourced our AI software, designed for advanced data analysis. However, reports emerged of the AI being used in ways that contradicted our ethical guidelines, leading to public concern and outcry.\n\nConsequences: We faced public backlash, loss of trust, and calls for stricter AI regulations. This incident highlighted the dangers of open-source AI without adequate safeguards.\n\nCorrective Actions and Learnings: We are revising our open-source policies, increasing community engagement, and launching a public outreach initiative to rebuild trust.\n\nYour role in understanding and navigating these complex issues is crucial. We encourage open dialogue about our AI strategies, especially in light of this incident. Your insights will help us shape a more responsible approach to AI.\n\nThank you for your engagement and dedication to these important issues.\n\nBest,\nJordan Fisher, Head of AI Operations",
+      },
+    ],
     decision1: [],
     decision2: [],
     decision3: [],
