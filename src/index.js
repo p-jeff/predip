@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Desktop from "./Desktop";
+import Notes from "./proper/Notes";
 
 function App() {
   localStorage.clear(); // the App component just insures that local storage is cleared on the initial launch of the App, without triggering through updates int he Desktop component

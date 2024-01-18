@@ -1,0 +1,63 @@
+.note {
+    --primary-color: #CC5500;
+    --background-color: #F5F4E9;
+    --border-radius: 0px;
+    --font: monospace;
+  }
+
+.window {
+    height: fit-content;
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adding shadow for depth */
+    overflow: hidden; /* Ensuring no overflow */
+    position: fixed;
+    color: var(--primary-color);
+    font-family: var(--font);
+  }
+
+  .minimize {
+    background-color: #f44336; /* Material Design red accent */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+    border: 0px;
+    line-height: 20px; /* Center the 'X' vertically */
+    user-select: none; /* Prevents text selection */
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+  }
+  
+  .window header {
+    color: var(--background-color);
+    border-bottom: 1px solid #333333;
+    padding: 15px;
+    background-color: var(--primary-color); /* Slightly lighter than the container for contrast */
+    border-radius: var(--border-radius);
+    position: relative;
+    cursor: move;
+  }
+
+  .window .content {
+    max-width: 100%;
+    height: 100%;
+    padding: 15px;
+    color: var(--primary-color);
+    overflow-y: auto; /* Allowing vertical scroll */
+    background-color: var(--background-color);
+    overflow-x: hidden;
+
+  }
+
+  /* Hover effect for interactive elements */
+  .div:hover,
+  .collapsed:hover,
+  .expanded:hover,
+  .delete-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
+  }
+  
+  

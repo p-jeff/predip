@@ -15,6 +15,7 @@ import Strike from "./Strike";
 import MoneyScore from "./MoneyScore";
 import axios from "axios";
 import FadingImage from "./FadingImage";
+import Notes from "./proper/Notes";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -72,6 +73,12 @@ const Desktop = () => {
       name: "Slick Work Chat",
       icon: <ChatIcon style={{ color: "black" }} className="iconSize" />,
       isMinimized: useState(true),
+      toggle: () => {},
+    },
+    {
+      name: "Notes",
+      icon: <ChatIcon style={{ color: "brown" }} className="iconSize" />,
+      isMinimized: useState(false),
       toggle: () => {},
     },
   ];
@@ -147,6 +154,7 @@ const Desktop = () => {
         isMinimized={apps[3].isMinimized[0]}
         onStrike={strikeHandler}
       />
+      <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} />
     </>
   );
 };
