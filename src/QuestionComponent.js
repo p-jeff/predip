@@ -6,7 +6,7 @@ import axios from "axios";
 import { Resizable } from "re-resizable";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const QuestionComponent = ({ isMinimized, onMinimize, onStrike }) => {
+const QuestionComponent = ({ isMinimized, onMinimize, onStrike, dailyTasksCompleted }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const currentQuestion = QA[currentQuestionIndex];
@@ -91,7 +91,7 @@ const QuestionComponent = ({ isMinimized, onMinimize, onStrike }) => {
             ))}
           </div>
 
-          <button onClick={()=>handleSubmit()} disabled={selectedAnswer === null}>
+          <button onClick={()=>handleSubmit()} disabled={selectedAnswer === null || !dailyTasksCompleted}>
             Submit
           </button>
         </Resizable>

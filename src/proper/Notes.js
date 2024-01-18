@@ -3,7 +3,7 @@ import Window from "./Window";
 
 import React, { useState, useEffect } from "react";
 
-const ChecklistComponent = () => {
+const ChecklistComponent = ({dailyTasksCompleted}) => {
   const [items, setItems] = useState([
     "Introduce myself to Olivia",
     "Check Instructions",
@@ -18,6 +18,7 @@ const ChecklistComponent = () => {
     }
   }, [checkedItems, items]);
 
+
   const handleCheck = (item) => {
     setCheckedItems((prev) => ({ ...prev, [item]: !prev[item] }));
   };
@@ -25,11 +26,12 @@ const ChecklistComponent = () => {
   const clearChecklist = () => {
     setItems([]);
     setCheckedItems({});
+    dailyTasksCompleted(false)
   };
 
   const onAllChecked = () => {
     console.log("All items are checked!");
-    // Add additional actions when all items are checked
+    dailyTasksCompleted(true)
   };
 
   return (
@@ -53,7 +55,7 @@ const ChecklistComponent = () => {
   );
 };
 
-const Notes = ({ isMinimized, onMinimize }) => {
+const Notes = ({ isMinimized, onMinimize, dailyTasksCompleted}) => {
   return (
     <Window
       isMinimized={isMinimized}
@@ -62,7 +64,7 @@ const Notes = ({ isMinimized, onMinimize }) => {
         height: 300,
       }}
       initialPosition={{ x: 20, y: 500 }}
-      content={<ChecklistComponent />}
+      content={<ChecklistComponent dailyTasksCompleted={dailyTasksCompleted}/>}
       tag={"note"}
       name={"Notes"}
       onMinimize={onMinimize}

@@ -85,6 +85,7 @@ const Desktop = () => {
   const [strikes, setStrikes] = useState(0);
   const [isStrike, setIsStrike] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
+  const [dailyTasksCompleted, setDailyTasksCompleted] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -153,8 +154,9 @@ const Desktop = () => {
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}
         onStrike={strikeHandler}
+        dailyTasksCompleted={dailyTasksCompleted}
       />
-      <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} />
+      <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} dailyTasksCompleted={setDailyTasksCompleted}/>
     </>
   );
 };
