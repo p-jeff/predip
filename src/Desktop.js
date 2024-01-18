@@ -14,6 +14,7 @@ import Chat from "./Chat";
 import Strike from "./Strike";
 import MoneyScore from "./MoneyScore";
 import axios from "axios";
+import FadingImage from "./FadingImage";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -76,6 +77,15 @@ const Desktop = () => {
   ];
   const [strikes, setStrikes] = useState(0);
   const [isStrike, setIsStrike] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   apps.forEach((app) => {
     app.toggle = () => app.isMinimized[1](!app.isMinimized[0]);
@@ -107,6 +117,8 @@ const Desktop = () => {
 
   return (
     <>
+      {showIntro ? <FadingImage /> : null}
+
       <MoneyScore strikes={strikes} />
       <div className="statusBar">
         <Clock />

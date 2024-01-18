@@ -106,6 +106,7 @@ const Strike = () => {
   return (
     <div className="strikeBody">
       <h1>Goodbye</h1>
+      <img src="logo.png" className="centeredImage"/>
       {data && (
         <Mail
           isStrike={true}

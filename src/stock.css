@@ -13,7 +13,7 @@
   cursor: move;
   position: fixed;
   width: 20vw;
-  z-index: 99999;
+  z-index: 999;
   font-family:'Times New Roman', Times, serif
 }
 
