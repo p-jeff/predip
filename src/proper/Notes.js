@@ -1,4 +1,4 @@
-import "./notes.css";
+
 import Window from "./Window";
 import React, { useState, useEffect } from "react";
 
@@ -8,15 +8,13 @@ const noteList = {
     "Check Instructions",
     "Explore all apps",
   ],
-  level1: ["Check out the map", "Check out the calendar"],
-  level2: [
-    "Introduce myself to Olivia",
-    "Check Instructions",
-    "Explore all apps",
-  ],
+  level1: ["A,B"],
+  level2: ["A", "B"],
+  level4: ["A", "B"],
+  level5: ["A", "B"],
 };
 
-const ChecklistComponent = ({ dailyTasksCompleted }) => {
+const NoteBody = ({ dailyTasksCompleted }) => {
   const [items, setItems] = useState(noteList.level0);
   const [checkedItems, setCheckedItems] = useState({});
 
@@ -42,11 +40,9 @@ const ChecklistComponent = ({ dailyTasksCompleted }) => {
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       clearChecklist();
-      setItems(noteList[data.currentLevelId])
+      setItems(noteList[data.currentLevelId]);
     };
-   
   }, []);
-
 
   const onAllChecked = () => {
     console.log("All items are checked!");
@@ -82,8 +78,8 @@ const Notes = ({ isMinimized, onMinimize, dailyTasksCompleted }) => {
         width: 250,
         height: 300,
       }}
-      initialPosition={{ x: 20, y: 500 }}
-      content={<ChecklistComponent dailyTasksCompleted={dailyTasksCompleted} />}
+      initialPosition={{ x: 1300, y: 500 }}
+      content={<NoteBody dailyTasksCompleted={dailyTasksCompleted} />}
       tag={"note"}
       name={"Notes"}
       onMinimize={onMinimize}

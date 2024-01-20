@@ -1,15 +1,13 @@
-
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
-import Draggable from "react-draggable";
-import mails from "./data/mailList";
-import { notificationPop } from "./boilerplate";
-import { Resizable } from "re-resizable";
-import MailIcon from "bootstrap-icons/icons/envelope.svg";
+import { notificationPop } from "../boilerplate";
+import mails from "/Users/johanneslotze/Documents/GitHub/my-app/src/data/mailList.js";
+import Window from "./Window.js";
+import './Mail.css';
 
 let isFirstRender = true;
 
-function MailEntry({ heading, markdownText, onDelete, sender }) {
+const MailEntry = ({heading, markdownText, onDelete, sender}) => {
   const [isExpanded, setIsExpanded] = useState(isFirstRender);
 
   useEffect(() => {
@@ -57,9 +55,9 @@ function MailEntry({ heading, markdownText, onDelete, sender }) {
       )}
     </div>
   );
-}
+};
 
-function Mail({ onMinimize, isMinimized, isStrike, strikeFile, position }) {
+const MailBody = ({ isStrike, strikeFile }) => {
   const [data, setData] = useState(
     () => JSON.parse(localStorage.getItem("mails")) || mails.level0.always
   );
@@ -105,50 +103,44 @@ function Mail({ onMinimize, isMinimized, isStrike, strikeFile, position }) {
     return () => {
       eventSource.close();
     };
-  }, []) ;
+  }, []);
 
   useEffect(() => {
     if (isStrike) {
       setData(strikeFile);
     }
   }, [isStrike]);
-  
+
   return (
-    <Draggable handle="header" defaultPosition={position}>
-      <div className="Mail" style={{ display: isMinimized ? "none" : "block" }}>
-        <header className="mailHeader">
-          <i className="bi bi-envelope-heart headerIcon" style={{color:"red"}}/>
-          Mail
-          <button className="minimize" onClick={onMinimize}>
-            &times;
-          </button>
-        </header>
-        <Resizable
-          defaultSize={{
-            width: 700,
-            height: 500,
-          }}
-        >
-          <div className="mailBody">
-            {data.toReversed().map(
-              (
-                item,
-                index // to reversed so that things are added at the top
-              ) => (
-                <MailEntry
-                  key={item.id}
-                  heading={item.heading}
-                  markdownText={item.markdownText}
-                  onDelete={() => handleDelete(item.id)}
-                  sender={item.sender}
-                />
-              )
-            )}
-          </div>
-        </Resizable>
-      </div>
-    </Draggable>
+    <div className="mailBody">
+      {data.toReversed().map((item, index) => (
+        <MailEntry
+          key={item.id}
+          heading={item.heading}
+          markdownText={item.markdownText}
+          onDelete={() => handleDelete(item.id)}
+          sender={item.sender}
+        />
+      ))}
+    </div>
   );
-}
+};
+
+const Mail = ({isStrike, strikeFile, onMinimize, isMinimized}) => {
+  return (
+    <Window
+      isMinimized={isMinimized}
+      onMinimize={onMinimize}
+      content={<MailBody isStrike={isStrike} strikeFile={strikeFile}/>}
+      name={"Mail"}
+      tag="mail"
+      initialSize={{
+        width: 700,
+        height: 500,
+      }}
+      initialPosition={{ x: 900, y: 20 }}
+    />
+  );
+};
 
 export default Mail;

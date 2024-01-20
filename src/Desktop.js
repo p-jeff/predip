@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as MailIcon } from "bootstrap-icons/icons/envelope-heart-fill.svg";
-import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/twitter.svg";
+import { ReactComponent as TwitterIcon } from "bootstrap-icons/icons/sign-intersection-y.svg";
 import { ReactComponent as StockComponentIcon } from "bootstrap-icons/icons/bar-chart-line.svg";
 import { ReactComponent as QuestinComponentIcon } from "bootstrap-icons/icons/compass.svg";
 import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text.svg";
+import { ReactComponent as NotesIcon } from "bootstrap-icons/icons/pencil-square.svg";
 import "./Desktop.css";
-import Mail from "./Mail";
+import Mail from "./proper/Mail";
 import Tweet from "./tweet";
 import StockComponent from "./StockComponent";
 import Clock from "./Clock";
@@ -39,7 +40,7 @@ const Icon = ({ icon, onClick, name }) => {
 const Desktop = () => {
   const apps = [
     {
-      name: "Tweeter",
+      name: "Y Message Board",
       icon: <TwitterIcon style={{ color: "blue" }} className="iconSize" />,
       isMinimized: useState(true),
       toggle: () => {},
@@ -72,12 +73,12 @@ const Desktop = () => {
     {
       name: "Slick Work Chat",
       icon: <ChatIcon style={{ color: "black" }} className="iconSize" />,
-      isMinimized: useState(true),
+      isMinimized: useState(false),
       toggle: () => {},
     },
     {
       name: "Notes",
-      icon: <ChatIcon style={{ color: "brown" }} className="iconSize" />,
+      icon: <NotesIcon style={{ color: "brown" }} className="iconSize" />,
       isMinimized: useState(false),
       toggle: () => {},
     },
@@ -147,7 +148,7 @@ const Desktop = () => {
       <Mail
         onMinimize={apps[1].toggle}
         isMinimized={apps[1].isMinimized[0]}
-        position={{ x: 50, y: 50 }}
+        position={{ x: 900, y: 20 }}
       />
       <StockComponent />
       <QuestionComponent

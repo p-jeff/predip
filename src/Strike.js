@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Strike.css";
-import Mail from "./Mail";
+import Mail from "./proper/Mail";
 import axios from "axios";
 import MatrixPlot from "./MatrixPlot";
 
@@ -112,7 +112,6 @@ const Strike = () => {
           isStrike={true}
           strikeFile={data}
           isMinimized={false}
-          position={{ x: 50, y: 50 }}
         />
       )}
       <MatrixPlot coordinates={compassPosition} level={level} />

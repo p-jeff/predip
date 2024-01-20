@@ -1,32 +1,3 @@
-.Mail {
-  margin: 10px; /* Centering the Tweeter */
-  border-radius: 5px; /* Rounded corners */
-  border: 1px solid #333333; /* Subtle border */
-  background-color: #1e1e1e; /* Dark grey background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Adding shadow for depth */
-  overflow: hidden; /* Ensuring no overflow */
-  position: fixed;
-}
-
-.mailHeader {
-  color: #ffffff;
-  border-bottom: 1px solid #333333;
-  padding: 15px;
-  position: relative;
-  background-color: #242424; /* Slightly lighter than the container for contrast */
-  cursor: move;
-}
-
-.mailBody {
-  max-width: 100%;
-  height: 100%;
-  color: #e0e0e0;
-  overflow-y: scroll; /* Allowing vertical scroll */
-  background-color: #1e1e1e; /* Consistent with main container */
-  overflow-x: hidden;
-  position: relative;
-}
-
 .expanded,
 .collapsed {
   border-radius: 1px;
@@ -37,6 +8,7 @@
   background-color: #262626; /* Slightly different from body for distinction */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for each tweet */
   width: 99%; /* full width of the viewport */
+  color: white;
 }
 
 .expaded:hover,
@@ -68,11 +40,6 @@
 
 .expanded h2{
   margin-left: 40px;
-}
-
-p {
-  margin-left: 3%;
-  margin-right: 3%;
 }
 
 .sender {
