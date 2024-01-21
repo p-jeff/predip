@@ -15,6 +15,14 @@
   --accent-color:  #FFF;
 }
 
+.ethics{
+  --primary-color: #494949;
+  --background-color: #7b7b7b;
+  --border-radius: 2px;
+  --padding: 5px;
+  --accent-color:  #FFF;
+}
+
 .window {
     height: fit-content;
     border-radius: 10px;

@@ -100,7 +100,7 @@ function Tweet({ onMinimize, isMinimized }) {
         style={{ display: isMinimized ? "none" : "block" }}
       >
         <header className="tweetHeader">
-          Tweeter
+          Y Message Board
           <button className="minimize" onClick={onMinimize}>
             &times;
           </button>

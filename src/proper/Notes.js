@@ -8,8 +8,9 @@ const noteList = {
     "Check Instructions",
     "Explore all apps",
   ],
-  level1: ["A,B"],
+  level1: ["Find out the uses of laws for AI", "Inform on the benefits of AI for lawmaking", "Inform about Legal Bot"],
   level2: ["A", "B"],
+  level3: ["A", "B"],
   level4: ["A", "B"],
   level5: ["A", "B"],
 };
@@ -35,14 +36,17 @@ const NoteBody = ({ dailyTasksCompleted }) => {
     dailyTasksCompleted(false);
   };
 
-  useEffect(() => {
-    const eventSource = new EventSource("http://localhost:3001/events");
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      clearChecklist();
-      setItems(noteList[data.currentLevelId]);
-    };
-  }, []);
+   useEffect(() => {
+     const eventSource = new EventSource("http://localhost:3001/events");
+     eventSource.onmessage = (event) => {
+       const data = JSON.parse(event.data);
+       clearChecklist();
+       setItems(noteList[data.currentLevelId]);
+     };
+     return () => {
+       eventSource.close();
+     };
+   }, []);
 
   const onAllChecked = () => {
     console.log("All items are checked!");

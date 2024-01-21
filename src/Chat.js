@@ -1,22 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./chat.css";
 import Draggable from "react-draggable";
 import { Resizable } from "re-resizable";
 
-const Chat = ({onMinimize, isMinimized}) => {
+const Chat = ({ onMinimize, isMinimized }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
+  const [currentPerson, setCurrentPerson] = useState(0);
+
+  const people = [
+    { index: 0, name: "Olivia Wilson", adress: "/olivia", available: true },
+    { index: 1, name: "Max Brown", adress: "/max", available: true },
+    { index: 2, name: "Tina Rodiones", adress: "/tina", available: false },
+  ];
 
   const sendMessageToOpenAI = async (message) => {
     setIsThinking(true);
     try {
-      const response = await axios.post("http://localhost:3001/api/chat", {
-        prompt: message,
-      });
-      setIsThinking(false);
+      const currentPersonEndpoint = people[currentPerson].adress;
+      const response = await axios.post(
+        `http://localhost:3001/api${currentPersonEndpoint}`,
+        {
+          prompt: message,
+        }
+      );
+
       if (response.data && response.data.length > 0) {
+        setIsThinking(false);
         return response.data;
       } else {
         console.error("Unexpected response structure:", response);
@@ -33,17 +45,50 @@ const Chat = ({onMinimize, isMinimized}) => {
     event.preventDefault();
     const userMessage = input;
     setInput("");
-    setMessages([...messages, { text: userMessage, sender: "user" }]);
+    setMessages([...messages, { content: userMessage, role: "user" }]);
     const botResponse = await sendMessageToOpenAI(userMessage);
     setMessages((messages) => [
       ...messages,
-      { text: botResponse, sender: "bot" },
+      { content: botResponse, role: "assistant" },
     ]);
+  };
+
+  useEffect(() => {
+    fetchMessagesForChat(people[0].index); // Assuming the first person is selected initially
+  }, []);
+
+  const fetchMessagesForChat = async (personIndex) => {
+    setIsThinking(true);
+    setMessages([]); // Clear existing messages before fetching new ones
+    try {
+      const personEndpoint = people[personIndex].adress;
+      const response = await axios.get(
+        `http://localhost:3001/api${personEndpoint}/messages`
+      );
+      console.log(response);
+      setIsThinking(false);
+      if (response.data && response.data.messages) {
+        setMessages(response.data.messages);
+      } else {
+        console.error("Unexpected response structure:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+      setIsThinking(false);
+    }
+  };
+
+  const handleChatSwitch = async (index) => {
+    setCurrentPerson(index);
+    await fetchMessagesForChat(index);
   };
 
   return (
     <Draggable handle="header">
-      <div className="chat-container" style={{ display: isMinimized ? "none" : "block" }}>
+      <div
+        className="chat-container"
+        style={{ display: isMinimized ? "none" : "block" }}
+      >
         <header className="chatHead">
           Slick - work connected
           <button className="minimize" onClick={onMinimize}>
@@ -58,18 +103,34 @@ const Chat = ({onMinimize, isMinimized}) => {
         >
           <div className="chatBody">
             <div className="selectionContainer">
-              <div className="chatSelection current">Olivia Wilson</div>
-              <div className="chatSelection not">Max Brown</div>
-              <div className="chatSelection not">Tina Rodiones</div>
-            </div>
-            <div className="messages">
-              {messages.map((message, index) => (
-                <div key={index} className={`message ${message.sender}`}>
-                  {message.text}
+              {people.map((person, index) => (
+                <div
+                  key={index}
+                  className={`chatSelection ${
+                    currentPerson === person.index ? "current" : "not"
+                  } ${person.available ? "" : "unavailable"}`}
+                  onClick={() => person.available && handleChatSwitch(index)}
+                >
+                  {person.name}
                 </div>
               ))}
-              {isThinking && <div className="thinking-animation"></div>}
             </div>
+            <div className="messages">
+              {messages
+                .filter((message) => message.role !== "system") // Exclude system messages
+                .map((message, index) => (
+                  <div key={index} className={`message ${message.role}`}>
+                    {message.content}
+                  </div>
+                ))}
+              {isThinking && (
+                <div className="message assistant">
+                  {" "}
+                  <div className="thinking-animation"></div>{" "}
+                </div>
+              )}
+            </div>
+
             <form onSubmit={handleSendMessage} className="input-form">
               <input
                 type="text"

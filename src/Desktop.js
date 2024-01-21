@@ -5,6 +5,7 @@ import { ReactComponent as StockComponentIcon } from "bootstrap-icons/icons/bar-
 import { ReactComponent as QuestinComponentIcon } from "bootstrap-icons/icons/compass.svg";
 import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text.svg";
 import { ReactComponent as NotesIcon } from "bootstrap-icons/icons/pencil-square.svg";
+import { ReactComponent as WatchdogIcon } from "bootstrap-icons/icons/eye-fill.svg";
 import "./Desktop.css";
 import Mail from "./proper/Mail";
 import Tweet from "./tweet";
@@ -17,6 +18,7 @@ import MoneyScore from "./MoneyScore";
 import axios from "axios";
 import FadingImage from "./FadingImage";
 import Notes from "./proper/Notes";
+import EthicsDash from "./proper/EthicsDash";
 
 const Tooltip = ({ children, text }) => {
   return (
@@ -82,6 +84,12 @@ const Desktop = () => {
       isMinimized: useState(false),
       toggle: () => {},
     },
+    {
+      name: 'DCP Watchdog',
+      icon: <WatchdogIcon style={{ color: "brown" }} className="iconSize" />,
+      isMinimized: useState(false),
+      toggle: () => {},
+    }
   ];
   const [strikes, setStrikes] = useState(0);
   const [isStrike, setIsStrike] = useState(false);
@@ -109,8 +117,16 @@ const Desktop = () => {
       return newStrikes;
     });
   };
-
-  // ... existing code ...
+  
+  useEffect(() => {
+    const eventSource = new EventSource("http://localhost:3001/events");
+    eventSource.onmessage = (event) => {
+      console.log(event);
+    };
+    return () => {
+        eventSource.close();
+      };
+  }, []);
 
   useEffect(() => {
     axios
@@ -158,6 +174,7 @@ const Desktop = () => {
         dailyTasksCompleted={dailyTasksCompleted}
       />
       <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} dailyTasksCompleted={setDailyTasksCompleted}/>
+      <EthicsDash onMinimize={apps[6].toggle} isMinimized={apps[6].isMinimized[0]} />
     </>
   );
 };

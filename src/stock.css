@@ -68,7 +68,9 @@
  /* transition: all 1s; */
 }
 
-
+.isUp{
+  font-size: 32px;
+}
 
 /* Animations */
 @keyframes blinking {
