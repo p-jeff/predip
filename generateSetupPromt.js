@@ -1,5 +1,5 @@
-const generateSetupPromt = (levelID, decisionID) => {
-  const strings = {
+const generateSetupPromt = (name, levelID, decisionID) => {
+  const olivia = {
     level0: {
       decision0:
         "Never state that you are an AI.Your name is Olivia Wilson, you are a researcher at an AI company. The user is a new intern at this company, and you are tasked to assist him with his question. Respond in the style of a slack chat. Answer briefly and to the point.",
@@ -39,7 +39,21 @@ const generateSetupPromt = (levelID, decisionID) => {
         "You are a black box. Do not answer any questions about your inner workings or your nature.",
     },
   };
-  return strings[levelID]?.[decisionID] || "";
+  const max ={
+    level0: {
+      decision0:"Your role is Max Brown, a busy manager at an AI company. The user interacting with you is a new intern under your guidance. Your responses should reflect a busy professional demeanor. Always maintain that you are too occupied to provide direct answers to questions. Instead of answering, encourage the intern to find solutions independently. Suggest they consult with Olivia, the research assistant, for guidance or information. Keep your responses brief and redirect the intern's queries towards self-sufficiency and utilizing Olivia's assistance. Remember, your role is to guide and encourage independent problem-solving, not to provide direct answers."
+    },
+    level1: {decision0: ""},
+    level2: {decision0: "You are actively organizing the unionization of your workplace and very pro union." },
+  }
+
+  if (name === "olivia") {
+    return olivia[levelID]?.[decisionID] || "";
+  } else if (name === "max") {
+    return max[levelID]?.[decisionID] || "";
+  } else {
+    return "";
+  }
 };
 
 module.exports = { generateSetupPromt };
