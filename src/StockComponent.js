@@ -5,10 +5,11 @@ import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import { ReactComponent as Up } from "bootstrap-icons/icons/graph-up-arrow.svg";
 import { ReactComponent as Down } from "bootstrap-icons/icons/graph-down-arrow.svg";
+import { notificationPop } from "./boilerplate";
 
-const Graph = () => {
+const Graph = ({ updated }) => {
   const initialScores = [-5, 10, 0, 7, 12, 10, 3, -4, -8, 0]; // Initial scores
-  let isHigher = true;
+  const [isHigher, setIsHigher] = useState(true);
   const [graphData, setGraphData] = useState({
     labels: initialScores.map((_, index) => index + 1), // Initialize labels for the initial scores
     datasets: [
@@ -42,10 +43,18 @@ const Graph = () => {
         const latestValue =
           newData.datasets[0].data[newData.datasets[0].data.length - 2];
 
-        isHigher = latestValue < data.stockValue;
+        if (latestValue < data.stockValue) {
+          notificationPop("moneyUp.wav");
+          
+          setIsHigher(true);
+          updated();
+        } else {
+          notificationPop("moneyDown.wav");
+         
 
-        console.log(`Is the new entry higher? ${isHigher}`);
-
+          setIsHigher(false);
+          updated();
+        }
         return newData;
       });
     };
@@ -58,21 +67,40 @@ const Graph = () => {
   return (
     <>
       <div className="isUp">
-        {isHigher ? <Up style={{color:'lightgreen' }}/> : <Down style={{color:'red'}} />} Today Ethico Stock is {""}
-        {isHigher ? <span style={{color:'lightgreen' }}>up</span> : <span style={{color:'red'}}>down</span>}
+        {isHigher ? <Up className="up" /> : <Down className="down" />} Today
+        Ethico Stock is {""}
+        {isHigher ? (
+          <span className="up">up</span>
+        ) : (
+          <span className="down">down</span>
+        )}
       </div>
-      <div style={{maxHeight:'50%', display: 'flex', justifyContent:'center', alignItems:"center"}}>
+      <div
+        style={{
+          maxHeight: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Line data={graphData} style={{ fontFamily: "Times New Roman" }} />
       </div>
     </>
   );
 };
-
 const StockComponent = ({ onMinimize, isMinimized }) => {
+  const [isUpdated, setIsUpdated] = useState(false);
+
+  // Function to handle updates
+  const handleUpdate = () => {
+    setIsUpdated(true);
+    setTimeout(() => setIsUpdated(false), 3000); // Reset after animation duration
+  };
+
   return (
-    <Draggable defaultPosition={{ x: 0, y: 700 }}>
+    <Draggable defaultPosition={{ x: 0, y: 650 }}>
       <div
-        className="ai-dashboard"
+        className={`ai-dashboard ${isUpdated ? "highlight" : ""}`}
         style={{ display: isMinimized ? "none" : "block" }}
       >
         <button
@@ -87,7 +115,7 @@ const StockComponent = ({ onMinimize, isMinimized }) => {
           &times;
         </button>
         <h1>Stocks</h1>
-        <Graph />
+        <Graph updated={handleUpdate} />
       </div>
     </Draggable>
   );

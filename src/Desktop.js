@@ -75,7 +75,7 @@ const Desktop = () => {
     {
       name: "Slick Work Chat",
       icon: <ChatIcon style={{ color: "black" }} className="iconSize" />,
-      isMinimized: useState(false),
+      isMinimized: useState(true),
       toggle: () => {},
     },
     {
@@ -85,11 +85,11 @@ const Desktop = () => {
       toggle: () => {},
     },
     {
-      name: 'DCP Watchdog',
+      name: "DCP Watchdog",
       icon: <WatchdogIcon style={{ color: "brown" }} className="iconSize" />,
-      isMinimized: useState(false),
+      isMinimized: useState(true),
       toggle: () => {},
-    }
+    },
   ];
   const [strikes, setStrikes] = useState(0);
   const [isStrike, setIsStrike] = useState(false);
@@ -113,12 +113,13 @@ const Desktop = () => {
     setStrikes((prevStrikes) => {
       const newStrikes = prevStrikes + 1;
       if (newStrikes === 2) {
+        if (!apps[6].isMinimized[0]) apps[6].toggle();
         setIsStrike(true);
       }
       return newStrikes;
     });
   };
-  
+
   useEffect(() => {
     const eventSource = new EventSource("http://localhost:3001/events");
     eventSource.onmessage = (event) => {
@@ -126,8 +127,8 @@ const Desktop = () => {
       setEvent(data);
     };
     return () => {
-        eventSource.close();
-      };
+      eventSource.close();
+    };
   }, []);
 
   useEffect(() => {
@@ -175,8 +176,16 @@ const Desktop = () => {
         onStrike={strikeHandler}
         dailyTasksCompleted={dailyTasksCompleted}
       />
-      <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} dailyTasksCompleted={setDailyTasksCompleted}/>
-      <EthicsDash onMinimize={apps[6].toggle} isMinimized={apps[6].isMinimized[0]} event={event}/>
+      <Notes
+        onMinimize={apps[5].toggle}
+        isMinimized={apps[5].isMinimized[0]}
+        dailyTasksCompleted={setDailyTasksCompleted}
+      />
+      <EthicsDash
+        onMinimize={apps[6].toggle}
+        isMinimized={apps[6].isMinimized[0]}
+        event={event}
+      />
     </>
   );
 };

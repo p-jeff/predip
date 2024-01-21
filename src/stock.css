@@ -72,16 +72,43 @@
   font-size: 32px;
 }
 
-/* Animations */
-@keyframes blinking {
-  0%, 100% { color: #26a69a; }
-  50% { color: #ef5350; }
+.up {
+  color: lightgreen;
+  animation: blink 1s linear infinite;
 }
 
-@keyframes slide {
-  0%, 100% { background-color: #26a69a; }
-  50% { background-color: #ef5350; }
+
+
+.down {
+  color: red;
+  animation: blink 1s linear infinite;
 }
+
+.highlight {
+    animation: bgBlink 3s; /* Adjust duration and iteration count as needed */
+  }
+
+
+/* Animations */
+
+@keyframes blink {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.3;
+  }
+}
+@keyframes bgBlink {
+  0% { background-color: #002a08; }
+  20% { background-color: yellow; }
+  40% { background-color: #002a08; }
+  60% { background-color: yellow; }
+  80% { background-color: #002a08; }
+  90% { background-color: yellow; }
+  100% { background-color: #002a08; }
+}
+
 
 @keyframes graphAnim {
   0%, 100% { height: 100%; }

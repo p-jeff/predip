@@ -1,0 +1,15 @@
+@keyframes ethBlink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        color: blue
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinking {
+    animation: ethBlink 3s infinite;
+}

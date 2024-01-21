@@ -5,7 +5,6 @@ import Draggable from "react-draggable";
 import mails from "./data/mailList";
 import { notificationPop } from "./boilerplate";
 import { Resizable } from "re-resizable";
-import MailIcon from "bootstrap-icons/icons/envelope.svg";
 
 let isFirstRender = true;
 

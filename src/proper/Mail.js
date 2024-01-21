@@ -97,7 +97,9 @@ const MailBody = ({ isStrike, strikeFile }) => {
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      handleMore(data);
+      setTimeout(() => {
+        handleMore(data);
+      }, 2000);
     };
 
     return () => {

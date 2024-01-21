@@ -3,5 +3,4 @@ const notificationPop = (link) => {
   sound.play();
 };
 
-
 export { notificationPop };

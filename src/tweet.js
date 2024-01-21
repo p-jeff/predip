@@ -85,7 +85,8 @@ function Tweet({ onMinimize, isMinimized }) {
     eventSource.onmessage = (event) => {
       console.log('Tweet has received a message')
       const data = JSON.parse(event.data);
-      handleMore(data);
+     
+      setTimeout(() => {handleMore(data)}, 2000);
     };
 
     return () => {
