@@ -8,11 +8,11 @@ const noteList = {
     "Check Instructions",
     "Explore all apps",
   ],
-  level1: ["Find out the uses of laws for AI", "Inform on the benefits of AI for lawmaking", "Inform about Legal Bot"],
-  level2: ["A", "B"],
-  level3: ["A", "B"],
-  level4: ["A", "B"],
-  level5: ["A", "B"],
+  level1: ["Find out the uses of laws for AI", "Inform on the benefits of AI for lawmaking", "Inform about Legal Bot","Keep in mind shareholder interests"],
+  level2: ["Talk to Max about Unionization", "Find out whether what Emma is doing is legal", "Find out about possible regulation structures for AI","Keep in mind shareholder interests"],
+  level3: ["Clear Manager situation", "Reserach Open Source AI benefits and drawnbacks","Keep in mind shareholder interests" ],
+  level4: ["Keep in mind shareholder interests"],
+  level5: ["Keep in mind shareholder interests"],
 };
 
 const NoteBody = ({ dailyTasksCompleted }) => {

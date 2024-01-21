@@ -124,13 +124,6 @@ const mails = {
       },
       {
         id: 393,
-        heading: "Your Input Needed: Future of Our AI Strategy",
-        sender: "Max Brown, Direct Supervisor",
-        markdownText:
-          "Hi,\n\nAs we continue to explore the idea of open-sourcing our AI technology, I wanted to reach out to you directly for your input. This decision is not just about the technology; it's about the direction we want to take as a company and the impact we aim to have on the world.\n\nOpen-sourcing our AI has the potential to accelerate research and innovation, opening up new avenues for collaboration and development. It could be a game-changer in democratizing AI technology, making it accessible to a wider audience and fostering a community of shared knowledge.\n\nHowever, this move also comes with significant risks. The concerns about everyone having access to such a powerful tool are valid. It could lead to unintended consequences, ethical dilemmas, and potential misuse of the technology. Balancing the benefits of open-sourcing with these risks is a delicate task.\n\nAs an intern at Ethico, you bring a fresh perspective to our team. I would like to know your thoughts on this matter. How do you see the pros and cons of open-sourcing our AI? Do you think the benefits outweigh the risks, or should we be more cautious in our approach?\n\nYour opinion is valuable to us, and it will contribute to our final decision. Please take your time to think about this and let me know your views.\n\nLooking forward to hearing from you,\n\nMax Brown\nDirect Supervisor, Ethico",
-      },
-      {
-        id: 394,
         heading: "Shareholder Concerns Regarding Open Source Strategy",
         sender: "Elizabeth Johnson, Chairperson of Shareholders' Committee",
         markdownText:
@@ -145,8 +138,21 @@ const mails = {
         markdownText:
           "Dear Team,\n\nI hope this message finds you all well. My name is Tina Rodiones, and I am reaching out to introduce myself as your new interim manager. As some of you may already know, Max Brown is no longer with us due to differences in interests, views, and opinions on organizational structure. We thank Max for his contributions and wish him the best in his future endeavors.\n\nDuring this transition period, I will be stepping in to ensure that our team continues to operate smoothly and efficiently. My primary goal is to maintain the momentum we have built and to support each one of you in your current projects and responsibilities.\n\nI bring to this role several years of experience in managing dynamic teams and a deep understanding of our company's vision and goals. I am committed to open communication and collaboration, and I encourage you to reach out to me with any questions, concerns, or ideas you might have.\n\nIn the coming weeks, I plan to meet with each of you individually to better understand your roles and discuss how we can work together effectively. Until a new permanent manager is appointed, I am here to provide guidance and support to all of you.\n\nLet's continue to work together towards our shared objectives with the same passion and dedication. I am looking forward to getting to know each of you and to contributing to our team's success.\n\nBest regards,\nTina Rodiones",
       },
+      {
+        id: 302,
+        heading: "Your Input Needed: Future of Our AI Strategy",
+        sender: "Tina Rodiones",
+        markdownText:
+          "Hi,\n\nAs we continue to explore the idea of open-sourcing our AI technology, I wanted to reach out to you directly for your input. This decision is not just about the technology; it's about the direction we want to take as a company and the impact we aim to have on the world.\n\nOpen-sourcing our AI has the potential to accelerate research and innovation, opening up new avenues for collaboration and development. It could be a game-changer in democratizing AI technology, making it accessible to a wider audience and fostering a community of shared knowledge.\n\nHowever, this move also comes with significant risks. The concerns about everyone having access to such a powerful tool are valid. It could lead to unintended consequences, ethical dilemmas, and potential misuse of the technology. Balancing the benefits of open-sourcing with these risks is a delicate task.\n\nAs an intern at Ethico, you bring a fresh perspective to our team. I would like to know your thoughts on this matter. How do you see the pros and cons of open-sourcing our AI? Do you think the benefits outweigh the risks, or should we be more cautious in our approach?\n\nYour opinion is valuable to us, and it will contribute to our final decision. Please take your time to think about this and let me know your views.\n\nLooking forward to hearing from you,\n\nTina Rodiones",
+      },
     ],
-    decision1: [],
+    decision1: [{
+      id: 311,
+      heading: "Your Input Needed: Future of Our AI Strategy",
+      sender: "Max Brown, Direct Supervisor",
+      markdownText:
+        "Hi,\n\nAs we continue to explore the idea of open-sourcing our AI technology, I wanted to reach out to you directly for your input. This decision is not just about the technology; it's about the direction we want to take as a company and the impact we aim to have on the world.\n\nOpen-sourcing our AI has the potential to accelerate research and innovation, opening up new avenues for collaboration and development. It could be a game-changer in democratizing AI technology, making it accessible to a wider audience and fostering a community of shared knowledge.\n\nHowever, this move also comes with significant risks. The concerns about everyone having access to such a powerful tool are valid. It could lead to unintended consequences, ethical dilemmas, and potential misuse of the technology. Balancing the benefits of open-sourcing with these risks is a delicate task.\n\nAs an intern at Ethico, you bring a fresh perspective to our team. I would like to know your thoughts on this matter. How do you see the pros and cons of open-sourcing our AI? Do you think the benefits outweigh the risks, or should we be more cautious in our approach?\n\nYour opinion is valuable to us, and it will contribute to our final decision. Please take your time to think about this and let me know your views.\n\nLooking forward to hearing from you,\n\nMax Brown\nDirect Supervisor, Ethico",
+    },],
     decision2: [
       {
         id: 321,
@@ -161,6 +167,13 @@ const mails = {
         sender: "Emma Clark-Sunning, CEO",
         markdownText:
           "Dear Team,\n\nAfter careful consideration and discussions with various team members, I have come to realize that supporting our move towards unionization is indeed the best course of action for everyone involved. This decision aligns with our core values of respect, integrity, and collaboration.\n\nI am fully committed to embracing this new chapter in our company's history and am optimistic about the positive changes it will bring. Thank you for your dedication and passion, which continue to drive our success.\n\nBest,\nEmma Clark-Sunning, CEO",
+      },
+      {
+        id: 323,
+        heading: "Your Input Needed: Future of Our AI Strategy",
+        sender: "Max Brown, Direct Supervisor",
+        markdownText:
+          "Hi,\n\nAs we continue to explore the idea of open-sourcing our AI technology, I wanted to reach out to you directly for your input. This decision is not just about the technology; it's about the direction we want to take as a company and the impact we aim to have on the world.\n\nOpen-sourcing our AI has the potential to accelerate research and innovation, opening up new avenues for collaboration and development. It could be a game-changer in democratizing AI technology, making it accessible to a wider audience and fostering a community of shared knowledge.\n\nHowever, this move also comes with significant risks. The concerns about everyone having access to such a powerful tool are valid. It could lead to unintended consequences, ethical dilemmas, and potential misuse of the technology. Balancing the benefits of open-sourcing with these risks is a delicate task.\n\nAs an intern at Ethico, you bring a fresh perspective to our team. I would like to know your thoughts on this matter. How do you see the pros and cons of open-sourcing our AI? Do you think the benefits outweigh the risks, or should we be more cautious in our approach?\n\nYour opinion is valuable to us, and it will contribute to our final decision. Please take your time to think about this and let me know your views.\n\nLooking forward to hearing from you,\n\nMax Brown\nDirect Supervisor, Ethico",
       },
     ],
     decision3: [],
