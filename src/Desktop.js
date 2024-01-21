@@ -95,6 +95,7 @@ const Desktop = () => {
   const [isStrike, setIsStrike] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [dailyTasksCompleted, setDailyTasksCompleted] = useState(false);
+  const [event, setEvent] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -121,7 +122,8 @@ const Desktop = () => {
   useEffect(() => {
     const eventSource = new EventSource("http://localhost:3001/events");
     eventSource.onmessage = (event) => {
-      console.log(event);
+      const data = JSON.parse(event.data);
+      setEvent(data);
     };
     return () => {
         eventSource.close();
@@ -174,7 +176,7 @@ const Desktop = () => {
         dailyTasksCompleted={dailyTasksCompleted}
       />
       <Notes onMinimize={apps[5].toggle} isMinimized={apps[5].isMinimized[0]} dailyTasksCompleted={setDailyTasksCompleted}/>
-      <EthicsDash onMinimize={apps[6].toggle} isMinimized={apps[6].isMinimized[0]} />
+      <EthicsDash onMinimize={apps[6].toggle} isMinimized={apps[6].isMinimized[0]} event={event}/>
     </>
   );
 };
