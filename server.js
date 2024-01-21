@@ -200,7 +200,6 @@ app.get("/api/reset", (req, res) => {
   res.json({ message: "Reset" });
 });
 
-
 const connectedClients = [];
 
 app.get("/events", (req, res) => {
@@ -236,7 +235,6 @@ indexChangeEmitter.on("indexChanged", () => {
 });
 
 const sendEvent = () => {
-  // Calculate and prepare the data to be sent
   const stockValue = calculateStock(currentLevelId, currentDecisionId);
   const compassPosition = calculateCompass(currentLevelId, currentDecisionId);
 
