@@ -58,7 +58,7 @@ const Desktop = () => {
       icon: (
         <StockComponentIcon style={{ color: "green" }} className="iconSize" />
       ),
-      isMinimized: useState(true),
+      isMinimized: useState(false),
       toggle: () => {},
     },
     {
@@ -169,7 +169,7 @@ const Desktop = () => {
         isMinimized={apps[1].isMinimized[0]}
         position={{ x: 900, y: 20 }}
       />
-      <StockComponent />
+      <StockComponent onMinimize={apps[2].toggle} isMinimized={apps[2].isMinimized[0]} event={event} />
       <QuestionComponent
         onMinimize={apps[3].toggle}
         isMinimized={apps[3].isMinimized[0]}
@@ -180,11 +180,6 @@ const Desktop = () => {
         onMinimize={apps[5].toggle}
         isMinimized={apps[5].isMinimized[0]}
         dailyTasksCompleted={setDailyTasksCompleted}
-      />
-      <EthicsDash
-        onMinimize={apps[6].toggle}
-        isMinimized={apps[6].isMinimized[0]}
-        event={event}
       />
     </>
   );

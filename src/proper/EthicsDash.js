@@ -16,11 +16,10 @@ const EthicsDashBody = ({ event, isMinimized }) => {
 
   function processNumber(num) {
     if (Math.abs(num) > 5) {
-        return Math.sign(num) * 7;
+      return Math.sign(num) * 7;
     }
     return num;
-}
-
+  }
 
   useEffect(() => {
     if (event) {
@@ -83,7 +82,7 @@ const EthicsDash = ({ onMinimize, isMinimized, event }) => {
         width: 320,
         height: 160,
       }}
-      initialPosition={{ x: 1400, y: 50 }}
+      initialPosition={{ x: 10, y: 650 }}
     />
   );
 };

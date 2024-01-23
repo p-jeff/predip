@@ -6,6 +6,7 @@ import "chart.js/auto";
 import { ReactComponent as Up } from "bootstrap-icons/icons/graph-up-arrow.svg";
 import { ReactComponent as Down } from "bootstrap-icons/icons/graph-down-arrow.svg";
 import { notificationPop } from "./boilerplate";
+import EthicsDash from "./proper/EthicsDash";
 
 const Graph = ({ updated }) => {
   const initialScores = [-5, 10, 0, 7, 12, 10, 3, -4, -8, 0]; // Initial scores
@@ -45,12 +46,11 @@ const Graph = ({ updated }) => {
 
         if (latestValue < data.stockValue) {
           notificationPop("moneyUp.wav");
-          
+
           setIsHigher(true);
           updated();
         } else {
           notificationPop("moneyDown.wav");
-         
 
           setIsHigher(false);
           updated();
@@ -88,7 +88,7 @@ const Graph = ({ updated }) => {
     </>
   );
 };
-const StockComponent = ({ onMinimize, isMinimized }) => {
+const StockComponent = ({ onMinimize, isMinimized, event }) => {
   const [isUpdated, setIsUpdated] = useState(false);
 
   // Function to handle updates
@@ -97,19 +97,17 @@ const StockComponent = ({ onMinimize, isMinimized }) => {
     setTimeout(() => setIsUpdated(false), 3000); // Reset after animation duration
   };
 
-  return (
+  return isMinimized ? (
+    <EthicsDash onMinimize={onMinimize} event={event} />
+  ) : (
     <Draggable defaultPosition={{ x: 0, y: 650 }}>
-      <div
-        className={`ai-dashboard ${isUpdated ? "highlight" : ""}`}
-        style={{ display: isMinimized ? "none" : "block" }}
-      >
+      <div className={`ai-dashboard ${isUpdated ? "highlight" : ""}`}>
         <button
           className="minimize"
           onClick={onMinimize}
           style={{
-            pointerEvents: "none",
             backgroundColor: "grey",
-            cursor: "not-allowed",
+            cursor: "not-allowed"
           }}
         >
           &times;
