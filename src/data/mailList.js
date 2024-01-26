@@ -6,7 +6,7 @@ const mails = {
         heading: "Welcome Aboard",
         sender: "Max Brown",
         markdownText:
-          "Hey,\n\nWelcome aboard, it's great having you on the team. I know you're currently working remotely, but I'm looking forward to seeing you in the office soon.\n\nWe're excited to have you join us in the Ethics Team. IT should have already reached out with instructions for the EthCompass software, and I hope they've set up your Slack Chat as well. Keep in mind that we're working on the live beta version of ChatAI. It's always interesting to keep an eye on Twitter to see how people are reacting to it.\n\nYour research assistant, Olivia, is always available if you have any questions. I suggest reaching out to her and introducing yourself!\n\nI'll be checking in with you daily to see how you're progressing. Looking forward to seeing your contributions and hope you have a fantastic first week.\n\nBest,\nMax Brown",
+          "Hey,\n\nWelcome aboard, it's great having you on the team. I know you're currently working remotely, but I'm looking forward to seeing you in the office soon.\n\nWe're excited to have you join us in the Ethics Team. IT should have already reached out with instructions for the EthCompass software, and I hope they've set up your Slick Chat as well. Keep in mind that we're working on the live beta version of ChatAI. It's always interesting to keep an eye on Y to see how people are reacting to it.\n\nYour research assistant, Olivia, is always available if you have any questions. I suggest reaching out to her and introducing yourself!\n\nI'll be checking in with you daily to see how you're progressing. Looking forward to seeing your contributions and hope you have a fantastic first week.\n\nBest,\nMax Brown",
       },
       {
         id: 0o2,
@@ -38,7 +38,7 @@ const mails = {
         heading: "AI Insights and Office Meetup",
         sender: "Simone",
         markdownText:
-          "Hey,\n\nSimone here, we have met briefly during the onboarding process if you remember. I am working remote at the moment but I will stop by the office eventually. I know it can be overwhelming at first but Olivia is a true help. I would really advise you to keep up to date on AI debate topics, Twitter is truly the best way to keep up with what is trending. Emma encourages everyone to use it. Also, during my time here I have made a large collection of email-newsletters by AI startups and alike. This also just helps to get some knowledge on the different topics from different sources. Do not get me wrong, I love Olivia, and she has helped me a lot so far, but one day she is bound to get it wrong. Hope to see you around the office soon!\n\n- Simone",
+          "Hey,\n\nSimone here, we have met briefly during the onboarding process if you remember. I am working remote at the moment but I will stop by the office eventually. I know it can be overwhelming at first but Olivia is a true help. I would really advise you to keep up to date on AI debate topics, Y is truly the best way to keep up with what is trending. Emma encourages everyone to use it. Also, during my time here I have made a large collection of email-newsletters by AI startups and alike. This also just helps to get some knowledge on the different topics from different sources. Do not get me wrong, I love Olivia, and she has helped me a lot so far, but one day she is bound to get it wrong. Hope to see you around the office soon!\n\n- Simone",
       },
 
       {

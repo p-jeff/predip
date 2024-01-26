@@ -52,7 +52,7 @@ const MatrixPlot = ({ coordinates, level }) => {
           <text x="-5" y="220" className="axis-tag">No AI</text>
           <text x="330" y="220" className="axis-tag">Singularity</text>
           <text x="210" y="400" className="axis-tag">External Regulation</text>
-          <text x="210" y="10" className="axis-tag">Self Regulation</text>
+          <text x="210" y="10" className="axis-tag">Self-Determination</text>
         </svg>
       </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import { notificationPop } from "../boilerplate";
-import mails from "/Users/johanneslotze/Documents/GitHub/my-app/src/data/mailList.js";
+import mails from "../data/mailList.js";
 import Window from "./Window.js";
 import './Mail.css';
 
