@@ -1,5 +1,5 @@
 
-import Window from "./Window";
+import Window from "../Window";
 import React, { useState, useEffect } from "react";
 
 const noteList = {

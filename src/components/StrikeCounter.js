@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styling/StrikeCounter.css";
+import "../styling/StrikeCounter.css";
 
 const StrikeCounter = ({strikes}) => {
   const [strikeArray, setStrikeArray] = useState([]);

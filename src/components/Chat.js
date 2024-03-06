@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./styling/chat.css";
-import Draggable from "react-draggable";
-import { Resizable } from "re-resizable";
+import "../styling/chat.css";
+import Window from "../Window.js";
 
-const Chat = ({ onMinimize, isMinimized }) => {
+const ChatBody = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
@@ -82,67 +81,63 @@ const Chat = ({ onMinimize, isMinimized }) => {
     setCurrentPerson(index);
     await fetchMessagesForChat(index);
   };
-
   return (
-    <Draggable handle="header">
-      <div
-        className="chat-container"
-        style={{ display: isMinimized ? "none" : "block" }}
-      >
-        <header className="chatHead">
-          Slick - work connected
-          <button className="minimize" onClick={onMinimize}>
-            &times;
-          </button>
-        </header>
-        <Resizable
-          defaultSize={{
-            width: 750,
-            height: 500,
-          }}
-        >
-          <div className="chatBody">
-            <div className="selectionContainer">
-              {people.map((person, index) => (
-                <div
-                  key={index}
-                  className={`chatSelection ${
-                    currentPerson === person.index ? "current" : "not"
-                  } ${person.available ? "" : "unavailable"}`}
-                  onClick={() => person.available && handleChatSwitch(index)}
-                >
-                  {person.name}
-                </div>
-              ))}
-            </div>
-            <div className="messages">
-              {messages
-                .filter((message) => message.role !== "system") // Exclude system messages
-                .map((message, index) => (
-                  <div key={index} className={`message ${message.role}`}>
-                    {message.content}
-                  </div>
-                ))}
-              {isThinking && (
-                <div className="message assistant">
-                  {" "}
-                  <div className="thinking-animation"></div>{" "}
-                </div>
-              )}
-            </div>
-
-            <form onSubmit={handleSendMessage} className="input-form">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-              <button type="submit">Send</button>
-            </form>
+    <div className="chatBody">
+      <div className="selectionContainer">
+        {people.map((person, index) => (
+          <div
+            key={index}
+            className={`chatSelection ${
+              currentPerson === person.index ? "current" : "not"
+            } ${person.available ? "" : "unavailable"}`}
+            onClick={() => person.available && handleChatSwitch(index)}
+          >
+            {person.name}
           </div>
-        </Resizable>
+        ))}
       </div>
-    </Draggable>
+      <div className="messages">
+        {messages
+          .filter((message) => message.role !== "system") // Exclude system messages
+          .map((message, index) => (
+            <div key={index} className={`message ${message.role}`}>
+              {message.content}
+            </div>
+          ))}
+        {isThinking && (
+          <div className="message assistant">
+            {" "}
+            <div className="thinking-animation"></div>{" "}
+          </div>
+        )}
+      </div>
+
+      <form onSubmit={handleSendMessage} className="input-form">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+};
+
+const Chat = ({ isMinimized, onMinimize }) => {
+  return (
+    <Window
+      isMinimized={isMinimized}
+      initialSize={{
+        width: 800,
+        height: 500,
+      }}
+      initialPosition={{ x: 200, y: 200 }}
+      content={<ChatBody />}
+      tag={"chat"}
+      name={"Chat"}
+      onMinimize={onMinimize}
+    />
   );
 };
 

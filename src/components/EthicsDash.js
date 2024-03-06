@@ -1,7 +1,7 @@
-import Window from "./Window";
+import Window from "../Window.js";
 import React, { useEffect, useState } from "react";
 import { notificationPop } from "../boilerplate";
-import "./ethics.css";
+import "../styling/ethics.css";
 
 const EthicsDashBody = ({ event, isMinimized }) => {
   const [ethScore, setEthScore] = useState(50);

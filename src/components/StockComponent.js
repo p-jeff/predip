@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./styling/stock.css";
+import "../styling/stock.css";
 import Draggable from "react-draggable";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import { ReactComponent as Up } from "bootstrap-icons/icons/graph-up-arrow.svg";
 import { ReactComponent as Down } from "bootstrap-icons/icons/graph-down-arrow.svg";
-import { notificationPop } from "./boilerplate";
-import EthicsDash from "./proper/EthicsDash";
+import { notificationPop } from "../boilerplate";
+import EthicsDash from "../components/EthicsDash";
 
 const Graph = ({ updated }) => {
   const initialScores = [-5, 10, 0, 7, 12, 10, 3, -4, -8, 0]; // Initial scores

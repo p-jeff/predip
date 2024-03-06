@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import { notificationPop } from "../boilerplate";
 import mails from "../data/mailList.js";
-import Window from "./Window.js";
-import './Mail.css';
+import Window from "../Window.js";
+import '../styling/Mail.css';
 
 let isFirstRender = true;
 

@@ -32,7 +32,16 @@
   --font: Tahoma;
 }
 
-.window {
+.chat{
+  --background-color: #2d142c;
+  --border-radius: 1px;
+  --padding: 0px;
+  --accent-color: #ee4540;
+  --primary-color: #510a32;
+}
+
+.window {  
+  background-color: #f9f9f9;
   height: fit-content;
   border-radius: 10px;
   border: 1px solid var(--primary-color);

@@ -1,5 +1,5 @@
 import React from "react";
-import "./window.css";
+import "./styling/window.css";
 import Draggable from "react-draggable";
 import { Resizable } from "re-resizable";
 

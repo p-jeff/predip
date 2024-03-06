@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styling/AICompass.css";
+import "../styling/AICompass.css";
 import Draggable from "react-draggable";
 
 const AICompass = ({ coordinates, level }) => {
@@ -18,7 +18,6 @@ const AICompass = ({ coordinates, level }) => {
         svgX = (coordinates[0]  + 4) * 50; // Scale and shift
         svgY = (4 - coordinates[1]) * 50; // Invert y-axis, scale and shift
     }
-
     setPoint({ x: svgX, y: svgY });
   };
 

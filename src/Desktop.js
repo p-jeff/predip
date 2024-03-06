@@ -7,18 +7,17 @@ import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text
 import { ReactComponent as NotesIcon } from "bootstrap-icons/icons/pencil-square.svg";
 import { ReactComponent as WatchdogIcon } from "bootstrap-icons/icons/eye-fill.svg";
 import "./styling/Desktop.css";
-import Mail from "./proper/Mail";
-import Tweeter from "./proper/Tweeter";
-import StockComponent from "./StockComponent";
-import Clock from "./Clock";
-import QuestionComponent from "./QuestionComponent";
-import Chat from "./Chat";
+import Mail from "./components/Mail";
+import Tweeter from "./components/Tweeter";
+import StockComponent from "./components/StockComponent";
+import Clock from "./components/Clock";
+import QuestionComponent from "./components/QuestionComponent";
+import Chat from "./components/Chat";
 import Strike from "./Strike";
-import StrikeCounter from "./StrikeCounter";
+import StrikeCounter from "./components/StrikeCounter";
 import axios from "axios";
 import { FadingImage } from "./boilerplate";  
-import Notes from "./proper/Notes";
-import EthicsDash from "./proper/EthicsDash";
+import Notes from "./components/Notes";
 
 const Tooltip = ({ children, text }) => {
   return (

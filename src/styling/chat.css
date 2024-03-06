@@ -1,26 +1,3 @@
-.chat-container {
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
-  margin: auto;
-  border: 1px solid #e1e1e1;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  background-color: #f9f9f9;
-  color: #333;
-  position: fixed;
-  border-radius: 20px;
-}
-
-.chatHead {
-  color: #333;
-  border-bottom: 1px solid #e1e1e1;
-  padding: 15px;
-  position: relative;
-  background-color: #ffffff;
-  cursor: move;
-  border-radius: 20px;
-}
-
 .chatBody {
   height: 100%;
   display: grid;
@@ -35,23 +12,27 @@
 }
 
 .chatSelection {
-  border: 1px solid #e1e1e1;
+  border: 1px solid #510a32;
   height: fit-content;
   padding: 5px;
   border-radius: 5px;
 }
 
 .chatSelection.current {
-  background-color: #007aff;
+  background-color: #ee4540;
   cursor: auto;
+  border-left: 1px solid #510a32;
 }
 
 .chatSelection.not {
   cursor: pointer;
+  background-color: #510a32;
+  color: #ee4540;
+  border-left: 1px solid #ee4540;
 }
 
 .chatSelection.unavailable {
-  background-color: #5d5d5d;
+  background-color: #2d142c;
   cursor: not-allowed;
   pointer-events: all;
 }
@@ -61,7 +42,7 @@
   overflow-y: auto;
   padding: 10px;
   grid-column: 2/3;
-  border-left: 1px solid #e1e1e1;
+  border-left: 1px solid #510a32;
 }
 
 .message {
@@ -72,22 +53,22 @@
 }
 
 .user {
-  background-color: #e5e5e5;
+  background-color: #ee4540;
   align-self: flex-end;
   text-align: end;
 }
 
 .assistant {
-  background-color: #007aff;
+  background-color: #800020;
   align-self: flex-start;
   color: white;
 }
 
 .input-form {
   display: flex;
-  border-top: 1px solid #d1d1d1;
+  border-top: 1px solid #510a32;
   padding: 10px;
-  background-color: #f1f1f1;
+  background-color: #510a32;
   grid-row: 2;
   grid-column: 2/3;
   border-radius: 20px;
@@ -97,14 +78,14 @@
   flex: 1;
   padding: 10px;
   margin-right: 5px;
-  border: 1px solid #d1d1d1;
-  background-color: #ffffff;
+  border: 1px solid #510a32;
+  background-color: #ee4540;
   color: #333;
   border-radius: 4px;
 }
 
 .input-form button {
-  background-color: #007aff;
+  background-color: #800020;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -113,7 +94,7 @@
 }
 
 .input-form button:hover {
-  background-color: #005ecb;
+  background-color: #800020;
 }
 .thinking-animation {
   display: inline-block;

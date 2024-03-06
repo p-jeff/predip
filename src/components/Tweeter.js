@@ -1,10 +1,10 @@
-import "./tweet.css";
+import "../styling/tweet.css";
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import "../data/tweetList";
 import { notificationPop } from "../boilerplate";
 import tweets from "../data/tweetList";
-import Window from "./Window";
+import Window from "../Window";
 
 function TweetEntry({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styling/Strike.css";
-import Mail from "./proper/Mail";
+import Mail from "./components/Mail";
 import axios from "axios";
-import AICompass from "./AICompass";
+import AICompass from "./components/AICompass";
 
 const mails = {
   level1: {
