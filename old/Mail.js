@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
-import mails from "./data/mailList";
-import { notificationPop } from "./boilerplate";
+import mails from "../src/data/mailList";
+import { notificationPop } from "../src/boilerplate";
 import { Resizable } from "re-resizable";
 
 let isFirstRender = true;

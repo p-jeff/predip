@@ -1,8 +1,7 @@
-body {
-  background-image: url("../public/wallaper.jpg");
+body{
+  background-image: url('../../public/wall.jpg');
   background-size: 120vw;
   background-repeat: none;
-
 }
 
 *::-webkit-scrollbar {

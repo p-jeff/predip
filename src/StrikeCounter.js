@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Money from "bootstrap-icons/icons/currency-dollar.svg"
-import Love from "bootstrap-icons/icons/heart.svg"
-import "./MoneyScore.css";
+import "./styling/StrikeCounter.css";
 
-const MoneyScore = ({strikes}) => {
-  
+const StrikeCounter = ({strikes}) => {
   const [strikeArray, setStrikeArray] = useState([]);
-
-  
 
   useEffect(() => { 
     setStrikeArray(Array.from({ length: strikes }));
@@ -25,4 +20,4 @@ const MoneyScore = ({strikes}) => {
   );
 };
 
-export default MoneyScore;
+export default StrikeCounter;

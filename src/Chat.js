@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./chat.css";
+import "./styling/chat.css";
 import Draggable from "react-draggable";
 import { Resizable } from "re-resizable";
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Strike.css";
+import "./styling/Strike.css";
 import Mail from "./proper/Mail";
 import axios from "axios";
-import MatrixPlot from "./MatrixPlot";
+import AICompass from "./AICompass";
 
 const mails = {
   level1: {
@@ -114,7 +114,7 @@ const Strike = () => {
           isMinimized={false}
         />
       )}
-      <MatrixPlot coordinates={compassPosition} level={level} />
+      <AICompass coordinates={compassPosition} level={level} />
       <button className="restartButton" onClick={onRestart}>
         Restart
       </button>

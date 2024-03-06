@@ -6,17 +6,17 @@ import { ReactComponent as QuestinComponentIcon } from "bootstrap-icons/icons/co
 import { ReactComponent as ChatIcon } from "bootstrap-icons/icons/chat-left-text.svg";
 import { ReactComponent as NotesIcon } from "bootstrap-icons/icons/pencil-square.svg";
 import { ReactComponent as WatchdogIcon } from "bootstrap-icons/icons/eye-fill.svg";
-import "./Desktop.css";
+import "./styling/Desktop.css";
 import Mail from "./proper/Mail";
-import Tweet from "./tweet";
+import Tweeter from "./proper/Tweeter";
 import StockComponent from "./StockComponent";
 import Clock from "./Clock";
 import QuestionComponent from "./QuestionComponent";
 import Chat from "./Chat";
 import Strike from "./Strike";
-import MoneyScore from "./MoneyScore";
+import StrikeCounter from "./StrikeCounter";
 import axios from "axios";
-import FadingImage from "./FadingImage";
+import { FadingImage } from "./boilerplate";  
 import Notes from "./proper/Notes";
 import EthicsDash from "./proper/EthicsDash";
 
@@ -100,7 +100,7 @@ const Desktop = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 4000);
+    }, 40);
 
     return () => clearTimeout(timer);
   }, []);
@@ -147,7 +147,7 @@ const Desktop = () => {
     <>
       {showIntro ? <FadingImage /> : null}
 
-      <MoneyScore strikes={strikes} />
+      <StrikeCounter strikes={strikes} />
       <div className="statusBar">
         <Clock />
       </div>
@@ -163,7 +163,7 @@ const Desktop = () => {
       </div>
       {isStrike ? <Strike /> : <div></div>}
       <Chat onMinimize={apps[4].toggle} isMinimized={apps[4].isMinimized[0]} />
-      <Tweet onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
+      <Tweeter onMinimize={apps[0].toggle} isMinimized={apps[0].isMinimized[0]} />
       <Mail
         onMinimize={apps[1].toggle}
         isMinimized={apps[1].isMinimized[0]}

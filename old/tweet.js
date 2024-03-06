@@ -2,10 +2,10 @@ import "./tweet.css";
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import Draggable from "react-draggable";
-import  "./data/tweetList";
-import { notificationPop } from "./boilerplate";
+import  "../src/data/tweetList";
+import { notificationPop } from "../src/boilerplate";
 import { Resizable } from "re-resizable";
-import tweets from "./data/tweetList";
+import tweets from "../src/data/tweetList";
 
 function TweetEntry({ markdownText, sender, tag }) {
   // Function to convert Markdown to HTML and add styling for hashtags
@@ -113,22 +113,7 @@ function Tweet({ onMinimize, isMinimized }) {
           }}
           enable ={{ top:false, right:false, bottom:false, left:false, topRight:false, bottomRight:true, bottomLeft:true, topLeft:false }}
         >
-          <div className="tweetBody">
-            {data.toReversed().map(
-              (
-                item,
-                index //to reversed so that new tweets are loaded at the top
-              ) => (
-                <TweetEntry
-                  key={item.id}
-                  heading={item.heading}
-                  markdownText={item.markdownText}
-                  sender={item.sender}
-                  tag={item.tag}
-                />
-              )
-            )}
-          </div>
+          
         </Resizable>
       </div>
     </Draggable>

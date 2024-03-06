@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./stock.css";
+import "./styling/stock.css";
 import Draggable from "react-draggable";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./MatrixPlot.css";
+import "./styling/AICompass.css";
 import Draggable from "react-draggable";
 
-const MatrixPlot = ({ coordinates, level }) => {
+const AICompass = ({ coordinates, level }) => {
   const [point, setPoint] = useState({ x: 4, y: 4 });
 
   const calcCordinates = (coordinates) => {
@@ -60,4 +60,4 @@ const MatrixPlot = ({ coordinates, level }) => {
   );
 };
 
-export default MatrixPlot;
+export default AICompass;

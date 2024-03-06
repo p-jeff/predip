@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./QuestionComponent.css"; // Import the CSS file for styling
+import "./styling/QuestionComponent.css"; // Import the CSS file for styling
 import QA from "./data/QA";
 import Draggable from "react-draggable";
 import axios from "axios";
