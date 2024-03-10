@@ -2,11 +2,12 @@ import "../styling/tweet.css";
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import "../data/tweetList";
-import { notificationPop } from "../boilerplate";
 import tweets from "../data/tweetList";
 import Window from "../Window";
 
 function TweetEntry({ markdownText, sender, tag }) {
+ 
+
   // Function to convert Markdown to HTML and add styling for hashtags
   const getMarkdownHtml = (markdown) => {
     const renderer = new marked.Renderer();
@@ -51,6 +52,10 @@ const TweetBody = () => {
     () => JSON.parse(localStorage.getItem("tweets")) || tweets.level0.always
   );
 
+  const sound = new Audio();
+  sound.src = "./tweet.wav";
+  sound.preload = "auto";
+
   useEffect(() => {
     localStorage.setItem("tweets", JSON.stringify(data));
   }, [data]);
@@ -63,7 +68,8 @@ const TweetBody = () => {
           if (
             !currentData.some((existingItem) => existingItem.id === item.id)
           ) {
-            notificationPop("./tweet.wav");
+    
+            sound.play();
             return [...currentData, item];
           }
           return currentData;
@@ -121,7 +127,7 @@ const Tweeter = ({ onMinimize, isMinimized }) => {
       isMinimized={isMinimized}
       onMinimize={onMinimize}
       content={<TweetBody />}
-      name={"Tweeter"}
+      name={"Y Message Board"}
       tag="tweeter"
       initialSize={{
         width: 500,

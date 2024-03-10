@@ -33,11 +33,11 @@
 }
 
 .chat{
-  --background-color: #2d142c;
+  --background-color: white;
   --border-radius: 1px;
   --padding: 0px;
-  --accent-color: #ee4540;
-  --primary-color: #510a32;
+  --accent-color: white;
+  --primary-color: #6a1851;
 }
 
 .window {  

@@ -58,6 +58,11 @@ const MailEntry = ({heading, markdownText, onDelete, sender}) => {
 };
 
 const MailBody = ({ isStrike, strikeFile }) => {
+
+  const sound = new Audio();
+  sound.src = "./mail.wav";
+  sound.preload = "auto";
+
   const [data, setData] = useState(
     () => JSON.parse(localStorage.getItem("mails")) || mails.level0.always
   );
@@ -78,7 +83,7 @@ const MailBody = ({ isStrike, strikeFile }) => {
           if (
             !currentData.some((existingItem) => existingItem.id === item.id)
           ) {
-            notificationPop("./mail.wav");
+            notificationPop('./mail.wav');
             return [...currentData, item];
           }
           return currentData;
