@@ -5,7 +5,7 @@ import { Resizable } from "re-resizable";
 
 const Window = ({isMinimized, onMinimize, content, name, tag, initialSize, initialPosition}) => {
   return (
-    <Draggable handle="header " defaultPosition={initialPosition}>
+    <Draggable handle="header" defaultPosition={initialPosition}>
       <div
         className={`window ${tag}`}
         style={{ display: isMinimized === true ? "none" : "block" }}
