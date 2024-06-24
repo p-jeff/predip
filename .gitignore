@@ -12,6 +12,9 @@
 # production
 /build
 
+Ethico.app
+Run this if game does not Start.app
+
 # misc
 .DS_Store
 .env.local
