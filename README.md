@@ -28,4 +28,22 @@ To set this variable, create an .env file and add: `OPENAI_API_KEY=YOUR_APIKEY`.
 Alternatively you can set the key as a global environment variable.
 
 After both of this, the game can be started with the command `npm run start-game`
+
+### Ethico
+
+```console
+export PATH=/opt/homebrew/bin:$PATH
+
+cd Documents/GitHub/my-app/
+npm run start-game &
+
+sleep 3
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --app=http://localhost:3000
+```
+
+### Run this if game dont Start
+`pkill "npm"`
+
+
 ### This is still very much work in progess.
